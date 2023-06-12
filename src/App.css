@@ -1,0 +1,52 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.leaflet-container{
+  width: 50vw;
+  height: 50vh;
+}
+.bg-quintas-gray{
+  background-color: #6B6E6F;
+}
+.bg-quintas-dark-gray{
+  background-color: #3A3B3B;
+}
+header i{
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.navbar{
+  position:absolute;
+  top:-1200%;
+  left: 0;
+  transition: top 0.3s ease-in-out;
+}
+.z-index-150{
+  z-index: 150;
+}
+.show{
+  top:0;
+  transition: top 0.3s ease-in-out;
+  z-index: 100;
+}
+
+/*! ########################################*/
+/*! ################ LAPTOPS ###############*/
+/*! ########################################*/
+@media (min-width: 760px) {
+  .navbar{
+    position:relative;
+  }
+}
+
+/*! ########################################*/
+/*! ############ LARGER DESKTOPS ###########*/
+/*! ########################################*/
+@media (min-width: 1280px) {
+
+}
