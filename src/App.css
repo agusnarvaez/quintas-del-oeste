@@ -4,10 +4,44 @@
   box-sizing: border-box;
   font-size: 14px;
 }
-
+h2{
+  z-index:10;
+}
+textarea{
+  resize: none;
+}
+.border-quintas-green{
+  border: 2px solid #78BA52;
+}
+.input-focus-border-color,
+.border-quintas-dark-gray{
+  border: 2px solid #3A3B3B;
+}
+.background-image{
+  position:absolute;
+  top:0;
+  z-index: 0;
+}
+.image-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-container .img-fluid{
+  object-fit: cover;
+}
+.vh-75{
+  height: 75vh;
+}
 .leaflet-container{
   width: 50vw;
   height: 50vh;
+}
+.text-quintas-green{
+  color: #78BA52;
+}
+.bg-quintas-green{
+  background-color: #78BA52;
 }
 .bg-quintas-gray{
   background-color: #6B6E6F;
