@@ -4,11 +4,11 @@ import Main from "./Main"
 
 export default function Home() {
   return (
-    <body className="container-fluid p-0">
+    <section className="container-fluid p-0">
       <div className="container-fluid" id="home"></div>
       <Header id="header" />
       <Main />
       <Footer id="footer" />
-    </body>
+    </section>
   )
 }
