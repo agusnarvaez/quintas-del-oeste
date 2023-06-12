@@ -10,7 +10,7 @@ export default function Header() {
   var burgerMenuIconClass = 'bi bi-list text-center d-sm-block d-md-none z-index-150 col-1 p-0'
   var crossIconClass = 'bi bi-x-lg text-center d-sm-block d-md-none z-index-150 col-1 p-0'
   return (
-    <header className="container-fluid row justify-content-between sticky-top bg-white p-3" id="header">
+    <header className="container-fluid row justify-content-between sticky-top bg-white p-3 m-0" id="header">
         <img className="img-fluid col-6 col-md-4 col-xl-2 p-md-4" src={logoQuintas} alt='logoQuintas' />
         <i  className={burgerMenu?crossIconClass:burgerMenuIconClass} onClick={() => setBurgerMenu(!burgerMenu)}></i>
       <nav className={navClass} id="navBar">
