@@ -41,7 +41,7 @@ export default function LargeInput({field,contact,setContact}) {
                     required
                 />
             </div>
-            {field.showErrors?<p className="text-danger fw-bold">{field.error}</p>:null}
+            {field.showErrors?<p className="text-danger m-0 fw-bold">{field.error}</p>:null}
         </>
     )
 }

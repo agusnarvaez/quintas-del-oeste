@@ -1,7 +1,7 @@
 import { useRef } from "react"
 
 import ReCAPTCHA from "react-google-recaptcha";
-import credentials from "../../../../credentials.js";
+import credentials from "../../../../../credentials.js";
 
 export default function Captcha({field}) {
 
@@ -18,7 +18,7 @@ export default function Captcha({field}) {
 
     return (
         <>
-            <div className="container-fluid ps-5 ms-1 d-flex align-items-center">
+            <div className="container-fluid ps-5 ms-1 ms-xl-5 my-3 d-flex align-items-center">
                 <ReCAPTCHA
                     ref={captcha}
                     sitekey={credentials.captchaKey}

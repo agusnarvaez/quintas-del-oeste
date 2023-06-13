@@ -20,7 +20,7 @@ export default function ContactInputs({buttonClass,setButtonClass}) {
                 className="container-fluid border-0 bg-quintas-green d-flex justify-content-center align-items-center py-2 w-75"
                 type="submit"
                 >
-                    <p className="text-white m-0 fs-3">ENVIAR MENSAJE</p>
+                    <p className="text-white m-0 fs-4">ENVIAR MENSAJE</p>
             </button>)
         }
     }

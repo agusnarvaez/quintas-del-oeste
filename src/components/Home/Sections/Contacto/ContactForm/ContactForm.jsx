@@ -1,8 +1,8 @@
 
 import {useRef,useState} from "react"
-import { fieldsList,frmContact } from "../../../../services/contact"
+import { fieldsList,frmContact } from "../../../../../services/contact"
 
-import credentials from "../../../../credentials"
+import credentials from "../../../../../credentials"
 
 //* API de Emails
 import emailjs from 'emailjs-com'
@@ -66,7 +66,7 @@ export default function ContactForm() {
   }
 
   return (
-      <section className="container-fluid my-4">
+      <section className="container-fluid my-4 my-lg-0 col-md-8 col-lg-12 contactForm ">
           <h3 className="container-fluid text-center fs-4 fw-normal">¿QUERÉS SABER MÁS? <br/>COORDINÁ UNA REUNIÓN</h3>
           <form className="container-fluid p-0 px-4 d-flex align-items-center justify-content-center flex-column flex-nowrap" onSubmit={handleSubmit}>
 
