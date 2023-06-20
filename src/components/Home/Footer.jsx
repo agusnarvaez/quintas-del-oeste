@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
 
         <ul className="container-fluid row col-8 col-md-5 col-lg-6 mt-5 m-lg-0 p-0 d-flex flex-column justify-content-center align-items-center list-unstyled order-lg-2">
-          <li className="col-12 col-lg-8 my-1 p-0"><a className="text-white text-decoration-none fs-3" href={credentials.whatsappApi}><i className="bi bi-whatsapp me-4 fs-3"/>11 5952 1694</a></li>
+          <li className="col-12 col-lg-8 my-1 p-0"><a className="text-white text-decoration-none fs-3" href={credentials.whatsappApi}><i className="bi bi-whatsapp me-4 fs-3"/>+54 9 11 6492 5109</a></li>
           <li className="col-12 col-lg-8 my-1 p-0"><a className="text-white text-decoration-none fs-3" href="mailto:consultas@diba.com.ar"><i className="bi bi-envelope me-4  fs-3"/>consultas@diba.com.ar</a></li>
           <li className="col-12 col-lg-8 my-1 p-0"><a className="text-white text-decoration-none fs-3" href="www.instagram.com/metrofuturo/"><i className="bi bi-instagram me-4 fs-3"/>barrioquintas</a></li>
         </ul>
