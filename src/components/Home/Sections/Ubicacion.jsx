@@ -1,6 +1,7 @@
 import Cercanias from './Ubicacion/Cercanias'
 import Direccion from './Ubicacion/Direccion'
-import GoogleMapReact from './Ubicacion/GoogleApiWrapper'
+
+import GoogleMap from './Ubicacion/GoogleMap'
 export default function Ubicacion() {
   return (
     <div className="container-fluid p-0 mt-5" id="location">
@@ -9,8 +10,8 @@ export default function Ubicacion() {
 
       <div className="mapContainer container-fluid p-0 col-12 d-flex justify-content-center">
 
-        <GoogleMapReact />
 
+        <GoogleMap />
         <Cercanias />
 
       </div>

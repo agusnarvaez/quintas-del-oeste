@@ -2,8 +2,11 @@ import { Suspense, lazy } from "react"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 
-const Home = lazy(()=>import("./components/Home/Home"))
-const Admin = lazy(()=>import("./components/Admin/Admin"))
+const Home = lazy(()=>import("./pages/Home"))
+const Admin = lazy(()=>import("./pages/Admin"))
+const Login = lazy(()=>import("./pages/Login"))
+const Register = lazy(()=>import("./pages/Register"))
+const Error404 = lazy(()=>import("./pages/ErrorNotFound"))
 
 export default function App() {
   return (
@@ -13,6 +16,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin/register" element={<Register />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
 
       </BrowserRouter>
