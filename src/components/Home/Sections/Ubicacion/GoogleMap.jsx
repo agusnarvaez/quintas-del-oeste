@@ -32,5 +32,5 @@ export default function GoogleMap(){
         />
       </GoogleMapReact>
     </div>
-  );
+  )
 }

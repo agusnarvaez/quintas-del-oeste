@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { MapContainer, TileLayer, useMap, Marker, Popup, Polyline,Polygon, FeatureGroup } from 'react-leaflet'
 import {EditControl} from 'react-leaflet-draw'
 import 'leaflet/dist/leaflet.css'

@@ -21,7 +21,7 @@ export default function ContactForm() {
   //* Hook de mail a enviar
   const [contact, setContact] = useState(frmContact)
 
-  const [buttonClass,setButtonClass] = useState(buttonState.default);
+  const [buttonClass,setButtonClass] = useState(buttonState.default)
 
   const fields = useRef(fieldsList)
 
@@ -34,9 +34,9 @@ export default function ContactForm() {
       if(fields.current.some(field=>field.isValid===false)){
 
           if(fields.current[fields.current.length-1].isValid===false){
-              fields.current[fields.current.length-1].showErrors=true;
+              fields.current[fields.current.length-1].showErrors=true
           }else{
-              fields.current[fields.current.length-1].showErrors=false;
+              fields.current[fields.current.length-1].showErrors=false
           }
           alert("Por favor revise los campos!")
 
@@ -52,14 +52,14 @@ export default function ContactForm() {
               credentials.emailJs.id //* ID de usuario de la API
               )
                   .then((response) => {
-                      console.log('SUCCESS!', response.status, response.text);
+                      console.log('SUCCESS!', response.status, response.text)
                       setContact(frmContact)
                       setButtonClass(buttonState.success)
                   },
 
                   //* Capturo el error al enviar el mensaje
                   (err) => {
-                      console.log('ERROR:\n', err);
+                      console.log('ERROR:\n', err)
                       setButtonClass(buttonState.error)
                   })
       }

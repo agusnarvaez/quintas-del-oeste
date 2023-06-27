@@ -1,18 +1,18 @@
 import { useRef } from "react"
 
-import ReCAPTCHA from "react-google-recaptcha";
-import credentials from "../../../../../credentials.js";
+import ReCAPTCHA from "react-google-recaptcha"
+import credentials from "../../../../../credentials.js"
 
 export default function Captcha({field}) {
 
-    const captcha = useRef(null);
+    const captcha = useRef(null)
 
     const onChangeCaptcha=()=>{
         if(captcha.current.getValue()){
-            field.value = captcha.current.getValue();
-            field.isValid = true;
+            field.value = captcha.current.getValue()
+            field.isValid = true
         }else{
-            field.isValid = false;
+            field.isValid = false
         }
     }
 

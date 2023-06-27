@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import logoQuintas from '../../assets/logos/logoQuintas.png'
 
 export default function Header() {
-  const [burgerMenu, setBurgerMenu] = useState(false);
+  const [burgerMenu, setBurgerMenu] = useState(false)
 
   var liClass = 'nav-item py-2'
   var linkClass = 'nav-link text-dark fs-4 l-p-3'
