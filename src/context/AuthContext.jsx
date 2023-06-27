@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react"
+import { createContext, useState, useContext, useEffect } from "react"
 import { loginRequest, registerRequest } from '../api/auth'
 
 //* Creo el contexto de autenticación para poder usarlo en cualquier parte de la aplicación
@@ -40,6 +40,15 @@ export const AuthProvider = ({children}) => {
             setErrors(error.response.data.errors)
         }
     }
+
+    useEffect(() => {
+        if(errors.length > 0){
+            const timer = setTimeout(() => {
+                setErrors([])
+            }, 5000)
+            return () => clearTimeout(timer)
+        }
+    }, [errors])
 
     return (
         <AuthContext.Provider
