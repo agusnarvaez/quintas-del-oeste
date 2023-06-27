@@ -31,8 +31,8 @@ export default function Login() {
 
   //* Campos del formulario de login de usuario
   const campos =[
-    {name:"email",placeholder:"Email",type:"text",errors:errors.email,register:register("email",{required:true})},
-    {name:"password",placeholder:"Contraseña",type:"password",errors:errors.password,register:register("password",{required:true})}
+    {name:"email",placeholder:"Email",type:"text",register:register("email",{required:true})},
+    {name:"password",placeholder:"Contraseña",type:"password",register:register("password",{required:true})}
   ]
 
   //* Si el usuario está autenticado lo redirijo a la página de administración
@@ -61,8 +61,10 @@ export default function Login() {
                 placeholder={campo.placeholder}
                 {...campo.register}
               />
-              {campo.errors && (
-                <span className="text-danger text-center">{campo.errors.message}</span>
+              {errors[campo.name] && (
+                <span className="text-danger text-center">
+                  Este campo es requerido
+                </span>
               )}
             </div>
             )}
