@@ -11,7 +11,8 @@ export default function Register() {
   const {
     register,
     handleSubmit,
-    formState:{errors}
+    formState:{errors},
+    getValues
   } = useForm()
 
   //* Obtengo los métodos necesarios para la autenticación de la API
@@ -33,9 +34,15 @@ export default function Register() {
     {name:"name",placeholder:"Nombre",type:"text",errors:errors.name,register:register("name",{required:true})},
     {name:"lastName",placeholder:"Apellido",type:"text",errors:errors.lastName,register:register("lastName",{required:true}),},
     {name:"email",placeholder:"Email",type:"text",errors:errors.email,register:register("email",{required:true})},
-    {name:"email",placeholder:"Repetir Email",type:"text",errors:errors.email,register:register("email",{required:true})},
+    {name:"repeatEmail",placeholder:"Repetir Email",type:"text",errors:errors.repeatEmail,register:register("repeatEmail",{
+      required:true,
+      validate: (value) => value === getValues("email") || "Los correos electrónicos no coinciden" //* Valido que los correos electrónicos coincidan
+    })},
     {name:"password",placeholder:"Contraseña",type:"password",errors:errors.password,register:register("password",{required:true})},
-    {name:"password",placeholder:"Repetir contraseña",type:"password",errors:errors.password,register:register("repeatPassword",{required:true})},
+    {name:"repeatPassword",placeholder:"Repetir contraseña",type:"password",errors:errors.repeatPassword,register:register("repeatPassword",{
+      required:true,
+      validate: (value) => value === getValues("password") || "Las contraseñas no coinciden" //* Valido que las contraseñas coincidan
+    })},
     {name:"token",placeholder:"Token",type:"password",errors:errors.token,register:register("token",{required:true})},
   ]
 
@@ -67,8 +74,8 @@ export default function Register() {
                 placeholder={campo.placeholder}
                 {...campo.register}
               />
-              {campo.errors && (
-                <span className="text-danger text-center">Este campo es requerido</span>
+              {campo.errors && campo.errors.message && (
+                <span className="text-danger text-center">{campo.errors.message}</span>
               )}
             </div>
             )}
