@@ -17,12 +17,11 @@ export default function Login() {
   } = useForm()
 
   //* Obtengo los métodos necesarios para la autenticación de la API
-  //* signUp: para registrar un usuario
+  //* signUp: para loguear un usuario
   //* isAuthenticated: para saber si el usuario está autenticado
   //* errors: para manejar los errores de la autenticación
   const {signIn,isAuthenticated, errors:loginErrors} = useAuth()
   const navigate = useNavigate()
-
 
   //* Función que maneja el evento submit del formulario
   const onsubmit = handleSubmit( async (values) => {
@@ -30,7 +29,7 @@ export default function Login() {
     signIn(values)
   })
 
-  //* Campos del formulario de registro de usuario
+  //* Campos del formulario de login de usuario
   const campos =[
     {name:"email",placeholder:"Email",type:"text",errors:errors.email,register:register("email",{required:true})},
     {name:"password",placeholder:"Contraseña",type:"password",errors:errors.password,register:register("password",{required:true})}
@@ -38,9 +37,7 @@ export default function Login() {
 
   //* Si el usuario está autenticado lo redirijo a la página de administración
   useEffect(() => {
-
     if(isAuthenticated) navigate("/admin")
-
   }, [isAuthenticated,loginErrors,navigate])
 
   return (
