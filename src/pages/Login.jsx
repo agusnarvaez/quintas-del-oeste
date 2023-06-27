@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
- //* Obtengo los métodos necesarios para el formulario
+  //* Obtengo los métodos necesarios para el formulario
   //* register: para registrar los inputs del formulario
   //* handleSubmit: para manejar el evento submit del formulario
   //* formState: para manejar el estado del formulario y sus errores
