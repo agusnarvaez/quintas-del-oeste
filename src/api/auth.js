@@ -1,10 +1,10 @@
 import axios from './axios'
 
 //* Login and Register requests
-const loginRequest = user => axios.post(`/login`, user)
-const registerRequest = user => axios.post(`/register`, user)
-const logoutRequest = () => axios.post(`/logout`)
-const verifyToken = () => axios.get('/verifyToken')
+const loginRequest = user => axios.post(`/auth/login`, user)
+const registerRequest = user => axios.post(`/auth/register`, user)
+const logoutRequest = () => axios.post(`/auth/logout`)
+const verifyToken = () => axios.get('/auth/verifyToken')
 
 
 
