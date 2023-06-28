@@ -3,7 +3,7 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 export default function ProtectedRoute() {
 
-  const {isAuthenticated,user} = useAuth()
+  const {isAuthenticated} = useAuth()
 
   if(!isAuthenticated) return <Navigate to="/admin/login" replace/>
 
