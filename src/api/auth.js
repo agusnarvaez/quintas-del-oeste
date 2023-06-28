@@ -1,9 +1,11 @@
-import axios from 'axios'
-import credentials from '../credentials'
-const API = credentials.api.testUrl
+import axios from './axios'
 
 //* Login and Register requests
-const loginRequest = user => axios.post(`${API}/login`, user)
-const registerRequest = user => axios.post(`${API}/register`, user)
+const loginRequest = user => axios.post(`/login`, user)
+const registerRequest = user => axios.post(`/register`, user)
+const logoutRequest = () => axios.post(`/logout`)
+const verifyToken = () => axios.get('/verifyToken')
 
-export { loginRequest, registerRequest}
+
+
+export { loginRequest, registerRequest,logoutRequest,verifyToken}
