@@ -2,6 +2,8 @@ import { Suspense, lazy } from "react"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { AuthProvider } from "./context/AuthContext"
+import ProtectedRoute from "./components/Admin/ProtectedRoute"
+
 const Home = lazy(()=>import("./pages/Home"))
 const Admin = lazy(()=>import("./pages/Admin"))
 const Login = lazy(()=>import("./pages/Login"))
@@ -16,9 +18,11 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route element={<ProtectedRoute/>}>
               <Route path="/admin" element={<Admin />} />
-              <Route path="/admin/login" element={<Login />} />
-              <Route path="/admin/register" element={<Register />} />
+            </Route>
+            <Route path="/admin/login" element={<Login />} />
+            <Route path="/admin/register" element={<Register />} />
             <Route path="*" element={<Error404 />} />
           </Routes>
 
