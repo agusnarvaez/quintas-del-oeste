@@ -3,13 +3,14 @@ import 'leaflet/dist/leaflet.css'
 import IconLocation from './IconLocation'
 
 
-export default function Markers({places}) {
+export default function Markers({coordinates}) {
  /*    const markers = places.map((item) => {
-        
+
     }) */
-    
+    console.log(coordinates)
+
     return(
-        <Marker position={{lat:"-34.62058929730762",lng:"-58.981031506685305"}} icon={IconLocation}>
+        <Marker position={coordinates} icon={IconLocation}>
             <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
             </Popup>

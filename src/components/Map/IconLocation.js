@@ -1,6 +1,6 @@
 
 
-import icon from '../assets/icon.png'
+import icon from '../../assets/icon.png'
 import L from 'leaflet'
 
 
@@ -11,7 +11,7 @@ const IconLocation = L.icon({
     iconAnchor: [12, 12],
     popupAnchor: [0, -12],
     shadowSize: [25, 25],
-    className: 'leaflet-div-icon'
+    className: ''
 })
 
 export default IconLocation
