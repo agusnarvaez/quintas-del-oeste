@@ -1,11 +1,13 @@
 import axios from './axios'
 
-//* Login and Register requests
-const getLots = ()=>axios.get(`/lots`)
-const getLot = id => axios.get(`/lots${id}`)
-const createLot = lot => axios.post(`/lots/create`, lot)
-const updateLot = lot => axios.put(`/lots/update/${lot._id}`,lot)
-const reserveLot = lot => axios.put(`/lots/update/${lot._id}`,lot)
-const deleteLot = id => axios.delete(`/lots/delete/${id}`)
+//* Peticiones a la API de lotes
+const apiLot = {
+    getAll: ()=>axios.get(`/lots`),
+    get: id => axios.get(`/lots${id}`),
+    create: lot => axios.post(`/lots/create`, lot),
+    update: lot => axios.put(`/lots/update/${lot._id}`,lot),
+    reserve: (lot,user) => axios.put(`/lots/update/${lot._id}`,lot,user),
+    delete: id => axios.delete(`/lots/delete/${id}`)
+}
 
-export { getLots, getLot,createLot,updateLot,deleteLot,reserveLot}
+export { apiLot }
