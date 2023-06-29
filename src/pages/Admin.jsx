@@ -6,7 +6,6 @@ import { useAuth } from '../context/AuthContext'
 
 export default function Admin() {
   const {user} = useAuth()
-  console.log(user)
   return (
     <>
       <Header id="header" user={user} />
