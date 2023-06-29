@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import { AuthProvider } from "./context/AuthContext"
+import {LotsProvider} from "./context/LotsContext"
 import ProtectedRoute from "./components/Admin/ProtectedRoute"
 
 const Home = lazy(()=>import("./pages/Home"))
@@ -14,19 +15,19 @@ export default function App() {
   return (
     <Suspense fallback={<div className="loading">Cargando...</div>}>
       <AuthProvider>
-        <BrowserRouter>
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route element={<ProtectedRoute/>}>
-              <Route path="/admin" element={<Admin />} />
-            </Route>
-            <Route path="/admin/login" element={<Login />} />
-            <Route path="/admin/register" element={<Register />} />
-            <Route path="*" element={<Error404 />} />
-          </Routes>
-
-        </BrowserRouter>
+        <LotsProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route element={<ProtectedRoute/>}>
+                <Route path="/admin" element={<Admin />} />
+              </Route>
+              <Route path="/admin/login" element={<Login />} />
+              <Route path="/admin/register" element={<Register />} />
+              <Route path="*" element={<Error404 />} />
+            </Routes>
+          </BrowserRouter>
+        </LotsProvider>
       </AuthProvider>
     </Suspense>
   )
