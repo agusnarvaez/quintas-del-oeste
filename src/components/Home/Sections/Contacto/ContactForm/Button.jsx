@@ -7,14 +7,14 @@ export default function ContactInputs({buttonClass,setButtonClass}) {
     const buttonSelection = ()=>{
         switch(buttonClass){
             case "loading": return (
-                <div class="spinner-border text-quintas-green" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                <div className="spinner-border text-quintas-green" role="status">
+                    <span className="visually-hidden">Loading...</span>
                 </div>
                 )
             case "success": return (
-                <button class="container-fluid btn btn-success px-3" type="button">Enviado</button>)
+                <button className="container-fluid btn btn-success px-3" type="button">Enviado</button>)
             case "error": return (
-                <button class="container-fluid btn btn-danger px-3" type="button">¡Ups! Ha habido un error</button>)
+                <button className="container-fluid btn btn-danger px-3" type="button">¡Ups! Ha habido un error</button>)
         default: return (
             <button
                 className="container-fluid border-0 bg-quintas-green d-flex justify-content-center align-items-center py-2 w-75"
