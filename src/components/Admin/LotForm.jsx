@@ -13,16 +13,16 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "number",
       placeholder: "Número de lote",
       type: "number",
-      containerClass: "col-2 p-0 row flex-column",
-      inputClass: "form-control col-2",
+      containerClass: "col-6 pe-5 ps-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      inputClass: "form-control",
       options: { required: "Campo obligatorio", min: 1 }
     },
     {
       name: "area",
       placeholder: "Área",
       type: "number",
-      containerClass: "col-2 p-0 row flex-column",
-      inputClass: "form-control col-2",
+      containerClass: "col-6 ps-5 pe-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      inputClass: "form-control",
       options: {
         required: "Campo obligatorio",
         validate: (value) => value >= 100 || "El valor debe ser mayor a 100"
@@ -32,7 +32,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "price",
       placeholder: "Precio",
       type: "number",
-      containerClass: "col-2 p-0 row flex-column",
+      containerClass: "col-6 pe-5 ps-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control col-2",
       options: {
         required: "Campo obligatorio",
@@ -43,7 +43,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "reservationPercentage",
       placeholder: `Porcentaje de reserva ${reservationPercentageValue}%`,
       type: "range",
-      containerClass: "col-3 p-0 row flex-column",
+      containerClass: "col-6 ps-5 pe-2 col-xxl-3 p-xxl-0 row flex-column justify-content-center align-items-center",
       inputClass: "col-10 p-0 form-range w-100",
         options: { required: "Campo obligatorio",
         validate: (value) => value >= 10 || "Debe ser mayor o igual a 10"
@@ -53,7 +53,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "financiation",
       placeholder: "Financiación",
       type: "checkbox",
-      containerClass: "form-check col-2 flex-column",
+      containerClass: "form-check d-xxl-flex ps-4 py-2 p-xxl-0 m-0 align-items-center justify-content-center col-6 col-xxl-2 flex-column",
       inputClass: "form-check-input",
       options: { }
     }
@@ -123,18 +123,14 @@ export default function LotForm({editionForm,setEditionForm}) {
     if(editionForm&&lot){
       reset(lot,{keepValues:false})
     }
-    /* else{
-
-      reset({},{ keepValues: false })
-      setLot({})
-    } */
   },[editionForm,register,lot,reset,setLot])
 
   return (
     <section className="bg-dark-subtle container-fluid row p-2 justify-content-between">
         <form className="col-6 container-fluid row justify-content-center p-0 px-2" onSubmit={onsubmit}>
-          <div className="form-group col-12  container-fluid row justify-content-between p-0 px-3">
+          <div className="col-12 row container-fluid justify-content-between align-items-stretch p-0 px-3 mb-xxl-4">
             <h3 className="col-12 fs-3 m-0 p-0">Datos principales</h3>
+
             {
               fields.map((field, index) => {
                 return (
@@ -156,25 +152,43 @@ export default function LotForm({editionForm,setEditionForm}) {
               })
             }
           </div>
-          <div className="form-row col-6 px-3 justify-content-between">
-            <h3>Ubicación</h3>
-            <input className="form-control my-2" type="text" placeholder="latitud" defaultValue={0}
-              {...register("coordinates.lat")}
-            />
-            <input className="form-control my-2" type="text" placeholder="longitud" defaultValue={0}
-              {...register("coordinates.lng")}
-            />
+          <div className="location w-50 d-flex flex-wrap align-items-start">
+            <h3 className="fs-3 w-100 form-title">Ubicación</h3>
+            <div className="w-50 h-100 m-0 pe-2">
+              <label>Latitud</label>
+              <input className="form-control my-2" type="text" placeholder="latitud" defaultValue={0}
+                {...register("coordinates.lat")}
+              />
+            </div>
+            <div className="w-50 m-0 ps-2">
+              <label>Longitud</label>
+              <input className="form-control my-2" type="text" placeholder="longitud" defaultValue={0}
+                {...register("coordinates.lng")}
+              />
+            </div>
           </div>
-          <div className="form-row col-6 px-3 justify-content-between">
-            <h3>Perímetro</h3>
-            <input className="form-control my-2" type="text" placeholder="x1" defaultValue={0} {...register("perimeter.x1.lat")}  />
-            <input className="form-control my-2" type="text" placeholder="x1" defaultValue={0} {...register("perimeter.x1.lng")}  />
-            <input className="form-control my-2" type="text" placeholder="x2" defaultValue={0} {...register("perimeter.x2.lat")}  />
-            <input className="form-control my-2" type="text" placeholder="x2" defaultValue={0} {...register("perimeter.x2.lng")}  />
-            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y1.lat")}  />
-            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y1.lng")}  />
-            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y2.lat")}  />
-            <input className="form-control my-2" type="text" placeholder="y2" defaultValue={0} {...register("perimeter.y2.lng")}  />
+          <div className="row col-6 px-3 justify-content-between perimeter">
+            <h3 className='fs-3 w-100 form-title'>Perímetro</h3>
+            <div className='d-flex w-50 p-0 pe-1 flex-wrap justify-content-between'>
+              <label className='w-100 m-0  text-center'>x1</label>
+              <input className="form-control coordinateInput my-2" type="text" placeholder="x1" defaultValue={0} {...register("perimeter.x1.lat")}  />
+              <input className="form-control coordinateInput my-2" type="text" placeholder="x1" defaultValue={0} {...register("perimeter.x1.lng")}  />
+            </div>
+            <div className='d-flex w-50 p-0 ps-1 flex-wrap justify-content-between'>
+              <label className='w-100 m-0  text-center'>x2</label>
+              <input className="form-control coordinateInput my-2" type="text" placeholder="x2" defaultValue={0} {...register("perimeter.x2.lat")}  />
+              <input className="form-control coordinateInput my-2" type="text" placeholder="x2" defaultValue={0} {...register("perimeter.x2.lng")}  />
+            </div>
+            <div className='d-flex w-50 p-0 pe-1 flex-wrap justify-content-between'>
+              <label className='w-100 m-0 text-center'>y1</label>
+              <input className="form-control coordinateInput my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y1.lat")}  />
+              <input className="form-control coordinateInput my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y1.lng")}  />
+            </div>
+            <div className='d-flex w-50 p-0 ps-1 flex-wrap justify-content-between'>
+              <label className='w-100 m-0 text-center'>y2</label>
+              <input className="form-control coordinateInput my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y2.lat")}  />
+              <input className="form-control coordinateInput my-2" type="text" placeholder="y2" defaultValue={0} {...register("perimeter.y2.lng")}  />
+            </div>
           </div>
           {
             formErrors?.map((error, index) => {

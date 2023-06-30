@@ -7,6 +7,18 @@
     background: 'linear-gradient(to right, #ccc 0%, #ccc ' + porcentaje + '%, #fff ' + porcentaje + '%, white 100%)',
 }
 
+.location{
+    max-height: 120px;
+}
+.perimeter{
+    max-height: 170px;
+}
+/* .form-title{
+    height: 25px;
+} */
+.coordinateInput {
+    width: 45%;
+}
 
 /*! ########################################*/
 /*! ##### TABLETS & LARGER SMARTPHONES #####*/
