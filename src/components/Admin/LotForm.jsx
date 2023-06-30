@@ -58,6 +58,23 @@ export default function LotForm({editionForm,setEditionForm}) {
       options: { }
     }
   ]
+  const initialValues ={
+    number: 0,
+    area: '',
+    price: '',
+    reservationPercentage: 0,
+    financiation: false,
+    coordinates: {
+      lat: 0,
+      lng: 0
+    },
+    perimeter: {
+      x1: { lat: 0, lng: 0 },
+      x2: { lat: 0, lng: 0 },
+      y1: { lat: 0, lng: 0 },
+      y2: { lat: 0, lng: 0 }
+    }
+  }
 
   const onsubmit = handleSubmit( async (values,event) => {
     event.preventDefault()
@@ -97,7 +114,7 @@ export default function LotForm({editionForm,setEditionForm}) {
   })
 
   const discardChanges = ()=>{
-    reset({},{ keepValues: false })
+    reset(initialValues,{ keepValues: false })
     setEditionForm(false)
     setLot({})
   }
@@ -105,10 +122,13 @@ export default function LotForm({editionForm,setEditionForm}) {
   useEffect(() => {
     if(editionForm&&lot){
       reset(lot,{keepValues:false})
-    }else{
-      reset({},{ keepValues: false })
     }
-  },[editionForm,register,lot,reset])
+    /* else{
+
+      reset({},{ keepValues: false })
+      setLot({})
+    } */
+  },[editionForm,register,lot,reset,setLot])
 
   return (
     <section className="bg-dark-subtle container-fluid row p-2 justify-content-between">

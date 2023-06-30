@@ -1,15 +1,15 @@
 import React from 'react'
-import { MapContainer, TileLayer, Polygon, FeatureGroup } from 'react-leaflet'
+import { MapContainer, TileLayer, Polygon, FeatureGroup,Marker } from 'react-leaflet'
 import {EditControl} from 'react-leaflet-draw'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-draw/dist/leaflet.draw.css'
-import Marker from './Marker'
+import LotLocation from './LotLocation'
 import IconLocation from './IconLocation'
 import { useLots } from '../../context/LotsContext'
 import { useEffect } from 'react'
 
 export default function MapEditor({setValue,getValues}) {
-    const {lot} = useLots()
+    const {lot,lots} = useLots()
     const contornoExterior = [
       [-34.61740919669242,-58.98954391479492],
       [-34.61183817736672,-58.978638052940376],
@@ -50,7 +50,6 @@ export default function MapEditor({setValue,getValues}) {
         setValue('perimeter.y2.lat',perimeter[3].lat)
         setValue('perimeter.y2.lng',perimeter[3].lng)
       }
-
     }
 
     const _onEdited = (e) => {
@@ -113,7 +112,7 @@ export default function MapEditor({setValue,getValues}) {
       const conditionLat = getValues('coordinates.lat')!=="0"&&getValues('coordinates.lat')!==undefined
       const conditionLng = getValues('coordinates.lng')!=="0"&&getValues('coordinates.lng')!==undefined
       if(conditionLat&&conditionLng){
-        return <Marker coordinates={{lat:getValues('coordinates.lat'),lng:getValues('coordinates.lng')}}/>
+        return <Marker position={{lat:getValues('coordinates.lat'),lng:getValues('coordinates.lng')}} icon={IconLocation}/>
       }
     }
 
@@ -160,9 +159,9 @@ export default function MapEditor({setValue,getValues}) {
       <Polygon pathOptions={{color: 'gray'}} positions={contornoExterior} />
       {existingPolygon()}
       {existingMarker()}
-      {/* <Polygon pathOptions={{color: 'white'}} positions={zona1} /> */}
-      {/* <Polygon pathOptions={{color: 'blue'}} positions={lote} /> */}
-      {/* <Markers/> */}
+      {
+        lots.map((lotToShow,index)=> <LotLocation lot={lotToShow} key={index}/> )
+      }
     </MapContainer>
   )
 }
