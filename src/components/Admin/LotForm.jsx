@@ -7,7 +7,7 @@ import {useLots}from '../../context/LotsContext'
 export default function LotForm({editionForm,setEditionForm}) {
   const {register,handleSubmit,formState:{errors},watch,getValues,setValue,reset} = useForm()
   const reservationPercentageValue = watch("reservationPercentage", 0)
-  const {lot,setLot,createLot,updateLot,formErrors} = useLots()
+  const {lot,setLot,createLot,updateLot,deleteLot,formErrors} = useLots()
   const fields = [
     {
       name: "number",
@@ -97,18 +97,18 @@ export default function LotForm({editionForm,setEditionForm}) {
   })
 
   const discardChanges = ()=>{
+    reset({},{ keepValues: false })
     setEditionForm(false)
     setLot({})
-    reset()
   }
 
   useEffect(() => {
     if(editionForm&&lot){
-      reset(lot)
+      reset(lot,{keepValues:false})
     }else{
-      reset()
+      reset({},{ keepValues: false })
     }
-  },[editionForm,register,lot])
+  },[editionForm,register,lot,reset])
 
   return (
     <section className="bg-dark-subtle container-fluid row p-2 justify-content-between">
@@ -170,7 +170,7 @@ export default function LotForm({editionForm,setEditionForm}) {
           {
             editionForm ?
             (<div className='col-6 row justify-content-between'>
-              <button className="btn btn-danger col-5 fs-3 p-0 m-0">Eliminar</button>
+              <button onClick={()=>deleteLot(lot)} className="btn btn-danger col-5 fs-3 p-0 m-0">Eliminar</button>
               <button onClick={discardChanges} type="reset" className="btn btn-secondary col-5 fs-3 p-0 m-0" >Descartar</button>
             </div>)
             : null
