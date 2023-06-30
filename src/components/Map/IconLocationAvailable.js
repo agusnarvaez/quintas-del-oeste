@@ -1,4 +1,4 @@
-import homeIcon from "../../assets/locationIcon-normal.svg"
+import homeIcon from "../../assets/locationIcon-success.svg"
 import L from 'leaflet'
 
 const IconLocation = L.icon({
@@ -10,6 +10,5 @@ const IconLocation = L.icon({
     shadowSize: [25, 25],
     className: ''
 })
-
 
 export default IconLocation
