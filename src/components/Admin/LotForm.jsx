@@ -4,55 +4,10 @@ import { useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import {useLots}from '../../context/LotsContext'
 
-export default function LotForm() {
-  const {register,handleSubmit,formState:{errors},watch,getValues,setValue} = useForm()
+export default function LotForm({editionForm,setEditionForm}) {
+  const {register,handleSubmit,formState:{errors},watch,getValues,setValue,reset} = useForm()
   const reservationPercentageValue = watch("reservationPercentage", 0)
-
-  const perimeter = {
-    x1: watch("x1", 0),
-    x2: watch("x2", 0),
-    y1: watch("y1", 0),
-    y2: watch("y2", 0)
-  }
-  const {createLot,formErrors} = useLots()
-
-  const onsubmit = handleSubmit( async (values,event) => {
-    event.preventDefault()
-    //* Llamo a la función signUp del contexto de autenticación
-
-    const newLot = {
-      number: values.number,
-      area: values.area,
-      price: values.price,
-      reservationPercentage: values.reservationPercentage,
-      financiation: values.financiation,
-      coordinates: {lat:values.lat,lng:values.lng},
-      perimeter:{
-        x1:{
-          lat:values.x1Lat,
-          lng:values.x1Lng
-        },
-        x2:{
-          lat:values.x2Lat,
-          lng:values.x2Lng
-        },
-        y1:{
-          lat:values.y1Lat,
-          lng:values.y1Lng
-        },
-        y2:{
-          lat:values.y2Lat,
-          lng:values.y2Lng
-        }
-      }
-    }
-    createLot(newLot)
-  })
-
-  const onchange = (field) => {
-    console.log(watch(field,0))
-  }
-
+  const {lot,setLot,createLot,updateLot,formErrors} = useLots()
   const fields = [
     {
       name: "number",
@@ -104,6 +59,56 @@ export default function LotForm() {
     }
   ]
 
+  const onsubmit = handleSubmit( async (values,event) => {
+    event.preventDefault()
+
+    const newLot = {
+      _id:lot?._id,
+      number: values.number,
+      area: values.area,
+      price: values.price,
+      reservationPercentage: values.reservationPercentage,
+      financiation: values.financiation,
+      coordinates: {lat:values.coordinates.lat,lng:values.coordinates.lng},
+      perimeter:{
+        x1:{
+          lat:values.perimeter.x1.lat,
+          lng:values.perimeter.x1.lng
+        },
+        x2:{
+          lat:values.perimeter.x2.lat,
+          lng:values.perimeter.x2.lng
+        },
+        y1:{
+          lat:values.perimeter.y1.lat,
+          lng:values.perimeter.y1.lng
+        },
+        y2:{
+          lat:values.perimeter.y2.lat,
+          lng:values.perimeter.y2.lng
+        }
+      }
+    }
+    if(editionForm){
+      await updateLot(newLot)
+    }else{
+      createLot(newLot)
+    }
+  })
+
+  const discardChanges = ()=>{
+    setEditionForm(false)
+    setLot({})
+    reset()
+  }
+
+  useEffect(() => {
+    if(editionForm&&lot){
+      reset(lot)
+    }else{
+      reset()
+    }
+  },[editionForm,register,lot])
 
   return (
     <section className="bg-dark-subtle container-fluid row p-2 justify-content-between">
@@ -134,26 +139,25 @@ export default function LotForm() {
           <div className="form-row col-6 px-3 justify-content-between">
             <h3>Ubicación</h3>
             <input className="form-control my-2" type="text" placeholder="latitud" defaultValue={0}
-              {...register("lat")}
+              {...register("coordinates.lat")}
             />
             <input className="form-control my-2" type="text" placeholder="longitud" defaultValue={0}
-              {...register("lng")}
+              {...register("coordinates.lng")}
             />
           </div>
           <div className="form-row col-6 px-3 justify-content-between">
             <h3>Perímetro</h3>
-            <input className="form-control my-2" type="text" placeholder="x1" defaultValue={0} {...register("x1Lat")} />
-            <input className="form-control my-2" type="text" placeholder="x2" defaultValue={0} {...register("x1Lng")}/>
-            <input className="form-control my-2" type="text" placeholder="x2" defaultValue={0} {...register("x2Lat")}/>
-            <input className="form-control my-2" type="text" placeholder="x2" defaultValue={0} {...register("x2Lng")}/>
-            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("y1Lat")} />
-            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("y1Lng")} />
-            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("y2Lat")} />
-            <input className="form-control my-2" type="text" placeholder="y2" defaultValue={0} {...register("y2Lng")}/>
+            <input className="form-control my-2" type="text" placeholder="x1" defaultValue={0} {...register("perimeter.x1.lat")}  />
+            <input className="form-control my-2" type="text" placeholder="x1" defaultValue={0} {...register("perimeter.x1.lng")}  />
+            <input className="form-control my-2" type="text" placeholder="x2" defaultValue={0} {...register("perimeter.x2.lat")}  />
+            <input className="form-control my-2" type="text" placeholder="x2" defaultValue={0} {...register("perimeter.x2.lng")}  />
+            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y1.lat")}  />
+            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y1.lng")}  />
+            <input className="form-control my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y2.lat")}  />
+            <input className="form-control my-2" type="text" placeholder="y2" defaultValue={0} {...register("perimeter.y2.lng")}  />
           </div>
           {
             formErrors?.map((error, index) => {
-              console.log(error)
               return (
                 <p key={index} className="text-danger col-12 text-center p-0">
                   {error.msg}
@@ -161,7 +165,18 @@ export default function LotForm() {
               )
             })
           }
-          <button type='submit' className="btn btn-success col-6 fs-3 p-0 m-0">Agregar Lote</button>
+          <div className='col-12 row justify-content-between'>
+          <button type='submit' className="btn btn-success col-3 fs-3 p-0 m-0">{editionForm?"Editar":"Agregar"} Lote</button>
+          {
+            editionForm ?
+            (<div className='col-6 row justify-content-between'>
+              <button className="btn btn-danger col-5 fs-3 p-0 m-0">Eliminar</button>
+              <button onClick={discardChanges} type="reset" className="btn btn-secondary col-5 fs-3 p-0 m-0" >Descartar</button>
+            </div>)
+            : null
+          }
+          </div>
+
         </form>
         <MapView setValue={setValue} getValues={getValues}/>
     </section>
