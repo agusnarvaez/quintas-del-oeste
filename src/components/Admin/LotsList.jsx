@@ -1,10 +1,14 @@
 import { useEffect } from 'react'
 import {useLots}from '../../context/LotsContext'
 
+export default function LotsList({setEditionForm}) {
 
-export default function Main() {
+  const {lots,setLot,fetchLots,deleteLot} = useLots()
 
-  const {lots,fetchLots,deleteLot} = useLots()
+  const edit = (lotToEdit)=>{
+    setEditionForm(true)
+    setLot(lotToEdit)
+  }
 
   useEffect(()=>{
     if(lots.length === 0) fetchLots()
@@ -27,20 +31,22 @@ export default function Main() {
         </thead>
         <tbody>
             {
-              lots?.map((lot,i)=>{
-              return(
-                <tr key={i}>
-                  <td>{lot.number}</td>
-                  <td>{lot.area}</td>
-                  <td>{lot.price}</td>
-                  <td>{lot.reservationPercentage}%</td>
-                  <td>{lot.financiation?"Si":"No"}</td>
-                  <td>{lot.reservationUser?<button className="btn btn-primary me-2">Reservado</button>:"Sin reservar"}</td>
-                  <td>
-                    <button className="btn btn-primary me-2" >Editar</button>
-                    <button className="btn btn-danger ms-2" onClick={()=>deleteLot(lot)}>Eliminar</button>
-                  </td>
-                </tr>)})
+              lots
+                ?.sort((a, b) => a.number - b.number)
+                .map((lot,i)=>{
+                return(
+                  <tr key={i}>
+                    <td>{lot.number}</td>
+                    <td>{lot.area}</td>
+                    <td>{lot.price}</td>
+                    <td>{lot.reservationPercentage}%</td>
+                    <td>{lot.financiation?"Si":"No"}</td>
+                    <td>{lot.reservationUser?<button className="btn btn-primary me-2">Reservado</button>:"Sin reservar"}</td>
+                    <td>
+                      <button onClick={()=>edit(lot)} className="btn btn-primary me-2" >Editar</button>
+                      <button onClick={()=>deleteLot(lot)} className="btn btn-danger ms-2" >Eliminar</button>
+                    </td>
+                  </tr>)})
             }
         </tbody>
       </table>
