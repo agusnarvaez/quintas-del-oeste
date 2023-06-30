@@ -9,8 +9,8 @@ const Home = lazy(()=>import("./pages/Home"))
 const Admin = lazy(()=>import("./pages/Admin"))
 const Login = lazy(()=>import("./pages/Login"))
 const Register = lazy(()=>import("./pages/Register"))
+const ReservationForm = lazy(()=>import("./pages/ReservationForm"))
 const Error404 = lazy(()=>import("./pages/ErrorNotFound"))
-
 export default function App() {
   return (
     <Suspense fallback={<div className="loading">Cargando...</div>}>
@@ -19,6 +19,7 @@ export default function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/reservar-lote" element={<ReservationForm />} />
               <Route element={<ProtectedRoute/>}>
                 <Route path="/admin" element={<Admin />} />
               </Route>
