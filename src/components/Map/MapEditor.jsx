@@ -164,5 +164,5 @@ export default function MapEditor({setValue,getValues}) {
       {/* <Polygon pathOptions={{color: 'blue'}} positions={lote} /> */}
       {/* <Markers/> */}
     </MapContainer>
-  );
+  )
 }

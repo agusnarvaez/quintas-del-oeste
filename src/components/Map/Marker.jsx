@@ -4,10 +4,6 @@ import IconLocation from './IconLocation'
 
 
 export default function Markers({coordinates}) {
- /*    const markers = places.map((item) => {
-
-    }) */
-    console.log(coordinates)
 
     return(
         <Marker position={coordinates} icon={IconLocation}>

@@ -20,9 +20,8 @@ export const AuthProvider = ({children}) => {
 
     const signUp = async (user) => {
         try{
-            console.log(user)
             const response = await registerRequest(user)
-            console.log(response.data)
+
             setUser(response.data)
             setIsAuthenticated(true)
         }catch(error){
@@ -46,7 +45,6 @@ export const AuthProvider = ({children}) => {
             const response = await logoutRequest()
             setUser(null)
             setIsAuthenticated(false)
-            console.log(response.data)
         }catch(error){
             console.log(error.response)
         }
