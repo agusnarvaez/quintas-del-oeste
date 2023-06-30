@@ -58,6 +58,7 @@ export const LotsProvider = ({children}) => {
         delete: async (lot) => {
             try{
                 await apiLot.delete(lot._id)
+                setLot({})
                 await lotController.getAll()
             }catch(error){
                 console.log(error)
