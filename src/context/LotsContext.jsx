@@ -20,7 +20,6 @@ export const LotsProvider = ({children}) => {
 
     const lotController ={
         create: async (lot) => {
-            console.log("Petición create")
             try{
                 const response = await apiLot.create(lot)
                 setLots([...lots,response.data.lot])
@@ -47,10 +46,10 @@ export const LotsProvider = ({children}) => {
                 setFormErrrors(error.response.data.errors)
             }
         },
-        update: async (lot) => {
+        update: async (lotToUpdate) => {
             try{
-                const response = await apiLot.update(lot)
-                setLots([...lots,response.data.lot])
+                await apiLot.update(lotToUpdate)
+                await lotController.getAll()
             }catch(error){
                 console.log(error)
                 setFormErrrors(error.response.data.errors)
@@ -58,8 +57,7 @@ export const LotsProvider = ({children}) => {
         },
         delete: async (lot) => {
             try{
-                const response = await apiLot.delete(lot._id)
-                console.log(response)
+                await apiLot.delete(lot._id)
                 await lotController.getAll()
             }catch(error){
                 console.log(error)
@@ -89,6 +87,7 @@ export const LotsProvider = ({children}) => {
     return (
         <LotsContext.Provider value={{
             lot,
+            setLot,
             lots,
             formErrors,
             createLot:lotController.create,
