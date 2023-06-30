@@ -1,12 +1,15 @@
 import LotForm from "./LotForm"
 import LotsList from "./LotsList"
+import {useState} from "react"
 export default function Main() {
+  const [editionForm, setEditionForm] = useState(false)
+
   return (
     <main className="bg-dark-subtle col-12 m-0 row justify-content-center">
 
-        <LotForm/>
+        <LotForm editionForm={editionForm} setEditionForm={setEditionForm}/>
 
-        <LotsList/>
+        <LotsList setEditionForm={setEditionForm}/>
     </main>
   )
 }
