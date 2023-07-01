@@ -199,16 +199,16 @@ export default function LotForm({editionForm,setEditionForm}) {
               )
             })
           }
-          <div className='col-12 row justify-content-between'>
-          <button type='submit' className="btn btn-success col-3 fs-3 p-0 m-0">{editionForm?"Editar":"Agregar"} Lote</button>
-          {
-            editionForm ?
-            (<div className='col-6 row justify-content-between'>
-              <button onClick={()=>deleteLot(lot)} className="btn btn-danger col-5 fs-3 p-0 m-0">Eliminar</button>
-              <button onClick={discardChanges} type="reset" className="btn btn-secondary col-5 fs-3 p-0 m-0" >Descartar</button>
-            </div>)
-            : null
-          }
+          <div className='col-12 row justify-content-between my-4'>
+            <button type='submit' className={`formButton btn btn-success bi bi-${editionForm?"house-up":"house-add-fill"} col-4 fs-4 p-xxl-0 m-0`}>{editionForm?" Editar":" Agregar"}</button>
+            {
+              editionForm ?
+              (<div className='col-8 row justify-content-end'>
+                <button onClick={()=>deleteLot(lot)} className="formButton bi bi-house-dash btn btn-danger col-5 fs-4 p-0 m-0 me-3"> Eliminar</button>
+                <button onClick={discardChanges} type="reset" className="formButton bi bi-house-x btn btn-secondary col-5 fs-4 p-0 m-0" > No editar</button>
+              </div>)
+              : null
+            }
           </div>
 
         </form>

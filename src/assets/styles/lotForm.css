@@ -6,7 +6,9 @@
 .rango{
     background: 'linear-gradient(to right, #ccc 0%, #ccc ' + porcentaje + '%, #fff ' + porcentaje + '%, white 100%)',
 }
-
+.formButton{
+    max-height: 50px;
+}
 .location{
     max-height: 120px;
 }
