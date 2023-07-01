@@ -7,6 +7,8 @@ import LotLocation from './LotLocation'
 import IconLocation from './IconLocation'
 import { useLots } from '../../context/LotsContext'
 import { useEffect } from 'react'
+import ReactLeafletGoogleLayer from 'react-leaflet-google-layer'
+import credentials from '../../credentials'
 
 export default function MapEditor({setValue,getValues}) {
     const {lot,lots} = useLots()
@@ -125,6 +127,8 @@ export default function MapEditor({setValue,getValues}) {
       <MapContainer
         center={{lat:"-34.613884",lng:"-58.982545"}}
         zoom={15}
+        //Agregar medidas
+        style={{ width: '50%', height: '100%' }}
       >
       <FeatureGroup>
         <EditControl
@@ -152,10 +156,8 @@ export default function MapEditor({setValue,getValues}) {
           }}
         />
       </FeatureGroup>
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+
+        <ReactLeafletGoogleLayer apiKey={credentials.mapsKey} type={'roadmap'} />
       <Polygon pathOptions={{color: 'gray'}} positions={contornoExterior} />
       {existingPolygon()}
       {existingMarker()}

@@ -20,6 +20,7 @@
     "react-hook-form": "^7.45.0",
     "react-leaflet": "^4.2.1",
     "react-leaflet-draw": "^0.20.4",
+    "react-leaflet-google-layer": "^2.2.0",
     "react-router-dom": "^6.14.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
