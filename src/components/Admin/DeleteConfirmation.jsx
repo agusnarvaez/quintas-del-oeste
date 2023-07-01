@@ -1,14 +1,45 @@
 import {useLots}from '../../context/LotsContext'
 
+import {useState,useRef } from 'react'
 
 export default function DeleteConfirmation({lot,hidePopUp}){
   const {deleteLot} = useLots()
+  const [showUndo,setShowUndo] = useState(false)
+  const [countDown, setCountDown] = useState(0)
+  const intervalIdRef = useRef(null)
+
+  const startCountDown = ()=>{
+    setShowUndo(true)
+    let count = 5
+    setCountDown(count)
+    intervalIdRef.current = setInterval(()=>{
+      count--
+      setCountDown(count)
+      if(count===0){
+        deleteLot(lot)
+        clearInterval(intervalIdRef.current)
+        setShowUndo(false)
+        hidePopUp()
+      }
+    },1000)
+  }
+  const stopCountDown = ()=>{
+    clearInterval(intervalIdRef.current)
+    setShowUndo(false)
+    hidePopUp()
+    setCountDown(0)
+  }
 
   return(
     <div className='popUpDelete col-10 ms-3 d-flex justify-content-between align-items-center'>
-      <h6 className='col-6 fs-5 m-0'>¿SEGURO DESEAS ELIMINAR EL LOTE?</h6>
-      <button onClick={()=>deleteLot(lot)} className="col-1 btn btn-danger" > SÍ</button>
-      <button onClick={()=>hidePopUp()} className="col-2 btn btn-primary" >NO</button>
+      {showUndo?
+        <button className='btn btn-warning fw-bold bi bi-arrow-counterclockwise' onClick={stopCountDown}> DESHACER  {countDown}</button>
+        :<>
+          <h6 className='col-6 fs-5 m-0'>¿SEGURO DESEAS ELIMINAR EL LOTE?</h6>
+          <button onClick={()=>startCountDown()} className="col-1 btn btn-danger" >SÍ</button>
+          <button onClick={()=>hidePopUp()} className="col-2 btn btn-primary" >NO</button>
+        </>
+      }
     </div>
     )
 }
