@@ -34,6 +34,7 @@
 }
 .logo-admin{
     filter: grayscale(100%) brightness(0.6) contrast(1.5);
+    height: 100%;
 }
 .text-quintas-green-dark{
     color:#78ba5299;
@@ -63,7 +64,7 @@
     align-items: center;
     text-align: center;
     font-size: 23px;
-    padding: 5% !important;
+    padding: 5%;
     border-radius: 50%;
     z-index: 1500 !important;
     position: relative;
@@ -72,17 +73,42 @@
 .rotate-90{
     transform: rotate(-90deg);
 }
+.rotate-45{
+    transform: rotate(135deg);
+}
 
+.leaflet-container{
+    border-radius: 15px;
+}
 .map-container{
+    padding: 5% 0;
     z-index: 100;
+    height: 400px;
 }
 .leaflet-draw-section,
 .leaflet-draw-toolbar,
-.map-container *{
+/* .map-container *{
     z-index: 150;
     position: relative !important;
-}
+} */
+.accordion-admin-button{
+    font-size: 30px;
+    width: auto;
+    height: auto;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.3s ease-in-out;
+}
+.collapsed{
+    max-height: 0 !important;
+}
+.accordion-admin-content{
+    max-height: 1500px;
+    transition: all 0.3s ease-in-out;
+}
 .admin-profile {
     padding: 5% 0;
     width: 100%;
@@ -108,11 +134,10 @@
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0 20px !important;
+    padding: 0 3%;
     height: 60px !important;
     background-color: #0b1727 !important;
     z-index: 1000 !important;
-
 }
 
 /*! ########################################*/
@@ -120,7 +145,12 @@
 /*! ########################################*/
 @media (min-width: 481px) {
 
-
+    .admin-header{
+        height: 70px !important;
+    }
+    .admin-header-icon{
+        padding: 3%;
+    }
 
 }
 
@@ -130,7 +160,10 @@
 /*! ########################################*/
 @media (min-width: 769px) {
 
-
+    .admin-header{
+        height: 80px !important;
+        padding: 1.5% 3%;
+    }
 
 
 }
@@ -140,5 +173,8 @@
 /*! ########################################*/
 @media (min-width: 1280px) {
 
+    .admin-header{
+        height: 100px !important;
+    }
 
 }
