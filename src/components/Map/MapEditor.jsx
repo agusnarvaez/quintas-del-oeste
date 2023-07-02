@@ -1,5 +1,5 @@
 import React from 'react'
-import { MapContainer, TileLayer, Polygon, FeatureGroup,Marker } from 'react-leaflet'
+import { MapContainer, Polygon, FeatureGroup,Marker } from 'react-leaflet'
 import {EditControl} from 'react-leaflet-draw'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-draw/dist/leaflet.draw.css'
@@ -123,12 +123,13 @@ export default function MapEditor({setValue,getValues}) {
     },[lot])
 
     return (
-
+      <div className='map-container'>
       <MapContainer
         center={{lat:"-34.613884",lng:"-58.982545"}}
         zoom={15}
         //Agregar medidas
-        style={{ width: '50%', height: '100%' }}
+        style={{ width: '100%', height: '100%' }}
+        className='leaflet-container'
       >
       <FeatureGroup>
         <EditControl
@@ -165,5 +166,6 @@ export default function MapEditor({setValue,getValues}) {
         lots.map((lotToShow,index)=> <LotLocation lot={lotToShow} key={index}/> )
       }
     </MapContainer>
+    </div>
   )
 }

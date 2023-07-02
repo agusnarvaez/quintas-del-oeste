@@ -2,12 +2,14 @@ import { useEffect,useState } from 'react'
 import {useLots}from '../../context/LotsContext'
 import DeleteConfirmation from './DeleteConfirmation'
 
-export default function LotsList({setEditionForm}) {
+export default function LotsList({setEditionForm,setShowForm}) {
 
   const {lots,setLot,fetchLots} = useLots()
   const [showPopUp,setShowPopUp] = useState(false)
   const [lotToDelete,setLotToDelete] = useState({})
+
   const edit = (lotToEdit)=>{
+    setShowForm(true)
     setEditionForm(true)
     setLot(lotToEdit)
   }
@@ -27,7 +29,7 @@ export default function LotsList({setEditionForm}) {
   return (
     <section className="bg-dark-subtle col-12 m-0 row justify-content-center position-relative">
       <h2>LOTES</h2>
-      <table className="table">
+      <table className="table col-12">
         <thead>
           <tr>
             <th scope="col" className="w-auto">N°</th>
