@@ -1,4 +1,4 @@
-import '../../assets/styles/lotForm.css'
+
 import MapView from "../Map/MapEditor"
 import { useEffect } from 'react'
 import {useForm} from 'react-hook-form'
@@ -13,7 +13,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "number",
       placeholder: "Número de lote",
       type: "number",
-      containerClass: "col-6 pe-5 ps-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      containerClass: "col-12 col-lg-6 py-2 pe-lg-5 ps-lg-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control",
       options: { required: "Campo obligatorio", min: 1 }
     },
@@ -21,7 +21,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "area",
       placeholder: "Área",
       type: "number",
-      containerClass: "col-6 ps-5 pe-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      containerClass: "col-12 col-lg-6 py-2 pe-lg-5 ps-lg-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control",
       options: {
         required: "Campo obligatorio",
@@ -32,7 +32,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "price",
       placeholder: "Precio",
       type: "number",
-      containerClass: "col-6 pe-5 ps-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      containerClass: "col-12 col-lg-6 py-2 pe-lg-5 ps-lg-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control col-2",
       options: {
         required: "Campo obligatorio",
@@ -43,7 +43,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "reservationPercentage",
       placeholder: `Porcentaje de reserva ${reservationPercentageValue}%`,
       type: "range",
-      containerClass: "col-6 ps-5 pe-2 col-xxl-3 p-xxl-0 row flex-column justify-content-center align-items-center",
+      containerClass: "col-12 col-lg-6 py-2 ps-lg-5 pe-lg-2 col-xxl-3 p-xxl-0 row flex-column justify-content-center align-items-center",
       inputClass: "col-10 p-0 form-range w-100",
         options: { required: "Campo obligatorio",
         validate: (value) => value >= 10 || "Debe ser mayor o igual a 10"
@@ -53,7 +53,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "financiation",
       placeholder: "Financiación",
       type: "checkbox",
-      containerClass: "form-check d-xxl-flex ps-4 py-2 p-xxl-0 m-0 align-items-center justify-content-center col-6 col-xxl-2 flex-column",
+      containerClass: "col-12 form-check d-xxl-flex py-2 ps-4 py-2 p-xxl-0 m-0 align-items-center justify-content-center col-6 col-xxl-2 flex-column",
       inputClass: "form-check-input",
       options: { }
     }
@@ -126,16 +126,15 @@ export default function LotForm({editionForm,setEditionForm}) {
   },[editionForm,register,lot,reset,setLot])
 
   return (
-    <section className="bg-dark-subtle container-fluid row p-2 justify-content-between">
-        <form className="col-6 container-fluid row justify-content-center p-0 px-2" onSubmit={onsubmit}>
-          <div className="col-12 row container-fluid justify-content-between align-items-stretch p-0 px-3 mb-xxl-4">
-            <h3 className="col-12 fs-3 m-0 p-0">Datos principales</h3>
-
+    <section className="bg-admin-primary text-admin-primary container-fluid row p-2 justify-content-between">
+        <form className="rounded-4 bg-admin-secondary-dark rounded col-12 col-lg-5 container-fluid d-flex flex-column justify-content-center align-items-center p-0" onSubmit={onsubmit}>
+          <div className="col-10 d-flex flex-column px-3 justify-content-center align-items-center container-fluid justify-content-lg-between align-items-lg-stretch p-0 mb-xxl-4">
+            <h3 className="col-12 fs-3 m-0 p-0 pt-4 px-lg-4">Datos principales</h3>
             {
               fields.map((field, index) => {
                 return (
                   <div key={index} className={field.containerClass}>
-                    <label className="form-label m-0">{field.placeholder}</label>
+                    <label className="form-label p-0 m-0 py-2">{field.placeholder}</label>
                     <input
                       className={field.inputClass}
                       type={field.type}
@@ -152,7 +151,7 @@ export default function LotForm({editionForm,setEditionForm}) {
               })
             }
           </div>
-          <div className="location w-50 d-flex flex-wrap align-items-start">
+          <div className="location col-10 col-lg-6 d-flex flex-wrap align-items-start">
             <h3 className="fs-3 w-100 form-title">Ubicación</h3>
             <div className="w-50 h-100 m-0 pe-2">
               <label>Latitud</label>
@@ -167,7 +166,7 @@ export default function LotForm({editionForm,setEditionForm}) {
               />
             </div>
           </div>
-          <div className="row col-6 px-3 justify-content-between perimeter">
+          <div className="row col-10 col-lg-6 pt-2 justify-content-between perimeter">
             <h3 className='fs-3 w-100 form-title'>Perímetro</h3>
             <div className='d-flex w-50 p-0 pe-1 flex-wrap justify-content-between'>
               <label className='w-100 m-0  text-center'>x1</label>
@@ -199,11 +198,11 @@ export default function LotForm({editionForm,setEditionForm}) {
               )
             })
           }
-          <div className='col-12 row justify-content-between my-4'>
+          <div className='col-12 row justify-content-center my-4'>
             <button type='submit' className={`formButton btn btn-success bi bi-${editionForm?"house-up":"house-add-fill"} col-4 fs-4 p-xxl-0 m-0`}>{editionForm?" Editar":" Agregar"}</button>
             {
               editionForm ?
-              (<div className='col-8 row justify-content-end'>
+              (<div className='col-12 row justify-content-between'>
                 <button onClick={()=>deleteLot(lot)} className="formButton bi bi-house-dash btn btn-danger col-5 fs-4 p-0 m-0 me-3"> Eliminar</button>
                 <button onClick={discardChanges} type="reset" className="formButton bi bi-house-x btn btn-secondary col-5 fs-4 p-0 m-0" > No editar</button>
               </div>)
