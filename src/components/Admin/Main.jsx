@@ -5,8 +5,7 @@ export default function Main() {
   const [editionForm, setEditionForm] = useState(false)
 
   return (
-    <main className="bg-dark-subtle col-12 m-0 row justify-content-center">
-
+    <main className="bg-admin-primary col-12 m-0 row justify-content-center">
         <LotForm editionForm={editionForm} setEditionForm={setEditionForm}/>
 
         <LotsList setEditionForm={setEditionForm}/>

@@ -1,0 +1,144 @@
+/*! #######################################*/
+/*! ############### MOBILE ###############*/
+/*! #######################################*/
+
+/** #### Estilos generales #### */
+.rango{
+    background: 'linear-gradient(to right, #ccc 0%, #ccc ' + porcentaje + '%, #fff ' + porcentaje + '%, white 100%)',
+}
+.formButton{
+    max-height: 50px;
+}
+.location{
+    max-height: 120px;
+}
+.perimeter{
+    max-height: 170px;
+}
+
+.coordinateInput {
+    width: 45%;
+}
+.bg-admin-primary{
+    background-color: #0b1727;
+}
+
+.bg-admin-secondary{
+    background-color: #121e2d;
+}
+.bg-admin-secondary-dark{
+    background-color: #111b25;
+}
+.text-admin-primary{
+    color: #aaaaaa;
+}
+.logo-admin{
+    filter: grayscale(100%) brightness(0.6) contrast(1.5);
+}
+.text-quintas-green-dark{
+    color:#78ba5299;
+}
+.icon-admin-primary-dark{
+    background-color: #344050;
+    opacity: 0.8;
+}
+.admin-nav{
+    position: absolute;
+    z-index: 100;
+    width: 90%;
+    left: 50%;
+    top: 70px;
+    transform: translateX(-50%);
+    height: fit-content;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease-in-out;
+}
+.admin-nav-hidden{
+    transform: translateX(100%);
+}
+.admin-header-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 23px;
+    padding: 5% !important;
+    border-radius: 50%;
+    z-index: 1500 !important;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+.rotate-90{
+    transform: rotate(-90deg);
+}
+
+.map-container{
+    z-index: 100;
+}
+.leaflet-draw-section,
+.leaflet-draw-toolbar,
+.map-container *{
+    z-index: 150;
+    position: relative !important;
+}
+
+.admin-profile {
+    padding: 5% 0;
+    width: 100%;
+    height: fit-content;
+    border-radius: 15px;
+}
+.admin-nav-links{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5% 5%;
+    border-radius: 15px;
+}
+.icon-admin-secondary-dark{
+    z-index: 300;
+    width: 40%;
+    height: 100%;
+}
+.admin-header{
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 20px !important;
+    height: 60px !important;
+    background-color: #0b1727 !important;
+    z-index: 1000 !important;
+
+}
+
+/*! ########################################*/
+/*! ##### TABLETS & LARGER SMARTPHONES #####*/
+/*! ########################################*/
+@media (min-width: 481px) {
+
+
+
+}
+
+
+/*! ########################################*/
+/*! ################ LAPTOPS ###############*/
+/*! ########################################*/
+@media (min-width: 769px) {
+
+
+
+
+}
+
+/*! ########################################*/
+/*! ############ LARGER DESKTOPS ###########*/
+/*! ########################################*/
+@media (min-width: 1280px) {
+
+
+}
