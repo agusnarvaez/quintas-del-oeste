@@ -3,7 +3,6 @@
 
 export default function ContactInputs({buttonClass,setButtonClass}) {
 
-
     const buttonSelection = ()=>{
         switch(buttonClass){
             case "loading": return (

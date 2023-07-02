@@ -1,7 +1,7 @@
 import { useRef } from "react"
 
 import ReCAPTCHA from "react-google-recaptcha"
-import credentials from "../../../../../credentials.js"
+import credentials from "../../../../credentials.js"
 
 export default function Captcha({field}) {
 

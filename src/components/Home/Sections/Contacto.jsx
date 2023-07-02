@@ -1,5 +1,5 @@
 import bgContact from "../../../assets/background/bg-contact.jpg"
-import ContactForm from "./Contacto/ContactForm/ContactForm"
+import ContactForm from "./Contacto/ContactForm"
 import LinksInfo from "./Contacto/LinksInfo"
 export default function Contacto() {
   return (

@@ -1,8 +1,8 @@
 
 import {useRef,useState} from "react"
-import { fieldsList,frmContact } from "../../../../../services/contact"
+import { fieldsList,frmContact } from "../../../../services/contact"
 
-import credentials from "../../../../../credentials"
+import credentials from "../../../../credentials"
 
 //* API de Emails
 import emailjs from 'emailjs-com'

@@ -2,6 +2,7 @@ import Cercanias from './Ubicacion/Cercanias'
 import Direccion from './Ubicacion/Direccion'
 
 import GoogleMap from './Ubicacion/GoogleMap'
+
 export default function Ubicacion() {
   return (
     <div className="container-fluid p-0 mt-5" id="location">
