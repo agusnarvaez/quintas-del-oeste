@@ -3,6 +3,8 @@ import {useForm} from 'react-hook-form'
 import { useAuth } from '../context/AuthContext'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AdminHeader from '../components/Admin/AdminHeader'
+
 export default function Register() {
   //* Obtengo los métodos necesarios para el formulario
   //* register: para registrar los inputs del formulario
@@ -54,35 +56,38 @@ export default function Register() {
   }, [isAuthenticated,registerErrors,navigate])
 
   return (
-    <main className="overflow-hidden vh-100 bg-dark justify-content-start flex-column align-items-center row py-5">
+    <>
+      <AdminHeader />
+      <main className="overflow-hidden vh-100 bg-dark justify-content-start flex-column align-items-center row py-5">
 
-      <h1 className="text-white text-center">Registrarse</h1>
+        <h1 className="text-white text-center">Registrarse</h1>
 
-      <form className="container-fluid row flex-column col-4 p-4 pb-0 rounded justify-content-center align-items-center bg-dark-subtle"
-        onSubmit={onsubmit}
-      >
-        {
-          //* Si hay errores en la autenticación los muestro
-          registerErrors? registerErrors.map((error,i)=><span className="text-danger text-center" key={i}>{error.msg}</span>):null
-        }
-        { //* Muestro los campos del formulario y sus errores
-        campos.map((campo,i)=>
-            <div className="col-12 row justify-content-center "key={i}>
-              <input
-                className="col-6 my-2 form-control w-75"
-                type={campo.type}
-                placeholder={campo.placeholder}
-                {...campo.register}
-              />
-              {campo.errors && campo.errors.message && (
-                <span className="text-danger text-center">{campo.errors.message}</span>
+        <form className="container-fluid row flex-column col-4 p-4 pb-0 rounded justify-content-center align-items-center bg-dark-subtle"
+          onSubmit={onsubmit}
+        >
+          {
+            //* Si hay errores en la autenticación los muestro
+            registerErrors? registerErrors.map((error,i)=><span className="text-danger text-center" key={i}>{error.msg}</span>):null
+          }
+          { //* Muestro los campos del formulario y sus errores
+          campos.map((campo,i)=>
+              <div className="col-12 row justify-content-center "key={i}>
+                <input
+                  className="col-6 my-2 form-control w-75"
+                  type={campo.type}
+                  placeholder={campo.placeholder}
+                  {...campo.register}
+                />
+                {campo.errors && campo.errors.message && (
+                  <span className="text-danger text-center">{campo.errors.message}</span>
+                )}
+              </div>
               )}
-            </div>
-            )}
-        <button type="submit" className="btn btn-primary my-2 w-75">Registrarse</button>
-        <Link to="/admin/login" className="my-3 text-center">Ya tengo una cuenta</Link>
-      </form>
+          <button type="submit" className="btn btn-primary my-2 w-75">Registrarse</button>
+          <Link to="/admin/login" className="my-3 text-center">Ya tengo una cuenta</Link>
+        </form>
 
-    </main>
+      </main>
+    </>
   )
 }

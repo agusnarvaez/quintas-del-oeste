@@ -33,6 +33,7 @@ export const AuthProvider = ({children}) => {
     const signIn = async (user) => {
         try{
             const response = await loginRequest(user)
+            console.log(response)
             setUser(response.data.user)
             setIsAuthenticated(true)
         }catch(error){
@@ -71,7 +72,7 @@ export const AuthProvider = ({children}) => {
                     const response = await verifyToken(token)
                     //* Si el token no es válido, elimino la cookie y el usuario
                     if(!response.data) setIsAuthenticated(false)
-
+                    console.log(response)
                     //* Si el token es válido, seteo el usuario y la autenticación
                     setIsAuthenticated(true)
                     setUser(response.data)

@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form'
 import { useAuth } from '../context/AuthContext'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import AdminHeader from '../components/Admin/AdminHeader'
 export default function Login() {
   //* Obtengo los métodos necesarios para el formulario
   //* register: para registrar los inputs del formulario
@@ -41,6 +41,8 @@ export default function Login() {
   }, [isAuthenticated,loginErrors,navigate])
 
   return (
+    <>
+    <AdminHeader/>
     <main className="overflow-hidden vh-100 bg-dark justify-content-start flex-column align-items-center row py-5">
 
       <h1 className="text-white text-center">Iniciar sesión</h1>
@@ -73,5 +75,6 @@ export default function Login() {
       </form>
 
     </main>
+    </>
   )
 }

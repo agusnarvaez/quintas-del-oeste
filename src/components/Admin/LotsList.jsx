@@ -24,7 +24,6 @@ export default function LotsList({setEditionForm,setShowForm}) {
 
   useEffect(()=>{
     if(lots.length === 0) fetchLots()
-    console.log(lots)
   },[lots,fetchLots])
 
   return (
