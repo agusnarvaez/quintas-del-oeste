@@ -82,7 +82,7 @@
 }
 .map-container{
     padding: 5% 0;
-    z-index: 100;
+    z-index: 0;
     height: 400px;
     width: 100%;
 }
@@ -135,6 +135,35 @@
     background-color: #0b1727 !important;
     z-index: 1000 !important;
 }
+.lotsList{
+    width: 100%;
+    height: fit-content;
+    /* padding: 5% 0; */
+    border-radius: 15px;
+}
+.lotList-table{
+    width: 100%;
+}
+.lotList-header{
+    border-bottom: 1px solid #ccc;
+    width: 200%;
+}
+.lotList-header-item{
+    min-width: 15px;
+    display: flex;
+    align-items:cente;
+}
+.lotList-content{
+    width: 200%;
+}
+.lotList-content-row{
+    width: 100%;
+}
+/* .lotsList th{
+    min-width: 10% !important;
+    padding: 2%  5%;
+}
+    */
 
 /*! ########################################*/
 /*! ##### TABLETS & LARGER SMARTPHONES #####*/
@@ -146,6 +175,12 @@
     }
     .admin-header-icon{
         padding: 3%;
+    }
+
+
+    .lotList-header,
+    .lotList-content{
+        width: 120%;
     }
 
 }
@@ -173,6 +208,13 @@
         height: 500px;
         width: 50%;
     }
+
+    .lotList-header,
+    .lotList-content{
+        width: 100%;
+    }
+
+
 
 }
 

@@ -24,44 +24,48 @@ export default function LotsList({setEditionForm,setShowForm}) {
 
   useEffect(()=>{
     if(lots.length === 0) fetchLots()
+    console.log(lots)
   },[lots,fetchLots])
 
   return (
-    <section className="bg-dark-subtle col-12 m-0 row justify-content-center position-relative">
+    <section className="lotsList text-admin-primary bg-admin-primary overflow-x-scroll col-12 m-0 justify-content-center position-relative">
       <h2>LOTES</h2>
-      <table className="table col-12">
-        <thead>
-          <tr>
-            <th scope="col" className="w-auto">N°</th>
-            <th scope="col" className="w-auto">Área</th>
-            <th scope="col" className="col-1">Precio</th>
-            <th scope="col" className="col-2">Porcentaje de reserva</th>
-            <th scope="col" className="col-1">Financiación</th>
-            <th scope="col" className="col-1">Estado</th>
-            <th scope="col" className="col-5">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="lotList-table overflow-x-scroll d-flex flex-column text-admin-primary bg-admin-primary">
+        <div className='lotList-header d-flex justify-content-between fw-bold text-admin-primary bg-admin-primary'>
+            <div className='lotList-header-item col-1'>N°</div>
+            <div className='lotList-header-item col-1'>Área</div>
+            <div className='lotList-header-item col-2'>Precio</div>
+            <div className='lotList-header-item col-2'>Porcentaje de reserva</div>
+            <div className='lotList-header-item col-2'>Financiación</div>
+            <div className='lotList-header-item col-1'>Estado</div>
+            <div className='lotList-header-item col-3'>Acciones</div>
+        </div>
+        <div className='lotList-content text-admin-primary bg-admin-primary'>
             {
               lots
                 ?.sort((a, b) => a.number - b.number)
                 .map((lot,i)=>{
                 return(
-                  <tr key={i}>
-                    <td>{lot.number}</td>
-                    <td>{lot.area}</td>
-                    <td>{lot.price}</td>
-                    <td>{lot.reservationPercentage}%</td>
-                    <td>{lot.financiation?"Si":"No"}</td>
-                    <td>{lot.reservationUser?<button className="btn btn-primary me-2">Reservado</button>:"Sin reservar"}</td>
-                    <td className='d-flex'>
-                      <button onClick={()=>edit(lot)} className="bi bi-pencil-square btn btn-primary me-2" > Editar</button>
-                      {showPopUp&&lotToDelete===lot?<DeleteConfirmation lot={lot} hidePopUp={hidePopUp}/>:<button onClick={()=>showPopUpDelete(lot)} className="bi bi-trash btn btn-danger ms-2" > Eliminar</button>}
-                    </td>
-                  </tr>)})
+                  <article className='lotList-content-row d-flex justify-content-between my-3' key={i}>
+                    <div className='lotList-content-item col-1 fw-bold'>{lot.number}</div>
+                    <div className='lotList-content-item col-1'>{lot.area} m2</div>
+                    <div className='lotList-content-item col-2'>USD {lot.price}</div>
+                    <div className='lotList-content-item col-2'>{lot.reservationPercentage}%</div>
+                    <div className='lotList-content-item col-2'>{lot.financiation?"Si":"No"}</div>
+                    <div className='lotList-content-item col-1'>{lot.reservationUser?<button className="btn btn-primary me-2">Reservado</button>:"Sin reservar"}</div>
+                    <div className='lotList-content-item d-flex col-3'>
+                    {showPopUp&&lotToDelete===lot?
+                      <DeleteConfirmation lot={lot} hidePopUp={hidePopUp}/>:
+                      <>
+                        <button onClick={()=>edit(lot)} className="bi bi-pencil-square btn btn-primary me-2" > Editar</button>
+                        <button onClick={()=>showPopUpDelete(lot)} className="bi bi-trash btn btn-danger ms-2" > Eliminar</button>
+                      </>
+                    }
+                    </div>
+                  </article>)})
             }
-        </tbody>
-      </table>
+        </div>
+      </div>
     </section>
   )
 }

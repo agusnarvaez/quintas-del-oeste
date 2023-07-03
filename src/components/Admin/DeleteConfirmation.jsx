@@ -31,14 +31,14 @@ export default function DeleteConfirmation({lot,hidePopUp}){
   }
 
   return(
-    <div className='popUpDelete col-10 ms-3 d-flex justify-content-between align-items-center'>
+    <div className='popUpDelete col-12 ms-0 d-flex justify-content-between align-items-center'>
       {showUndo?
         <button className='btn btn-warning fw-bold bi bi-arrow-counterclockwise' onClick={stopCountDown}> DESHACER  {countDown}</button>
-        :<>
-          <h6 className='col-6 fs-5 m-0'>¿SEGURO DESEAS ELIMINAR EL LOTE?</h6>
-          <button onClick={()=>startCountDown()} className="col-1 btn btn-danger" >SÍ</button>
-          <button onClick={()=>hidePopUp()} className="col-2 btn btn-primary" >NO</button>
-        </>
+        :<div className='col-12 row flex-wrap justify-content-between m-0 p-0'>
+          <h6 className='col-12 fs-6 m-0 p-0'>¿SEGURO DESEAS ELIMINAR EL LOTE?</h6>
+          <button onClick={()=>startCountDown()} className="col-5 btn btn-danger" >SÍ</button>
+          <button onClick={()=>hidePopUp()} className="col-5 btn btn-primary" >NO</button>
+        </div>
       }
     </div>
     )

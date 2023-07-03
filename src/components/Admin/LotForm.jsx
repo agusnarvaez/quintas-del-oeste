@@ -131,7 +131,7 @@ export default function LotForm({editionForm,setEditionForm}) {
   },[editionForm,register,reset,setLot])
 
   return (
-    <section className="bg-admin-primary m-0 text-admin-primary container-fluid row p-2 px-4 px-lg-0 justify-content-between">
+    <section className="bg-admin-primary overflow-hidden m-0 text-admin-primary container-fluid row p-2 px-4 px-lg-0 justify-content-between">
         <form className="rounded-4 bg-admin-secondary-dark rounded col-12 col-lg-5 container-fluid d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-lg-between align-items-center align-items-lg-start p-0 m-0" onSubmit={onsubmit}>
           <div className="col-11 col-lg-12 d-flex flex-column flex-wrap flex-lg-row px-4 justify-content-center align-items-center container-fluid justify-content-lg-between align-items-lg-stretch p-0 mb-xxl-4">
             <h3 className="col-12 fs-3 m-0 p-0 pt-4 px-lg-0">Datos principales</h3>
