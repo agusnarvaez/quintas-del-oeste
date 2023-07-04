@@ -155,11 +155,12 @@
 .lotList-header{
     border-bottom: 1px solid #ccc;
     width: 200%;
+    padding: 0;
 }
 .lotList-header-item{
     min-width: 15px;
     display: flex;
-    align-items:cente;
+    align-items:center;
 }
 .lotList-content{
     width: 200%;
