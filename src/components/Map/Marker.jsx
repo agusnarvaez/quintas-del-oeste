@@ -10,6 +10,7 @@ export default function Markers({lot}) {
             <Popup>
                 <ul className='list-group list-group-flush list-unstyled'>
                     <li className='list-group-item'><b>N° de lote:</b> {lot.number}</li>
+                    <li className='list-group-item'><b>N° de Manzana:</b> {lot.block}</li>
                     <li className='list-group-item'><b>Precio:</b> USD {lot.price}</li>
                     <li className='list-group-item'><b>Área:</b> {lot.area}m2</li>
                     <li className='list-group-item'><b>Precio de reserva:</b> USD {(lot.price*lot.reservationPercentage)/100}</li>
