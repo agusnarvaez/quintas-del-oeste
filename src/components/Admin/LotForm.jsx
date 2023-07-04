@@ -13,15 +13,29 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "number",
       placeholder: "Número de lote",
       type: "number",
-      containerClass: "col-12 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      containerClass: "col-6 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control",
-      options: { required: "Campo obligatorio", min: 1 }
+      options: {
+        required: "Campo obligatorio",
+        validate: (value) => (value > 0 && value <55) || "El número de lote debe ser mayor a 0 y menor a 55"
+      }
+    },
+    {
+      name: "block",
+      placeholder: "Manzana",
+      type: "number",
+      containerClass: "col-6 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      inputClass: "form-control",
+      options: {
+        required: "Campo obligatorio",
+        validate: (value) => (value > 0 && value <52) || "El número de manzana debe ser mayor a 0 y menor a 52"
+      }
     },
     {
       name: "area",
       placeholder: "Área",
       type: "number",
-      containerClass: "col-12 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      containerClass: "col-6 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control",
       options: {
         required: "Campo obligatorio",
@@ -32,7 +46,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "price",
       placeholder: "Precio",
       type: "number",
-      containerClass: "col-12 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
+      containerClass: "col-6 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control col-2",
       options: {
         required: "Campo obligatorio",
@@ -43,7 +57,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "reservationPercentage",
       placeholder: `Porcentaje de reserva ${reservationPercentageValue}%`,
       type: "range",
-      containerClass: "col-12 col-lg-6 py-2  col-xxl-3 p-xxl-0 row flex-column justify-content-center align-items-center",
+      containerClass: "col-6 col-lg-6 py-2  col-xxl-3 p-xxl-0 row flex-column justify-content-center align-items-center",
       inputClass: "col-10 p-0 form-range w-100",
         options: { required: "Campo obligatorio",
         validate: (value) => value >= 10 || "Debe ser mayor o igual a 10"
@@ -53,13 +67,14 @@ export default function LotForm({editionForm,setEditionForm}) {
       name: "financiation",
       placeholder: "Financiación",
       type: "checkbox",
-      containerClass: "col-12 form-check d-xxl-flex py-2 ps-4 py-2 p-xxl-0 m-0 align-items-center justify-content-center col-6 col-xxl-2 flex-column",
+      containerClass: "col-6 col-lg-6 form-check d-flex p-0 ps-4 p-xxl-0 m-0 align-items-start justify-content-between col-6 col-xxl-2",
       inputClass: "form-check-input",
       options: { }
     }
   ]
   const initialValues ={
     number: 0,
+    block: 0,
     area: '',
     price: '',
     reservationPercentage: 0,
@@ -82,6 +97,7 @@ export default function LotForm({editionForm,setEditionForm}) {
     const newLot = {
       _id:lot?._id,
       number: values.number,
+      block: values.block,
       area: values.area,
       price: values.price,
       reservationPercentage: values.reservationPercentage,
@@ -133,13 +149,13 @@ export default function LotForm({editionForm,setEditionForm}) {
   return (
     <section className="bg-admin-primary overflow-hidden m-0 text-admin-primary container-fluid row p-2 px-4 px-lg-0 justify-content-between">
         <form className="rounded-4 bg-admin-secondary-dark rounded col-12 col-lg-5 container-fluid d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-lg-between align-items-center align-items-lg-start p-0 m-0" onSubmit={onsubmit}>
-          <div className="col-11 col-lg-12 d-flex flex-column flex-wrap flex-lg-row px-4 justify-content-center align-items-center container-fluid justify-content-lg-between align-items-lg-stretch p-0 mb-xxl-4">
+          <div className="col-11 col-lg-12 d-flex flex-wrap flex-lg-row px-4 justify-content-between align-items-center container-fluid justify-content-lg-between align-items-lg-stretch p-0 mb-xxl-4">
             <h3 className="col-12 fs-3 m-0 p-0 pt-4 px-lg-0">Datos principales</h3>
             {
               fields.map((field, index) => {
                 return (
                   <div key={index} className={field.containerClass}>
-                    <label className="form-label p-0 m-0 py-2">{field.placeholder}</label>
+                    <label className="form-label p-0 m-0 pb-3">{field.placeholder}</label>
                     <input
                       className={field.inputClass}
                       type={field.type}
@@ -156,7 +172,7 @@ export default function LotForm({editionForm,setEditionForm}) {
               })
             }
           </div>
-          <div className="location col-10 col-lg-6 ps-lg-2 d-flex flex-wrap align-items-start">
+          <div className="location col-10 col-lg-6 pt-2 ps-lg-2 d-flex flex-wrap align-items-start">
             <h3 className="fs-3 w-100 form-title">Ubicación</h3>
             <div className="w-50 h-100 m-0 pe-2">
               <label>Latitud</label>
