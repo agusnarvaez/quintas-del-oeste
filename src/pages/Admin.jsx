@@ -1,6 +1,6 @@
 import '../assets/styles/adminPanel.css'
 import Main from "../components/Admin/Main"
-import Footer from "../components/Admin/Footer"
+import Footer from "../components/Admin/AdminFooter"
 import Header from "../components/Admin/AdminHeader"
 import { useAuth } from '../context/AuthContext'
 import HelmetData from '../components/HelmetData'
