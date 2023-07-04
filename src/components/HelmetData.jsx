@@ -18,6 +18,9 @@ export default function HelmetData({metaData}) {
                 <meta property="og:description" content={metaData.description}/>
 
                 <link rel="canonical" href={metaData.cannonical}/>
+
+                <link rel="icon" href={metaData.favicon} />
+                <link rel="apple-touch-icon" href={metaData.favicon} />
             </Helmet>
         </HelmetProvider>
     )

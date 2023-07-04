@@ -4,8 +4,8 @@ import { useAuth } from '../context/AuthContext'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AdminHeader from '../components/Admin/AdminHeader'
-
-export default function Register() {
+import HelmetData from '../components/HelmetData'
+export default function Register({metaData}) {
   //* Obtengo los métodos necesarios para el formulario
   //* register: para registrar los inputs del formulario
   //* handleSubmit: para manejar el evento submit del formulario
@@ -57,6 +57,7 @@ export default function Register() {
 
   return (
     <>
+      <HelmetData metaData={metaData} />
       <AdminHeader />
       <main className="overflow-hidden vh-100 bg-dark justify-content-start flex-column align-items-center row py-5">
 
