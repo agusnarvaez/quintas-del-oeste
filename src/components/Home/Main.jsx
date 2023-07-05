@@ -8,8 +8,8 @@ export default function Main() {
   return (
     <main data-bs-spy="scroll" data-bs-target="#navBar" tabIndex="0" data-bs-smooth-scroll="true">
       <Contacto/>
-      <Barrio/>
-      <MasterPlan/>
+      {/* <Barrio/> */}
+      {/* <MasterPlan/> */}
       <InteractiveMap/>
       <Ubicacion/>
     </main>
