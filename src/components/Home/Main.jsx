@@ -2,7 +2,7 @@ import Barrio from './Sections/Barrio'
 import Contacto from './Sections/Contacto'
 import MasterPlan from './Sections/MasterPlan'
 import Ubicacion from './Sections/Ubicacion'
-
+import InteractiveMap from '../Map/InteractiveMap'
 
 export default function Main() {
   return (
@@ -10,6 +10,7 @@ export default function Main() {
       <Contacto/>
       <Barrio/>
       <MasterPlan/>
+      <InteractiveMap/>
       <Ubicacion/>
     </main>
   )
