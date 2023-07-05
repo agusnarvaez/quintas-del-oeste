@@ -1,5 +1,5 @@
 
-import MapView from "../Map/MapEditor"
+import MapEditor from "../Map/MapEditor"
 import { useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import {useLots}from '../../context/LotsContext'
@@ -231,7 +231,7 @@ export default function LotForm({editionForm,setEditionForm}) {
           </div>
 
         </form>
-        <MapView setValue={setValue} getValues={getValues}/>
+        <MapEditor setValue={setValue} getValues={getValues}/>
     </section>
   )
 }

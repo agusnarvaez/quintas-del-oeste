@@ -123,7 +123,7 @@ export default function MapEditor({setValue,getValues}) {
     },[lot])
 
     return (
-      <div className='map-container'>
+      <div className='map-container-admin'>
       <MapContainer
         center={{lat:"-34.613884",lng:"-58.982545"}}
         zoom={15}

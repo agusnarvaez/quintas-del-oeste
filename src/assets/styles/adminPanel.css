@@ -82,10 +82,11 @@
     transform: rotate(135deg);
 }
 
-.leaflet-container{
+.map-container-admin .leaflet-container{
     border-radius: 15px;
 }
-.map-container{
+
+.map-container-admin{
     padding: 5% 0;
     z-index: 0;
     height: 400px;
@@ -226,7 +227,7 @@
         align-items: flex-start;
         overflow: hidden;
     }
-    .map-container{
+    .map-container-admin{
         padding: 0% 0;
         height: 500px;
         width: 50%;
