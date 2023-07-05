@@ -9,15 +9,8 @@ import emailjs from 'emailjs-com'
 
 import ContactInputs from "./ContactInputs"
 import Button from "./Button"
-
+import { buttonState } from "../../../../utils/formUtils"
 export default function ContactForm() {
-  const buttonState ={
-    default: "default",
-    loading: "loading",
-    success: "success",
-    error: "error"
-  }
-
   //* Hook de mail a enviar
   const [contact, setContact] = useState(frmContact)
 

@@ -7,22 +7,21 @@ import Button from '../components/Home/Sections/Contacto/Button'
 import {useState} from 'react'
 //* Importo el hook useLots para obtener los datos del lote
 import { useLots } from '../context/LotsContext'
-
+import {uploadReservationFile} from '../services/firebase.config'
 //* Importo useForm para manejar el formulario
 import {useForm} from 'react-hook-form'
-
+import {buttonState} from '../utils/formUtils'
 export default function ReservationForm({metaData}) {
-  const buttonState ={
-    default: "default",
-    loading: "loading",
-    success: "success",
-    error: "error"
-  }
+
   const [documentFileName, setDocumentFileName] = useState('Ningún archivo seleccionado');
-  const [confirmationDocumentFileName, setConfirmationDocumentFileName] = useState('Ningún archivo seleccionado');
+  const [idConfirmationFileName, setIdConfirmationFileName] = useState('Ningún archivo seleccionado');
   const [buttonClass,setButtonClass] = useState(buttonState.default)
+
+  //* Context de lotes
   const { lot } = useLots()
-  const {register,handleSubmit,formState:{errors},watch,getValues} = useForm()
+  //* Hook de formulario de reserva de lote
+  const {register,handleSubmit,formState:{errors},getValues} = useForm()
+
 
   const fields = [
     {
@@ -42,7 +41,7 @@ export default function ReservationForm({metaData}) {
       }
     },
     {
-      name: "DNI",
+      name: "dni",
       placeholder: "DNI",
       type: "number",
       options: {
@@ -104,7 +103,6 @@ export default function ReservationForm({metaData}) {
         required: "La foto de DNI es obligatoria",
         validate: {
           isImage: (value) => {
-            console.log(value)
             return value[0].type.includes('image') || "El archivo debe ser una imagen";
           },
           isLessThan2MB: (value) => {
@@ -114,10 +112,10 @@ export default function ReservationForm({metaData}) {
       }
     },
     {
-      name: "confirmationDocumentFile",
+      name: "idConfirmationFile",
       placeholder: "Selfie CON DNI en mano",
       type: "file",
-      fileName: confirmationDocumentFileName,
+      fileName: idConfirmationFileName,
       options:{
         required: "La selfie con DNI es obligatoria",
         validate: {
@@ -142,94 +140,102 @@ export default function ReservationForm({metaData}) {
       }
     }else{
       if (selectedFile) {
-        setConfirmationDocumentFileName(selectedFile.name)
+        setIdConfirmationFileName(selectedFile.name)
       }else{
-        setConfirmationDocumentFileName('Ningún archivo seleccionado')
+        setIdConfirmationFileName('Ningún archivo seleccionado')
       }
     }
   }
 
   const onsubmit = handleSubmit(async (data) => {
+    setButtonClass(buttonState.loading)
     console.log(data)
-    const formData = new FormData()
-    formData.append('name', data.name);
-    formData.append('lastName', data.lastName);
-    formData.append('DNI', data.DNI);
-    formData.append('email', data.email);
-    formData.append('phone', data.phone);
-    formData.append('documentFile', watch('documentFile')[0]);
-    formData.append('confirmationDocumentFile', watch('confirmationDocumentFile')[0]);
-    formData.append('lotId', lot.id);
-
-    console.log(formData)
+    try{
+      const documentFileUrl = await uploadReservationFile(data.documentFile[0],'documentFile',data.dni)
+      const idConfirmationFileUrl = await uploadReservationFile(data.idConfirmationFile[0],'idConfirmationFile',data.dni)
+      console.log(documentFileUrl)
+      const reservation = {
+        lotId: lot.id,
+        name: data.name,
+        lastName: data.lastName,
+        dni: data.dni,
+        email: data.email,
+        phone: data.phone,
+        documentFile: documentFileUrl,
+        idConfirmationFile: idConfirmationFileUrl
+      }
+    }catch(error){
+      console.log(error)
+      alert('Ocurrió un error al subir los archivos')
+    }
   })
 
   return (
     <>
-    <Header />
-    <main className="container-fluid p-0 px-3 my-3">
-      <HelmetData metaData={metaData} />
-      <h1>Reservar Lote</h1>
-      <div className='col-12 col-lg-6'>
-        <h2> Datos de lote</h2>
-        <ul className='list-group list-group-flush list-unstyled'>
-          <li className='list-group-item'><b>N° de lote:</b>{lot.number} </li>
-          <li className='list-group-item'><b>N° de Manzana:</b>{lot.block} </li>
-          <li className='list-group-item'><b>Precio:</b> USD {lot.price} </li>
-          <li className='list-group-item'><b>Área:</b> {lot.area}m2 </li>
-          <li className='list-group-item'><b>Precio de reserva:</b> USD {(lot.price * lot.reservationPercentage) / 100} </li>
-          {lot.financiation ? <li className='list-group-item text-quintas-green fw-bold'>Con financiación</li> : <li className='list-group-item text-danger'>Sin financiación</li>}
-        </ul>
-      </div>
-      <form onSubmit={onsubmit} className='col-12 col-lg-6'>
-        <h2 className='mb-3'> Datos del comprador</h2>
-        {
-          fields.map((field, index) => {
-            return (
-              <div key={index} className='col-12 col-lg-6 m-0 my-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center'>
-                <label htmlFor={field.name} className="form-label">{field.placeholder}</label>
-                <input
-                  type={field.type}
-                  className='form-control rounded-0 col-12 p-2'
-                  id={field.name}
-                  {...register(field.name, field.options)}
-                />
-                {errors[field.name] && <div className="alert alert-danger mt-2">{errors[field.name].message}</div>}
-              </div>
-            )
-          })
-        }
+      <Header />
+      <main className="container-fluid p-0 px-3 my-3">
+        <HelmetData metaData={metaData} />
+        <h1>Reservar Lote</h1>
+        <div className='col-12 col-lg-6'>
+          <h2> Datos de lote</h2>
+          <ul className='list-group list-group-flush list-unstyled'>
+            <li className='list-group-item'><b>N° de lote:</b>{lot.number} </li>
+            <li className='list-group-item'><b>N° de Manzana:</b>{lot.block} </li>
+            <li className='list-group-item'><b>Precio:</b> USD {lot.price} </li>
+            <li className='list-group-item'><b>Área:</b> {lot.area}m2 </li>
+            <li className='list-group-item'><b>Precio de reserva:</b> USD {(lot.price * lot.reservationPercentage) / 100} </li>
+            {lot.financiation ? <li className='list-group-item text-quintas-green fw-bold'>Con financiación</li> : <li className='list-group-item text-danger'>Sin financiación</li>}
+          </ul>
+        </div>
+        <form onSubmit={onsubmit} className='col-12 col-lg-6'>
+          <h2 className='mb-3'> Datos del comprador</h2>
+          {
+            fields.map((field, index) => {
+              return (
+                <div key={index} className='col-12 col-lg-6 m-0 my-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center'>
+                  <label htmlFor={field.name} className="form-label">{field.placeholder}</label>
+                  <input
+                    type={field.type}
+                    className='form-control rounded-0 col-12 p-2'
+                    id={field.name}
+                    {...register(field.name, field.options)}
+                  />
+                  {errors[field.name] && <div className="alert alert-danger mt-2">{errors[field.name].message}</div>}
+                </div>
+              )
+            })
+          }
 
-        {
-          attachFields.map((field, index) => {
-            return(
-            <div className='col-12 px- my-3' key={index}>
-              <label htmlFor={field.name} className='col-12'>
-                  {field.placeholder}
-              </label>
-              <label htmlFor={field.name} className="custom-file-upload me-3">
-                <i className="fa fa-cloud-upload"></i> Seleccionar archivo
-              </label>
-              <input
-                id={field.name}
-                type="file"
-                style={{ display: 'none' }}
-                className='file-upload'
-                {...register(field.name, field.options)}
-                onChange={(e)=>{
-                  handleDocumentFileChange(e)
-                  register(field.name, field.options).onChange(e)
-                }}
-              />
-              <span id="file-name">{field.fileName}</span>
-              {errors[field.name] && <div className="alert alert-danger mt-2">{errors[field.name].message}</div>}
-          </div>)
-          })
-        }
-        <Button buttonClass={buttonClass} setButtonClass={setButtonClass} text='Ir a firma de contrato' />
-      </form>
-    </main>
-    <Footer />
+          {
+            attachFields.map((field, index) => {
+              return(
+              <div className='col-12 px- my-3' key={index}>
+                <label htmlFor={field.name} className='col-12'>
+                    {field.placeholder}
+                </label>
+                <label htmlFor={field.name} className="custom-file-upload me-3">
+                  <i className="fa fa-cloud-upload"></i> Seleccionar archivo
+                </label>
+                <input
+                  id={field.name}
+                  type="file"
+                  style={{ display: 'none' }}
+                  className='file-upload'
+                  {...register(field.name, field.options)}
+                  onChange={(e)=>{
+                    handleDocumentFileChange(e)
+                    register(field.name, field.options).onChange(e)
+                  }}
+                />
+                <span id="file-name">{field.fileName}</span>
+                {errors[field.name] && <div className="alert alert-danger mt-2">{errors[field.name].message}</div>}
+            </div>)
+            })
+          }
+          <Button buttonClass={buttonClass} setButtonClass={setButtonClass} text='Ir a firma de contrato' />
+        </form>
+      </main>
+      <Footer />
     </>
   )
 }

@@ -22,7 +22,6 @@ export default function Markers({mapLot}) {
     //* Guardo el lote y redirecciono a la página de reserva
     const navigate = useNavigate() //* Hook para redireccionar
     const reserveLot = (lotToReserve)=>{
-        console.log(lotToReserve)
         setLot(lotToReserve)
         navigate("/reservar-lote")
     }
