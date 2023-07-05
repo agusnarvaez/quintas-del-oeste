@@ -18,10 +18,9 @@ export default function ReservationForm({metaData}) {
   const [buttonClass,setButtonClass] = useState(buttonState.default)
 
   //* Context de lotes
-  const { lot } = useLots()
+  const { lot,reserveLot } = useLots()
   //* Hook de formulario de reserva de lote
   const {register,handleSubmit,formState:{errors},getValues} = useForm()
-
 
   const fields = [
     {
@@ -49,6 +48,23 @@ export default function ReservationForm({metaData}) {
         validate: {
           isPositive: (value) => {
             return value > 0 || "El DNI debe ser mayor que 0";
+          }
+        }
+      }
+    },
+    {
+      name: "dniConfirmation",
+      placeholder: "Repetir DNI",
+      type: "number",
+      options: {
+        required: "El DNI es obligatorio",
+        validate: {
+          isPositive: (value) => {
+            return value > 0 || "El DNI debe ser mayor que 0";
+          },
+          matchesPreviousDni: (value) => {
+            const { dni } = getValues();
+            return dni === value || "Los DNI no coinciden";
           }
         }
       }
@@ -153,7 +169,6 @@ export default function ReservationForm({metaData}) {
     try{
       const documentFileUrl = await uploadReservationFile(data.documentFile[0],'documentFile',data.dni)
       const idConfirmationFileUrl = await uploadReservationFile(data.idConfirmationFile[0],'idConfirmationFile',data.dni)
-      console.log(documentFileUrl)
       const reservation = {
         lotId: lot.id,
         name: data.name,
@@ -164,6 +179,7 @@ export default function ReservationForm({metaData}) {
         documentFile: documentFileUrl,
         idConfirmationFile: idConfirmationFileUrl
       }
+      await reserveLot(reservation)
     }catch(error){
       console.log(error)
       alert('Ocurrió un error al subir los archivos')

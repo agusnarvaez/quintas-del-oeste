@@ -16,6 +16,7 @@ export const useLots = () => {
 export const LotsProvider = ({children}) => {
     const [lots, setLots] = useState([])
     const [lot, setLot] = useState({})
+    const [reservation,setReservation]=useState({})
     const [formErrors,setFormErrrors] = useState([])
 
     const lotController ={
@@ -65,9 +66,9 @@ export const LotsProvider = ({children}) => {
                 setFormErrrors(error.response.data.errors)
             }
         },
-        reserve: async (lot) => {
+        reserve: async (reservation) => {
             try{
-                const response = await apiLot.reserve(lot)
+                const response = await apiLot.reserve(reservation)
                 setLots([...lots,response.data.lot])
             }catch(error){
                 console.log(error)
@@ -90,12 +91,15 @@ export const LotsProvider = ({children}) => {
             lot,
             setLot,
             lots,
+            reservation,
+            setReservation,
             formErrors,
             createLot:lotController.create,
             fetchLots:lotController.getAll,
             getLot:lotController.get,
             updateLot:lotController.update,
-            deleteLot:lotController.delete
+            deleteLot:lotController.delete,
+            reserveLot:lotController.reserve
         }}>
             {children}
         </LotsContext.Provider>
