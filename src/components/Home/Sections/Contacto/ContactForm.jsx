@@ -25,7 +25,6 @@ export default function ContactForm() {
 
   const fields = useRef(fieldsList)
 
-
   //* Función que detecta el evento de presionar el botón ENVIAR
   const handleSubmit = (e) => {
       //* Prevengo que refresque la página
@@ -72,7 +71,7 @@ export default function ContactForm() {
 
               <ContactInputs fields={fields.current} contact={contact} setContact={setContact} />
 
-              <Button buttonClass={buttonClass} setButtonClass={setButtonClass} />
+              <Button buttonClass={buttonClass} setButtonClass={setButtonClass} text='ENVIAR MENSAJE' />
 
           </form >
 

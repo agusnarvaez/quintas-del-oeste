@@ -1,7 +1,7 @@
 
 /* import check from '../../assets/img/icons/check.svg' */
 
-export default function ContactInputs({buttonClass,setButtonClass}) {
+export default function ContactInputs({buttonClass,setButtonClass,text}) {
 
     const buttonSelection = ()=>{
         switch(buttonClass){
@@ -11,15 +11,15 @@ export default function ContactInputs({buttonClass,setButtonClass}) {
                 </div>
                 )
             case "success": return (
-                <button className="container-fluid btn btn-success px-3" type="button">Enviado</button>)
+                <button className="container-fluid btn btn-success px-3 my-3" type="button">Enviado</button>)
             case "error": return (
-                <button className="container-fluid btn btn-danger px-3" type="button">¡Ups! Ha habido un error</button>)
+                <button className="container-fluid btn btn-danger px-3 my-3" type="button">¡Ups! Ha habido un error</button>)
         default: return (
             <button
-                className="container-fluid border-0 bg-quintas-green d-flex justify-content-center align-items-center py-2 w-75"
+                className="container-fluid border-0 bg-quintas-green d-flex justify-content-center align-items-center py-2 my-3 w-75"
                 type="submit"
                 >
-                    <p className="text-white m-0 fs-4">ENVIAR MENSAJE</p>
+                    <p className="text-white m-0 fs-4">{text}</p>
             </button>)
         }
     }
