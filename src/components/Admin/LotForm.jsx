@@ -34,7 +34,7 @@ export default function LotForm({editionForm,setEditionForm}) {
     {
       name: "area",
       placeholder: "Área",
-      type: "number",
+      type: "text",
       containerClass: "col-6 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control",
       options: {
@@ -45,7 +45,7 @@ export default function LotForm({editionForm,setEditionForm}) {
     {
       name: "price",
       placeholder: "Precio",
-      type: "number",
+      type: "text",
       containerClass: "col-6 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control col-2",
       options: {
