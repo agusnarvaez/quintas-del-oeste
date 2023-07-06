@@ -1,24 +1,35 @@
 //* Importo HelmetData para agregar metadata dinámica
 import HelmetData from '../components/HelmetData'
+import {useState} from 'react'
+
+//* Estilos de la página
 import '../assets/styles/reservationForm.css'
+
+//* Importo los componentes de la página
 import Header from '../components/Home/Header'
 import Footer from '../components/Home/Footer'
 import Button from '../components/Home/Sections/Contacto/Button'
-import {useState} from 'react'
-//* Importo el hook useLots para obtener los datos del lote
+
+//* Importo el contexto useLots para obtener los datos del lote
 import { useLots } from '../context/LotsContext'
+
+//* Configuración de carga de archivos de Firebase
 import {uploadReservationFile} from '../services/firebase.config'
+
 //* Importo useForm para manejar el formulario
 import {useForm} from 'react-hook-form'
-import {buttonState} from '../utils/formUtils'
-export default function ReservationForm({metaData}) {
 
-  const [documentFileName, setDocumentFileName] = useState('Ningún archivo seleccionado');
-  const [idConfirmationFileName, setIdConfirmationFileName] = useState('Ningún archivo seleccionado');
+//* Importo el estado de los botones
+import {buttonState} from '../utils/formUtils'
+
+export default function ReservationForm({metaData}) {
+  //* Hook para guardar el lote seleccionado
+  const [documentFileName, setDocumentFileName] = useState('Ningún archivo seleccionado')
+  const [idConfirmationFileName, setIdConfirmationFileName] = useState('Ningún archivo seleccionado')
   const [buttonClass,setButtonClass] = useState(buttonState.default)
 
   //* Context de lotes
-  const { lot,reserveLot } = useLots()
+  const { lot,setReservation,createPaymentOrder } = useLots()
   //* Hook de formulario de reserva de lote
   const {register,handleSubmit,formState:{errors},getValues} = useForm()
 
@@ -47,7 +58,7 @@ export default function ReservationForm({metaData}) {
         required: "El DNI es obligatorio",
         validate: {
           isPositive: (value) => {
-            return value > 0 || "El DNI debe ser mayor que 0";
+            return value > 0 || "El DNI debe ser mayor que 0"
           }
         }
       }
@@ -60,11 +71,11 @@ export default function ReservationForm({metaData}) {
         required: "El DNI es obligatorio",
         validate: {
           isPositive: (value) => {
-            return value > 0 || "El DNI debe ser mayor que 0";
+            return value > 0 || "El DNI debe ser mayor que 0"
           },
           matchesPreviousDni: (value) => {
-            const { dni } = getValues();
-            return dni === value || "Los DNI no coinciden";
+            const { dni } = getValues()
+            return dni === value || "Los DNI no coinciden"
           }
         }
       }
@@ -93,8 +104,8 @@ export default function ReservationForm({metaData}) {
         },
         validate: {
           matchesPreviousEmail: (value) => {
-            const { email } = getValues();
-            return email === value || "Los emails no coinciden";
+            const { email } = getValues()
+            return email === value || "Los emails no coinciden"
           }
         }
       }
@@ -119,10 +130,10 @@ export default function ReservationForm({metaData}) {
         required: "La foto de DNI es obligatoria",
         validate: {
           isImage: (value) => {
-            return value[0].type.includes('image') || "El archivo debe ser una imagen";
+            return value[0].type.includes('image') || "El archivo debe ser una imagen"
           },
           isLessThan2MB: (value) => {
-            return value[0].size < 2000000 || "El archivo debe pesar menos de 2MB";
+            return value[0].size < 2000000 || "El archivo debe pesar menos de 2MB"
           }
         }
       }
@@ -136,10 +147,10 @@ export default function ReservationForm({metaData}) {
         required: "La selfie con DNI es obligatoria",
         validate: {
           isImage: (value) => {
-            return value[0].type.includes('image') || "El archivo debe ser una imagen";
+            return value[0].type.includes('image') || "El archivo debe ser una imagen"
           },
           isLessThan2MB: (value) => {
-            return value[0].size < 2000000 || "El archivo debe pesar menos de 2MB";
+            return value[0].size < 2000000 || "El archivo debe pesar menos de 2MB"
           }
         }
       }
@@ -165,24 +176,37 @@ export default function ReservationForm({metaData}) {
 
   const onsubmit = handleSubmit(async (data) => {
     setButtonClass(buttonState.loading)
-    console.log(data)
     try{
       const documentFileUrl = await uploadReservationFile(data.documentFile[0],'documentFile',data.dni)
       const idConfirmationFileUrl = await uploadReservationFile(data.idConfirmationFile[0],'idConfirmationFile',data.dni)
       const reservation = {
-        lotId: lot.id,
-        name: data.name,
-        lastName: data.lastName,
+        lot:{
+          _id: lot.id,
+          number: lot.number,
+          block: lot.block,
+          reservationPrice: 12345,
+        },
+        user:{
+          name: data.name,
+          lastName: data.lastName,
+          email: data.email,
+        },
         dni: data.dni,
-        email: data.email,
         phone: data.phone,
         documentFile: documentFileUrl,
         idConfirmationFile: idConfirmationFileUrl
       }
-      await reserveLot(reservation)
+      setReservation(reservation)
+
+      const response = await createPaymentOrder(reservation)
+
+      const initPoint = response.data.initPoint
+
+      window.open(initPoint)
+
     }catch(error){
       console.log(error)
-      alert('Ocurrió un error al subir los archivos')
+      alert('Ocurrió un error al generar el pago, inténtelo mas tarde nuevamente y comuníquese con el propietario de la página.')
     }
   })
 
