@@ -5,7 +5,6 @@ export default function Main() {
   const [editionForm, setEditionForm] = useState(false)
   const [showForm, setShowForm] = useState(false)
   const handleAccordion = ()=>{
-    console.log("Handle accordion!")
     setShowForm(!showForm)
     if(editionForm){
       setEditionForm(false)
