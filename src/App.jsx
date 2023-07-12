@@ -12,7 +12,7 @@ const Admin = lazy(()=>import("./pages/Admin"))
 const Login = lazy(()=>import("./pages/Login"))
 const Register = lazy(()=>import("./pages/Register"))
 const ReservationForm = lazy(()=>import("./pages/ReservationForm"))
-const ReservationSuccess = lazy(()=>import("./pages/ReservationSuccess"))
+const ReservationFeedback = lazy(()=>import("./pages/ReservationFeedback"))
 const Error404 = lazy(()=>import("./pages/ErrorNotFound"))
 
 export default function App() {
@@ -84,7 +84,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home metaData={metaData.home} />} />
               <Route path="/reservar-lote" element={<ReservationForm metaData={metaData.reservation} />} />
-              <Route path="/pago-realizado" element={<ReservationSuccess metaData={metaData.reservation} />} />
+              <Route path="/pago-realizado" element={<ReservationFeedback metaData={metaData.reservation} />} />
               <Route element={<ProtectedRoute/>}>
                 <Route path="/admin" element={<Admin metaData={metaData.admin} />} />
               </Route>
