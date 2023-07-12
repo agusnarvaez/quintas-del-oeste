@@ -202,7 +202,7 @@ export default function ReservationForm({metaData}) {
 
       const initPoint = response.data.initPoint
 
-      window.open(initPoint)
+      window.location.href=initPoint
 
     }catch(error){
       console.log(error)
