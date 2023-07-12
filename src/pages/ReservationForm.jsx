@@ -213,12 +213,12 @@ export default function ReservationForm({metaData}) {
   return (
     <>
       <Header />
-      <main className="container-fluid p-0 px-3 my-3">
+      <main className="container-fluid d-flex flex-column flex-lg-row flex-wrap align-items-center align-items-lg-start justify-content-lg-around p-0 px-3 my-3">
         <HelmetData metaData={metaData} />
-        <h1>Reservar Lote</h1>
-        <div className='col-12 col-lg-6'>
+        <h1 className='col-12'>Reservar Lote</h1>
+        <div className='col-12 col-lg-5 d-flex flex-column align-items-center'>
           <h2> Datos de lote</h2>
-          <ul className='list-group list-group-flush list-unstyled'>
+          <ul className='list-group list-group-flush col-12 list-unstyled'>
             <li className='list-group-item'><b>N° de lote:</b>{lot.number} </li>
             <li className='list-group-item'><b>N° de Manzana:</b>{lot.block} </li>
             <li className='list-group-item'><b>Precio:</b> USD {lot.price} </li>
@@ -227,12 +227,12 @@ export default function ReservationForm({metaData}) {
             {lot.financiation ? <li className='list-group-item text-quintas-green fw-bold'>Con financiación</li> : <li className='list-group-item text-danger'>Sin financiación</li>}
           </ul>
         </div>
-        <form onSubmit={onsubmit} className='col-12 col-lg-6'>
+        <form onSubmit={onsubmit} className='col-12 col-lg-5 d-flex flex-column align-items-center'>
           <h2 className='mb-3'> Datos del comprador</h2>
           {
             fields.map((field, index) => {
               return (
-                <div key={index} className='col-12 col-lg-6 m-0 my-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center'>
+                <div key={index} className='col-12 m-0 my-2 m-xxl-0 p-xxl-0 row flex-column align-items-center'>
                   <label htmlFor={field.name} className="form-label">{field.placeholder}</label>
                   <input
                     type={field.type}
