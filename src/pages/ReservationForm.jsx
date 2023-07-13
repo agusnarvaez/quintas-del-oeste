@@ -179,12 +179,12 @@ export default function ReservationForm({metaData}) {
     try{
       const documentFileUrl = await uploadReservationFile(data.documentFile[0],'documentFile',data.dni)
       const idConfirmationFileUrl = await uploadReservationFile(data.idConfirmationFile[0],'idConfirmationFile',data.dni)
-      const reservation = {
+      const newReservation = {
         lot:{
-          _id: lot.id,
+          _id: lot._id,
           number: lot.number,
           block: lot.block,
-          reservationPrice: 12345,
+          reservationPrice: 50000,
         },
         user:{
           name: data.name,
@@ -196,9 +196,9 @@ export default function ReservationForm({metaData}) {
         documentFile: documentFileUrl,
         idConfirmationFile: idConfirmationFileUrl
       }
-      setReservation(reservation)
+      setReservation(newReservation)
 
-      const response = await createPaymentOrder(reservation)
+      const response = await createPaymentOrder(newReservation)
 
       const initPoint = response.data.initPoint
 
@@ -219,11 +219,11 @@ export default function ReservationForm({metaData}) {
         <div className='col-12 col-lg-5 d-flex flex-column align-items-center'>
           <h2> Datos de lote</h2>
           <ul className='list-group list-group-flush col-12 list-unstyled'>
-            <li className='list-group-item'><b>N° de lote:</b>{lot.number} </li>
-            <li className='list-group-item'><b>N° de Manzana:</b>{lot.block} </li>
-            <li className='list-group-item'><b>Precio:</b> USD {lot.price} </li>
-            <li className='list-group-item'><b>Área:</b> {lot.area}m2 </li>
-            <li className='list-group-item'><b>Precio de reserva:</b> USD {(lot.price * lot.reservationPercentage) / 100} </li>
+            <li className='list-group-item'><b>N° de lote: </b>{lot.number} </li>
+            <li className='list-group-item'><b>N° de Manzana: </b>{lot.block} </li>
+            <li className='list-group-item'><b>Precio: </b> USD {lot.price} </li>
+            <li className='list-group-item'><b>Área: </b> {lot.area}m2 </li>
+            <li className='list-group-item'><b>Precio de reserva: </b> $50.000 </li>
             {lot.financiation ? <li className='list-group-item text-quintas-green fw-bold'>Con financiación</li> : <li className='list-group-item text-danger'>Sin financiación</li>}
           </ul>
         </div>
