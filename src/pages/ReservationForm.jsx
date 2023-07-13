@@ -272,7 +272,7 @@ export default function ReservationForm({metaData}) {
             </div>)
             })
           }
-          <Button buttonClass={buttonClass} setButtonClass={setButtonClass} text='Ir a firma de contrato' />
+          <Button buttonClass={buttonClass} setButtonClass={setButtonClass} text='Ir a pagar' />
         </form>
       </main>
       <Footer />

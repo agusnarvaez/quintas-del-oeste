@@ -13,7 +13,6 @@ import IconLocationAvailable from './IconLocationAvailable'
 import IconLocationReserved from './IconLocationReserved'
 
 export default function Markers({mapLot}) {
-    console.log(mapLot)
     //* Hook para guardar el lote seleccionado
     const {setLot} = useLots()
 
