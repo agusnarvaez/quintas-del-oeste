@@ -1,7 +1,4 @@
-import Header from "../Home/Header"
-import Footer from "../Home/Footer"
-import Main from "../Home/Main"
-import HelmetData from '../HelmetData'
+
 export default function ReservationSuccess({reservation}) {
   return (
     <div className='col-12 d-flex flex-column align-items-center'>

@@ -69,7 +69,7 @@ export const LotsProvider = ({children}) => {
         reserve: async (reservation) => {
             try{
                 const response = await apiLot.reserve(reservation)
-                return response
+                return response.data
                 //setLots([...lots,response.data.lot])
             }catch(error){
                 console.log(error)
