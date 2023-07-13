@@ -35,8 +35,8 @@ export default function LotsList({setEditionForm,setShowForm}) {
             <li className='lotList-header-item col-1'>Manzana</li>
             <li className='lotList-header-item col-1'>Área</li>
             <li className='lotList-header-item col-2'>Precio</li>
-            <li className='lotList-header-item col-1'>Porcentaje de reserva</li>
-            <li className='lotList-header-item col-2'>Financiación</li>
+            {/* <li className='lotList-header-item col-1'>Porcentaje de reserva</li>
+            <li className='lotList-header-item col-2'>Financiación</li> */}
             <li className='lotList-header-item col-1'>Estado</li>
             <li className='lotList-header-item col-3'>Acciones</li>
         </ul>
@@ -51,9 +51,9 @@ export default function LotsList({setEditionForm,setShowForm}) {
                     <div className='lotList-content-item col-1 '>{lot.block}</div>
                     <div className='lotList-content-item col-1 '>{lot.area} m2</div>
                     <div className='lotList-content-item col-2 '>USD {lot.price}</div>
-                    <div className='lotList-content-item col-1 '>{lot.reservationPercentage}%</div>
-                    <div className='lotList-content-item col-2 '>{lot.financiation?"Si":"No"}</div>
-                    <div className='lotList-content-item col-1 '>{lot.reservationUser?<button className="btn btn-primary me-2">Reservado</button>:"Sin reservar"}</div>
+                    {/* <div className='lotList-content-item col-1 '>{lot.reservationPercentage}%</div> */}
+                    {/* <div className='lotList-content-item col-2 '>{lot.financiation?"Si":"No"}</div> */}
+                    <div className='lotList-content-item col-1 '>{lot.reservation?<button className="btn btn-success me-2">Reservado</button>:"Sin reservar"}</div>
                     <div className='lotList-content-item d-flex col-3'>
                     {showPopUp&&lotToDelete===lot?
                       <DeleteConfirmation lot={lot} hidePopUp={hidePopUp}/>:
