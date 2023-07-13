@@ -70,7 +70,7 @@ export const LotsProvider = ({children}) => {
             try{
                 const response = await apiLot.reserve(reservation)
                 return response
-                setLots([...lots,response.data.lot])
+                //setLots([...lots,response.data.lot])
             }catch(error){
                 console.log(error)
                 setFormErrrors(error.response.data.errors)
@@ -83,6 +83,16 @@ export const LotsProvider = ({children}) => {
             }catch(error){
                 console.log(error)
                 setFormErrrors(error.response.data.errors)
+            }
+        },
+        getPaymentFeedback: async(paymentData)=>{
+            try {
+
+                const paymentFeedback = await apiLot.getPaymentFeedback(paymentData)
+                return paymentFeedback.data.response
+            }catch(e){
+                console.log(e)
+                return e.response.data
             }
         }
     }
@@ -110,7 +120,8 @@ export const LotsProvider = ({children}) => {
             updateLot:lotController.update,
             deleteLot:lotController.delete,
             reserveLot:lotController.reserve,
-            createPaymentOrder:lotController.createPaymentOrder
+            createPaymentOrder:lotController.createPaymentOrder,
+            getPaymentFeedback:lotController.getPaymentFeedback
         }}>
             {children}
         </LotsContext.Provider>
