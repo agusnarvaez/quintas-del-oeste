@@ -27,9 +27,9 @@ export default function LotsList({setEditionForm,setShowForm}) {
   },[lots,fetchLots])
 
   return (
-    <section className="lotsList text-admin-primary bg-admin-primary overflow-x-scroll col-12 m-0 justify-content-center position-relative">
+    <section className="lotsList text-admin-primary bg-admin-primary col-12 m-0 justify-content-center position-relative">
       <h2>LOTES</h2>
-      <div className="lotList-table overflow-x-scroll d-flex flex-column text-admin-primary bg-admin-primary">
+      <div className="lotList-table d-flex flex-column text-admin-primary bg-admin-primary">
         <ul className='lotList-header d-flex justify-content-between fw-bold text-admin-primary bg-admin-primary'>
             <li className='lotList-header-item col-1'>N°</li>
             <li className='lotList-header-item col-1'>Manzana</li>
