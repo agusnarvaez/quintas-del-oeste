@@ -12,7 +12,7 @@ export default function Header({user}) {
 
   return (
     <header className="admin-header w-100 m-0  d-flex flex-nowrap sticky-top align-items-center justify-content-between bg-admin-primary">
-        <img src={quintasLogo} alt="Logo Quintas" className="logo-admin text-admin-primary m-0 p-0 py-2 ps-xl-3 py-xl-3" />
+        <img src={quintasLogo} alt="Logo Quintas" className="logo-admin text-admin-primary m-0 p-0" />
         {isAuthenticated?
           <>
             <div onClick={()=>setShow(!show)} className='m-0 icon-admin-secondary-dark d-flex align-items-center justify-content-end'>
