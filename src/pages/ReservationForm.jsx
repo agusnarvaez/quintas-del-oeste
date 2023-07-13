@@ -224,7 +224,7 @@ export default function ReservationForm({metaData}) {
             <li className='list-group-item'><b>Precio: </b> USD {lot.price} </li>
             <li className='list-group-item'><b>Área: </b> {lot.area}m2 </li>
             <li className='list-group-item'><b>Precio de reserva: </b> $50.000 </li>
-            {lot.financiation ? <li className='list-group-item text-quintas-green fw-bold'>Con financiación</li> : <li className='list-group-item text-danger'>Sin financiación</li>}
+            {/* {lot.financiation ? <li className='list-group-item text-quintas-green fw-bold'>Con financiación</li> : <li className='list-group-item text-danger'>Sin financiación</li>} */}
           </ul>
         </div>
         <form onSubmit={onsubmit} className='col-12 col-lg-5 d-flex flex-column align-items-center'>

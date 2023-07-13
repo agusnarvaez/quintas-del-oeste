@@ -5,12 +5,17 @@ import { useLocation } from 'react-router-dom'
 import Header from '../components/Home/Header'
 import Footer from '../components/Home/Footer'
 import {useEffect,useState} from 'react'
+
+//* Importo el hook para redireccionar
+import { useNavigate } from 'react-router-dom'
+
 import ReservationSuccess from '../components/Reservation/ReservationSuccess'
 //* Importo el hook useLots para obtener los datos del lote
 import { useLots } from '../context/LotsContext'
 
 export default function ReservationForm({metaData}) {
   const location = useLocation()
+  const navigate = useNavigate()
   const queries = new URLSearchParams(location.search)
 
   //* Context de lotes
@@ -34,16 +39,20 @@ export default function ReservationForm({metaData}) {
   const [feedbackResponse,setFeedbackResponse] = useState(feedbackView.loading)
   const [feedbackData,setFeedbackData] = useState(null)
   const [status,setStatus]=useState('')
+
   useEffect(() => {
     const getFeedback = async () => {
-        try{
-
-        const paymentData={
-          payment_id: queries.get('payment_id'),
-          status: queries.get('status'),
-          merchant_order_id: queries.get('merchant_order_id'),
-          preference_id: queries.get('preference_id'),
-        }
+      const paymentData={
+        payment_id: queries.get('payment_id'),
+        status: queries.get('status'),
+        merchant_order_id: queries.get('merchant_order_id'),
+        preference_id: queries.get('preference_id'),
+      }
+      if(paymentData.payment_id==='null'||paymentData.status==='null'||paymentData.merchant_order_id==='null'||paymentData.preference_id==='null'){
+        navigate('/')
+        return null
+      }
+      try{
         const feedback = await getPaymentFeedback(paymentData)
         console.log(feedback)
         setFeedbackData(feedback)
@@ -67,6 +76,7 @@ export default function ReservationForm({metaData}) {
     }
 
     if(feedbackData==null){
+
       getFeedback()
     }else{
       if(feedbackData.payment.status === 'approved'||feedbackData.payment.status === 'pending'||feedbackData.payment.status === 'in_process'){
