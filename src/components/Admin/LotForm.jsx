@@ -53,7 +53,7 @@ export default function LotForm({editionForm,setEditionForm}) {
         validate: (value) => value >= 10000 || "El valor debe ser mayor a 10000"
       }
     },
-    {
+    /* {
       name: "reservationPercentage",
       placeholder: `Porcentaje de reserva ${reservationPercentageValue}%`,
       type: "range",
@@ -70,7 +70,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       containerClass: "col-6 col-lg-6 form-check d-flex p-0 ps-4 p-xxl-0 m-0 align-items-start justify-content-between col-6 col-xxl-2",
       inputClass: "form-check-input",
       options: { }
-    }
+    } */
   ]
   const initialValues ={
     number: 0,
@@ -100,8 +100,10 @@ export default function LotForm({editionForm,setEditionForm}) {
       block: values.block,
       area: values.area,
       price: values.price,
-      reservationPercentage: values.reservationPercentage,
-      financiation: values.financiation,
+      /* reservationPercentage: values.reservationPercentage, */
+      reservationPercentage: 30,
+      /* financiation: values.financiation, */
+      financiation: false,
       coordinates: {lat:values.coordinates.lat,lng:values.coordinates.lng},
       perimeter:{
         x1:{
