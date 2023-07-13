@@ -13,6 +13,7 @@ import IconLocationAvailable from './IconLocationAvailable'
 import IconLocationReserved from './IconLocationReserved'
 
 export default function Markers({mapLot}) {
+    console.log(mapLot)
     //* Hook para guardar el lote seleccionado
     const {setLot} = useLots()
 
@@ -27,16 +28,16 @@ export default function Markers({mapLot}) {
     }
 
     return(
-        <Marker position={coordinates} icon={mapLot.reserved?IconLocationReserved:IconLocationAvailable}>
+        <Marker position={coordinates} icon={mapLot.reservation?IconLocationReserved:IconLocationAvailable}>
             <Popup>
                 <ul className='list-group list-group-flush list-unstyled'>
                     <li className='list-group-item'><b>N° de lote:</b> {mapLot.number}</li>
                     <li className='list-group-item'><b>N° de Manzana:</b> {mapLot.block}</li>
                     <li className='list-group-item'><b>Precio:</b> USD {mapLot.price}</li>
                     <li className='list-group-item'><b>Área:</b> {mapLot.area}m2</li>
-                    <li className='list-group-item'><b>Precio de reserva:</b> USD {(mapLot.price*mapLot.reservationPercentage)/100}</li>
-                    {mapLot.financiation?<li className='list-group-item text-quintas-green fw-bold'>Con financiación</li>:<li className='list-group-item text-danger'>Sin financiación</li>}
-                    {mapLot.reserved?<li className='btn btn-danger'>Reservado</li>:<li onClick={()=>reserveLot(mapLot)} className='btn btn-success bg-quintas-green border-quintas-green fw-bold'>Reservar</li>}
+                    <li className='list-group-item'><b>Precio de reserva:</b> $ 50.000</li>
+                    {/* {mapLot.financiation?<li className='list-group-item text-quintas-green fw-bold'>Con financiación</li>:<li className='list-group-item text-danger'>Sin financiación</li>} */}
+                    {mapLot.reservation?<li className='btn btn-danger'>Reservado</li>:<li onClick={()=>reserveLot(mapLot)} className='btn btn-success bg-quintas-green border-quintas-green fw-bold'>Reservar</li>}
                 </ul>
             </Popup>
         </Marker>
