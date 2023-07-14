@@ -1,13 +1,25 @@
-import React from 'react'
-import { MapContainer, Polygon, FeatureGroup,Marker } from 'react-leaflet'
+import { useEffect } from 'react'
+
+//* Mapa y editor de mapa
+import { MapContainer, Polygon, FeatureGroup,Marker,ImageOverlay  } from 'react-leaflet'
 import {EditControl} from 'react-leaflet-draw'
+
+//* Estilos de mapa
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-draw/dist/leaflet.draw.css'
+
+//* Ubicacion de lotes
 import LotLocation from './LotLocation'
 import IconLocation from './IconLocation'
-import { useLots } from '../../context/LotsContext'
-import { useEffect } from 'react'
+
+//* Mapa propio
+import quintasMap from '../../assets/map/mapaQuintas.jpg'
+
+//* Capa de google Maps
 import ReactLeafletGoogleLayer from 'react-leaflet-google-layer'
+
+//* Contexto de lotes
+import { useLots } from '../../context/LotsContext'
 import credentials from '../../credentials'
 
 export default function MapEditor({setValue,getValues}) {
@@ -130,7 +142,14 @@ export default function MapEditor({setValue,getValues}) {
         //Agregar medidas
         style={{ width: '100%', height: '100%' }}
         className='leaflet-container'
+        bearing='45°'
       >
+        <ImageOverlay
+          url={quintasMap}
+          bounds={[
+            [-34.61787267051479,-58.99489995728686],
+            [-34.60686830849178, -58.97591241408306]]}
+        />
       <FeatureGroup>
         <EditControl
           position='topright'
@@ -159,8 +178,8 @@ export default function MapEditor({setValue,getValues}) {
       </FeatureGroup>
 
         <ReactLeafletGoogleLayer apiKey={credentials.mapsKey} type={'roadmap'} />
-      <Polygon pathOptions={{color: 'gray'}} positions={contornoExterior} />
-      {existingPolygon()}
+      {/* <Polygon pathOptions={{color: 'gray'}} positions={contornoExterior} /> */}
+      {/* {existingPolygon()} */}
       {existingMarker()}
       {
         lots.map((lotToShow,index)=> <LotLocation lot={lotToShow} key={index}/> )
