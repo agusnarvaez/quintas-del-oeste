@@ -1,9 +1,9 @@
-import Cercanias from './Ubicacion/Cercanias'
-import Direccion from './Ubicacion/Direccion'
+import Cercanias from './Location/CloseStreets'
+import Direccion from './Location/Address'
 
-import GoogleMap from './Ubicacion/GoogleMap'
+import GoogleMap from './Location/GoogleMap'
 
-export default function Ubicacion() {
+export default function Location() {
   return (
     <div className="container-fluid p-0 mt-5" id="location">
 

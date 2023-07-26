@@ -1,5 +1,5 @@
 
-export default function Barrio() {
+export default function Neighborhood() {
   return (
     <div className="container-fluid" id="neighborhood">
       Barrio<br/>

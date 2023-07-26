@@ -1,7 +1,7 @@
 import bgContact from "../../../assets/background/bg-contact.jpg"
-import ContactForm from "./Contacto/ContactForm"
-import LinksInfo from "./Contacto/LinksInfo"
-export default function Contacto() {
+import ContactForm from "./Contact/ContactForm"
+import LinksInfo from "./Contact/LinksInfo"
+export default function Contact() {
   return (
     <div className="container-fluid p-0  flex-nowrap mb-3" id="contact">
 
