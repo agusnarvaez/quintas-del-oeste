@@ -8,7 +8,7 @@ import '../assets/styles/reservationForm.css'
 //* Importo los componentes de la página
 import Header from '../components/Home/Header'
 import Footer from '../components/Home/Footer'
-import Button from '../components/Home/Sections/Contacto/Button'
+import Button from '../components/Home/Sections/Contact/Button'
 
 //* Importo el contexto useLots para obtener los datos del lote
 import { useLots } from '../context/LotsContext'
