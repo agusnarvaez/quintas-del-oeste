@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AdminHeader from '../components/Admin/AdminHeader'
 import HelmetData from '../components/HelmetData'
+import '../assets/styles/adminPanel.css'
+
 export default function Register({metaData}) {
   //* Obtengo los métodos necesarios para el formulario
   //* register: para registrar los inputs del formulario
