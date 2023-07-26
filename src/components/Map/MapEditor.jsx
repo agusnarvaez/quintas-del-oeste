@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 //* Mapa y editor de mapa
-import { MapContainer, Polygon, FeatureGroup,Marker,ImageOverlay  } from 'react-leaflet'
+import { MapContainer, FeatureGroup,Marker,ImageOverlay  } from 'react-leaflet'
 import {EditControl} from 'react-leaflet-draw'
 
 //* Estilos de mapa
