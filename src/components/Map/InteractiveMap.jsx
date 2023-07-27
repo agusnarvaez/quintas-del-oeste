@@ -12,10 +12,9 @@ import quintasMap from '../../assets/map/mapaQuintas.png'
 
 export default function MapEditor({setValue,getValues}) {
     const {lots,fetchLots} = useLots()
-
     useEffect(()=>{
       if(lots.length === 0) fetchLots()
-    },[])
+    },[lots,fetchLots])
 
     return (
       <div className='map-container'>
