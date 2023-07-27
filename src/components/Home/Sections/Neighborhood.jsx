@@ -1,7 +1,7 @@
 
 export default function Neighborhood() {
   return (
-    <div className="container-fluid" id="neighborhood">
+    <section className="container-fluid" id="neighborhood">
       Barrio<br/>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima suscipit fugiat doloribus, odit sed quas magni. Laborum, laudantium blanditiis repellat inventore obcaecati expedita voluptas explicabo eveniet cum, quasi quo totam!
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus labore consectetur autem rem possimus laborum, illum repellat repudiandae tempore perspiciatis sapiente, accusamus in quos minus ipsa aut consequatur maxime odit.
@@ -35,6 +35,6 @@ export default function Neighborhood() {
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti consequatur debitis minima aut. Maxime itaque earum delectus dicta accusantium, quibusdam odit quisquam veniam suscipit aperiam placeat, ullam incidunt autem tempora.
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro voluptatum suscipit ea alias quas. Similique at nam quae eveniet voluptas mollitia veritatis, odit nihil laborum deleniti sunt cupiditate perferendis ipsum.
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis vitae eum accusamus molestias dolor veniam ex sequi modi quod pariatur totam, omnis aperiam! Odit, sed soluta! Nobis minima accusantium cupiditate?
-    </div>
+    </section>
   )
 }

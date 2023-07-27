@@ -5,7 +5,7 @@ import GoogleMap from './Location/GoogleMap'
 
 export default function Location() {
   return (
-    <div className="container-fluid p-0 mt-5" id="location">
+    <section className="container-fluid p-0 mt-5" id="location">
 
       <Direccion />
 
@@ -17,6 +17,6 @@ export default function Location() {
 
       </div>
 
-    </div>
+    </section>
   )
 }

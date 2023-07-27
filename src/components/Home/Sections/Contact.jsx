@@ -3,7 +3,7 @@ import ContactForm from "./Contact/ContactForm"
 import LinksInfo from "./Contact/LinksInfo"
 export default function Contact() {
   return (
-    <div className="container-fluid p-0  flex-nowrap mb-3" id="contact">
+    <section className="container-fluid p-0  flex-nowrap mb-3" id="contact">
 
       <div className="container-fluid banner-container p-0 d-flex align-items-center justify-content-center position-relative py-lg-4 flex-wrap w-100">
 
@@ -33,6 +33,6 @@ export default function Contact() {
       <div className="d-lg-none">
         <ContactForm/>
       </div>
-    </div>
+    </section>
   )
 }
