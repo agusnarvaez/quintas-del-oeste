@@ -1,12 +1,12 @@
 
-import MapEditor from "../Map/MapEditor"
+import Map from "../Map/Map"
 import { useEffect } from 'react'
 import {useForm} from 'react-hook-form'
 import {useLots}from '../../context/LotsContext'
 
 export default function LotForm({editionForm,setEditionForm}) {
-  const {register,handleSubmit,formState:{errors},watch,getValues,setValue,reset} = useForm()
-  const reservationPercentageValue = watch("reservationPercentage", 0)
+  const {register,handleSubmit,formState:{errors},getValues,setValue,reset} = useForm()
+  /* const reservationPercentageValue = watch("reservationPercentage", 0) */
   const {lot,setLot,createLot,updateLot,deleteLot,formErrors} = useLots()
   const fields = [
     {
@@ -189,7 +189,7 @@ export default function LotForm({editionForm,setEditionForm}) {
               />
             </div>
           </div>
-          <div className="row col-10 col-lg-6 pt-2 pe-lg-4 justify-content-between perimeter">
+          {/* <div className="row col-10 col-lg-6 pt-2 pe-lg-4 justify-content-between perimeter">
             <h3 className='fs-3 w-100 form-title'>Perímetro</h3>
             <div className='d-flex w-50 p-0 pe-1 flex-wrap justify-content-between'>
               <label className='w-100 m-0  text-center'>x1</label>
@@ -211,7 +211,7 @@ export default function LotForm({editionForm,setEditionForm}) {
               <input className="form-control coordinateInput my-2" type="text" placeholder="y1" defaultValue={0} {...register("perimeter.y2.lat")}  />
               <input className="form-control coordinateInput my-2" type="text" placeholder="y2" defaultValue={0} {...register("perimeter.y2.lng")}  />
             </div>
-          </div>
+          </div> */}
           {
             formErrors?.map((error, index) => {
               return (
@@ -233,7 +233,7 @@ export default function LotForm({editionForm,setEditionForm}) {
           </div>
 
         </form>
-        <MapEditor setValue={setValue} getValues={getValues}/>
+        <Map setValue={setValue} getValues={getValues} adminMode={true}/>
     </section>
   )
 }
