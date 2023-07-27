@@ -6,15 +6,27 @@
 *{
     box-sizing: border-box;
 }
-body {
-    font-family: Lexend;
-    font-size: 12px;
-    box-sizing: border-box;
+
+
+.whatsappButton{
+    background-color: #00bb2d;
+    z-index: 1000;
+    bottom: 2%;
+    right: 2%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0;
+}
+.whatsappButton a{
+    font-size: 35px;
+    text-align: center;
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
 }
-
 
 /*! ########################################*/
 /*! ##### TABLETS & LARGER SMARTPHONES #####*/
@@ -32,7 +44,18 @@ body {
 @media (min-width: 769px) {
 
 
-
+    .whatsappButton{
+        bottom: 1%;
+        right: 1%;
+        height: 50px;
+        width: 50px;
+    }
+    .whatsappButton:hover{
+        background-color: #038b23;
+    }
+    .whatsappButton a{
+        font-size: 25px;
+    }
 
 }
 
@@ -41,5 +64,13 @@ body {
 /*! ########################################*/
 @media (min-width: 1280px) {
 
-
+    .whatsappButton{
+        bottom: 2%;
+        right: 2%;
+        height: 55px;
+        width: 55px;
+    }
+    .whatsappButton a{
+        font-size: 30px;
+    }
 }
