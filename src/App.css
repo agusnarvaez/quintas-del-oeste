@@ -106,6 +106,18 @@ header i{
 .contactForm{
   z-index: 10;
 }
+.fs-9px{
+  font-size: 9px;
+}
+.fs-10px{
+  font-size: 10px;
+}
+.fs-12px{
+  font-size: 12px;
+}
+.fs-16px{
+  font-size: 16px;
+}
 /*! ########################################*/
 /*! ################ LAPTOPS ###############*/
 /*! ########################################*/
@@ -120,6 +132,23 @@ header i{
 
   .map-container{
     height: 600px;
+  }
+  .fs-md-10px{
+    font-size: 10px;
+  }
+  .fs-md-12px{
+    font-size: 12px;
+  }
+  .fs-md-14px{
+    font-size: 14px;
+  }
+  .fs-md-16px{
+    font-size: 16px;
+  }
+
+  .greenHover:hover{
+    background-color: #619642;
+    cursor: pointer;
   }
 }
 @media (min-width: 1000px) {
