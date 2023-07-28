@@ -118,6 +118,41 @@ header i{
 .fs-16px{
   font-size: 16px;
 }
+.h-100px{
+  height: 100px;
+}
+.h-50px{
+  height: 100px;
+}
+.w-50px{
+  width: 50px;
+}
+.w-25{
+  width: 25%;
+}
+
+.punta-final{
+  position: relative;
+}
+
+.punta-final::before,
+.punta-final::after{
+  width: 60px;
+  height: 15px;
+  position: absolute;
+  content: "";
+  background-color: white;
+  bottom: 17px;
+  right: -30px;
+  transform: rotate(-75deg);
+  z-index: 10;
+}
+
+.punta-final::before{
+  top: 17px;
+  transform: rotate(75deg);
+}
+
 /*! ########################################*/
 /*! ################ LAPTOPS ###############*/
 /*! ########################################*/
@@ -149,6 +184,40 @@ header i{
   .greenHover:hover{
     background-color: #619642;
     cursor: pointer;
+  }
+  .sin-punta-md::before,
+  .sin-punta-md::after{
+    display: none;
+  }
+
+  .punta-final::before,
+  .punta-final::after{
+    width: 60px;
+    height: 15px;
+    bottom: 15px;
+    right: -30px;
+    transform: rotate(-75deg);
+    z-index: 10;
+  }
+
+  .punta-final::before{
+    top: 15px;
+    transform: rotate(75deg);
+  }
+
+  .conector-md::before,
+  .conector-md::after{
+    width: 60px;
+    height: 15px;
+    bottom: 15px;
+    right: -7px;
+    transform: rotate(-75deg);
+    z-index: 10;
+  }
+
+  .conector-md::before{
+    top: 15px;
+    transform: rotate(75deg);
   }
 }
 @media (min-width: 1000px) {
