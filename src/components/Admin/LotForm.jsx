@@ -146,7 +146,7 @@ export default function LotForm({editionForm,setEditionForm}) {
       setLot({})
     }
 
-  },[editionForm,register,reset])
+  },[editionForm,register,reset,lot])
 
   return (
     <section className="bg-admin-primary overflow-hidden m-0 text-admin-primary container-fluid row p-2 px-4 px-lg-0 justify-content-between">
