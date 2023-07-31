@@ -65,7 +65,7 @@ export const LotsProvider = ({children}) => {
             try{
                 await apiLot.delete(lot._id)
                 setLot({})
-                await lotController.getAll()
+                setLots(lots.filter(lotItem => lotItem._id !== lot._id))
             }catch(error){
                 console.log(error)
                 setFormErrrors(error.response.data.errors)
