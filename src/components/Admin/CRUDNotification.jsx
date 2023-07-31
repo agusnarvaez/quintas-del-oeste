@@ -3,7 +3,6 @@ import {useEffect} from "react"
 
 export default function CRUDNotification({showPopUp,setShowPopUp,crudStatus}) {
   const notificationClass = showPopUp?'CRUDNotification CRUDNotification__show': 'CRUDNotification CRUDNotification__hidden'
-  console.log(crudStatus)
   const text = crudStatus === 'edited'? 'EDITADO' : crudStatus === 'created'? 'CREADO' : 'ELIMINADO'
   useEffect(()=>{
     if(showPopUp){

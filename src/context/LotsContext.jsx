@@ -81,6 +81,15 @@ export const LotsProvider = ({children}) => {
                 setFormErrrors(error.response.data.errors)
             }
         },
+        fetchReservation: async (id) => {
+            try{
+                const response = await apiLot.reservation(id)
+                return(response.data.reservation)
+            }catch(error){
+                console.log(error)
+                return error
+            }
+        },
         createPaymentOrder: async (reservation) => {
             try{
                 const response = await apiLot.createPaymentOrder(reservation)
@@ -126,7 +135,8 @@ export const LotsProvider = ({children}) => {
             deleteLot:lotController.delete,
             reserveLot:lotController.reserve,
             createPaymentOrder:lotController.createPaymentOrder,
-            getPaymentFeedback:lotController.getPaymentFeedback
+            getPaymentFeedback:lotController.getPaymentFeedback,
+            fetchReservation: lotController.fetchReservation
         }}>
             {children}
         </LotsContext.Provider>

@@ -8,7 +8,7 @@ import '../assets/styles/index.css'
 
 export default function Home({metaData}) {
   return (
-    <div className="container-fluid p-0 position-relative">
+    <div className="container-fluid p-0 position-relative min-height-100vh">
       <HelmetData metaData={metaData} />
       <div className="container-fluid" id="home"></div>
       <Header id="header" />

@@ -1,7 +1,7 @@
 import { useEffect,useState } from 'react'
 import {useLots}from '../../context/LotsContext'
 import DeleteConfirmation from './DeleteConfirmation'
-
+import ReservationData from './ReservationData'
 export default function LotsList({setEditionForm,setShowForm}) {
 
   const {lots,setLot,fetchLots} = useLots()
@@ -53,7 +53,7 @@ export default function LotsList({setEditionForm,setShowForm}) {
                     <div className='lotList-content-item col-2 '>USD {lot.price}</div>
                     {/* <div className='lotList-content-item col-1 '>{lot.reservationPercentage}%</div> */}
                     {/* <div className='lotList-content-item col-2 '>{lot.financiation?"Si":"No"}</div> */}
-                    <div className='lotList-content-item col-1 '>{lot.reservation?<button className="btn btn-success me-2">Reservado</button>:"Sin reservar"}</div>
+                    <div className='lotList-content-item col-1 position-relative '>{lot.reservation?<ReservationData id={lot.reservation} />:"Sin reservar"}</div>
                     <div className='lotList-content-item d-flex col-3'>
                     {showPopUp&&lotToDelete===lot?
                       <DeleteConfirmation lot={lot} hidePopUp={hidePopUp}/>:

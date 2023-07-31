@@ -10,6 +10,8 @@ const apiLot = {
     delete: id => axios.delete(`/lots/delete/${id}`),
     createPaymentOrder: reservationData => axios.post(`/mercadoPago/create-order`, reservationData),
     getPaymentFeedback: paymentData => axios.post(`/mercadoPago/feedback`, paymentData),
+    reservations: () => axios.get(`/lots/reservations`),
+    reservation: id => axios.get(`/lots/reservations/${id}`),
 }
 
 export { apiLot }
