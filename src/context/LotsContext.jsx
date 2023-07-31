@@ -49,11 +49,16 @@ export const LotsProvider = ({children}) => {
         },
         update: async (lotToUpdate) => {
             try{
-                await apiLot.update(lotToUpdate)
-                await lotController.getAll()
+                const response = await apiLot.update(lotToUpdate)
+
+                const updatedLots = lots.map(lot => lot._id === response.data.lot._id? response.data.lot: lot)
+                console.log(updatedLots)
+                setLots(updatedLots)
+                return response
             }catch(error){
                 console.log(error)
                 setFormErrrors(error.response.data.errors)
+                return error
             }
         },
         delete: async (lot) => {
