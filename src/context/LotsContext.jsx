@@ -24,6 +24,7 @@ export const LotsProvider = ({children}) => {
             try{
                 const response = await apiLot.create(lot)
                 setLots([...lots,response.data.lot])
+                return response
             }catch(error){
                 console.log(error)
                 setFormErrrors(error.response.data.errors)
@@ -52,7 +53,6 @@ export const LotsProvider = ({children}) => {
                 const response = await apiLot.update(lotToUpdate)
 
                 const updatedLots = lots.map(lot => lot._id === response.data.lot._id? response.data.lot: lot)
-                console.log(updatedLots)
                 setLots(updatedLots)
                 return response
             }catch(error){

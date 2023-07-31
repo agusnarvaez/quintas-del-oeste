@@ -3,6 +3,7 @@
 /*! #######################################*/
 
 /** #### Estilos generales #### */
+
 .rango{
     background: 'linear-gradient(to right, #ccc 0%, #ccc ' + porcentaje + '%, #fff ' + porcentaje + '%, white 100%)',
 }
@@ -104,6 +105,27 @@
 
     transition: all 0.3s ease-in-out;
 }
+.CRUDNotification__hidden{
+    top: -100px;
+    transition: all 0.3s ease-in-out;
+}
+.CRUDNotification__show{
+    top: 0;
+    transition: all 0.3s ease-in-out;
+}
+.CRUDNotification{
+    position: absolute;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #78ba52;
+    color:white;
+    padding: 5%;
+    text-align: center;
+}
+
 .collapsed{
     max-height: 0 !important;
 }

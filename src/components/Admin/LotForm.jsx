@@ -1,13 +1,15 @@
 
 import Map from "../Map/Map"
-import { useEffect } from 'react'
+import { useEffect,useState } from 'react'
 import {useForm} from 'react-hook-form'
 import {useLots}from '../../context/LotsContext'
+import CRUDNotification from "./CRUDNotification"
 
 export default function LotForm({editionForm,setEditionForm}) {
   const {register,handleSubmit,formState:{errors},getValues,setValue,reset} = useForm()
-
   const {lot,setLot,createLot,updateLot,deleteLot,formErrors} = useLots()
+  const [showPopUp,setShowPopUp] = useState(false)
+  const [crudStatus,setCrudStatus] = useState("")
   const fields = [
     {
       name: "number",
@@ -81,9 +83,18 @@ export default function LotForm({editionForm,setEditionForm}) {
       coordinates: {lat:values.coordinates.lat,lng:values.coordinates.lng}
     }
     if(editionForm){
-      await updateLot(newLot)
+      const response = await updateLot(newLot)
+      if(response.status===200) {
+        setCrudStatus("edited")
+        setShowPopUp(true)
+      }
     }else{
-      createLot(newLot)
+      const response = await createLot(newLot)
+      if(response.status===200) {
+        setCrudStatus("created")
+        setShowPopUp(true)
+      }
+      reset(initialValues,{keepValues:false})
     }
   })
 
@@ -100,7 +111,8 @@ export default function LotForm({editionForm,setEditionForm}) {
   },[editionForm,lot,register,reset])
 
   return (
-    <section className="bg-admin-primary overflow-hidden m-0 text-admin-primary container-fluid row p-2 px-4 px-lg-0 justify-content-between">
+    <section className="bg-admin-primary position-relative overflow-hidden m-0 text-admin-primary container-fluid row p-2 px-4 px-lg-0 justify-content-between">
+        <CRUDNotification showPopUp={showPopUp} setShowPopUp={setShowPopUp} crudStatus={crudStatus}  />
         <form className="rounded-4 bg-admin-secondary-dark rounded col-12 col-lg-5 container-fluid d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-lg-between align-items-center align-items-lg-start p-0 m-0" onSubmit={onsubmit}>
           <div className="col-11 col-lg-12 d-flex flex-wrap flex-lg-row px-4 justify-content-between align-items-center container-fluid justify-content-lg-between align-items-lg-stretch p-0 mb-xxl-4">
             <h3 className="col-12 fs-3 m-0 p-0 pt-4 px-lg-0">Datos principales</h3>
