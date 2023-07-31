@@ -10,8 +10,8 @@ export default function LotsList({setEditionForm,setShowForm}) {
 
   const edit = (lotToEdit)=>{
     setShowForm(true)
-    setEditionForm(true)
     setLot(lotToEdit)
+    setEditionForm(true)
   }
   const showPopUpDelete = (lot)=>{
     setLotToDelete(lot)

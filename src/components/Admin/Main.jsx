@@ -1,12 +1,15 @@
 import LotForm from "./LotForm"
 import LotsList from "./LotsList"
 import {useState} from "react"
+import { useLots } from "../../context/LotsContext"
 export default function Main() {
+  const {setLot} = useLots()
   const [editionForm, setEditionForm] = useState(false)
   const [showForm, setShowForm] = useState(false)
   const handleAccordion = ()=>{
     setShowForm(!showForm)
     if(editionForm){
+      setLot({})
       setEditionForm(false)
     }
   }
