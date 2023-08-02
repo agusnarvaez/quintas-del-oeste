@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import ReservationSuccess from '../components/Reservation/ReservationSuccess'
 //* Importo el hook useLots para obtener los datos del lote
 import { useLots } from '../context/LotsContext'
-
+import { deleteTempFiles,moveReservationDocuments } from '../services/firebase.config'
 export default function ReservationForm({metaData}) {
   const location = useLocation()
   const navigate = useNavigate()
@@ -41,32 +41,40 @@ export default function ReservationForm({metaData}) {
   const [status,setStatus]=useState('')
 
   useEffect(() => {
+    //* Función que obtiene los datos del pago
     const getFeedback = async () => {
+      //* Obtengo los datos del pago
       const paymentData={
         payment_id: queries.get('payment_id'),
         status: queries.get('status'),
         merchant_order_id: queries.get('merchant_order_id'),
         preference_id: queries.get('preference_id'),
       }
+
+      //* Si el usuario cancela el pago, elimino los archivos temporales y lo redirecciono a la página de inicio
       if(paymentData.payment_id==='null'||paymentData.status==='null'||paymentData.merchant_order_id==='null'||paymentData.preference_id==='null'){
+        deleteTempFiles()
         navigate('/')
         return null
       }
+
       try{
+        //* Obtengo el feedback del pago
         const feedback = await getPaymentFeedback(paymentData)
-        console.log(feedback)
+        //* Si el pago ya fue procesado, lo redirecciono a la página de inicio
         setFeedbackData(feedback)
         return feedback
       }catch(error){
         console.log(error)
       }
     }
+
+    //* Función que maneja la reserva final del lote
     const reserve = async () => {
       try{
         const response = await reserveLot(feedbackData)
         console.log(response)
-        //setReservation(response)
-        //console.log(reservation)
+        moveReservationDocuments()
         setStatus('success')
         setFeedbackResponse(<ReservationSuccess reservation={response}/>)
       }catch(error){
@@ -75,15 +83,20 @@ export default function ReservationForm({metaData}) {
       }
     }
 
-    if(feedbackData==null){
+    //* FLUJO DE LA RESERVA
 
+    //* 1- Si no hay datos del pago, los solicito
+    if(feedbackData==null){
       getFeedback()
     }else{
+      //* 2.1- Si el pago fue aprobado, reservo el lote
       if(feedbackData.payment.status === 'approved'||feedbackData.payment.status === 'pending'||feedbackData.payment.status === 'in_process'){
+        //* Si el estado es distinto de success, significa que aún no se reservó el lote, y recién ahí se ejecuta la reserva
         if(status!=='success'){
           reserve()
         }
       }else{
+        //* 2.2- Si el pago no fue aprobado, muestro el error
         setFeedbackResponse(feedbackView.failure)
       }
     }
