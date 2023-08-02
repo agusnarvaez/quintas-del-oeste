@@ -6,8 +6,8 @@ export default function ContactInputs({buttonClass,setButtonClass,text}) {
     const buttonSelection = ()=>{
         switch(buttonClass){
             case "loading": return (
-                <div className="spinner-border text-quintas-green" role="status">
-                    <span className="visually-hidden">Loading...</span>
+                <div className="p-2">
+                    <div className="spinner-border text-quintas-green" role="status"/>
                 </div>
                 )
             case "success": return (
