@@ -57,7 +57,7 @@ export default function Services() {
       </div> */}
 
       <div className="bg-quintas-dark-gray col-12 row p-2 py-5 m-0 justify-content-center justify-content-around">
-        <ul className="list-unstyled m-0 p-0 col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-2">
+        <ul className="list-unstyled m-0 p-0 col-10 col-md-5 col-lg-4 col-xl-4 col-xxl-2">
           <li className='text-white fs-5 pb-2'><h3>INFRAESTRUCTURA</h3></li>
           {
             infrastructure.map((item, index) => (
