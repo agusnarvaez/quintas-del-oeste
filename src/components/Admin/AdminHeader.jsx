@@ -30,7 +30,7 @@ export default function Header() {
                 <li className='w-100 py-3'><h2 className="w-100 m-0 text-admin-primary bi bi-house-gear-fill p-0 fs-4"> Lotes</h2></li>
                 {/* <li className='w-100 py-3'><h2 className="w-100 m-0 text-admin-primary bi bi-house-check-fill p-0 fs-4"> Clientes</h2></li> */}
                 {/* <li className='w-100 py-3'><h2 className="w-100 m-0 text-admin-primary bi bi-people-fill p-0 fs-4"> Usuarios</h2></li> */}
-                <li onClick={handleLogout} className='w-100 py-3'><h2 className="w-100 m-0 text-admin-primary bi bi-person-fill-down text-danger p-0 fs-5"> Cerrar sesión</h2></li>
+                <li onClick={handleLogout} className='w-100 py-3'><h2 className="w-100 m-0 cursor-pointer text-admin-primary bi bi-person-fill-down text-danger p-0 fs-5"> Cerrar sesión</h2></li>
               </ul>
             </div>
           </>
