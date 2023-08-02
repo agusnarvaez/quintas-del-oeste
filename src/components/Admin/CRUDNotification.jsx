@@ -1,9 +1,9 @@
 
 import {useEffect} from "react"
 
-export default function CRUDNotification({showPopUp,setShowPopUp,crudStatus}) {
+export default function CRUDNotification({showPopUp,setShowPopUp,text}) {
   const notificationClass = showPopUp?'CRUDNotification CRUDNotification__show': 'CRUDNotification CRUDNotification__hidden'
-  const text = crudStatus === 'edited'? 'EDITADO' : crudStatus === 'created'? 'CREADO' : 'ELIMINADO'
+
   useEffect(()=>{
     if(showPopUp){
       setTimeout(()=>{
@@ -14,7 +14,7 @@ export default function CRUDNotification({showPopUp,setShowPopUp,crudStatus}) {
   return (
     <div className={notificationClass}>
       <i className="bi bi-check fs-1"/>
-      <h5 className='text-center display-block m-0'>SU LOTE HA SIDO {text} CORRECTAMENTE</h5>
+      <h5 className='text-center display-block m-0'>{text}</h5>
     </div>
   )
 }

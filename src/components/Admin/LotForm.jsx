@@ -9,7 +9,7 @@ export default function LotForm({editionForm,setEditionForm}) {
   const {register,handleSubmit,formState:{errors},getValues,setValue,reset} = useForm()
   const {lot,setLot,createLot,updateLot,deleteLot,formErrors} = useLots()
   const [showPopUp,setShowPopUp] = useState(false)
-  const [crudStatus,setCrudStatus] = useState("")
+  const [text,setText] = useState("")
   const fields = [
     {
       name: "number",
@@ -85,13 +85,13 @@ export default function LotForm({editionForm,setEditionForm}) {
     if(editionForm){
       const response = await updateLot(newLot)
       if(response.status===200) {
-        setCrudStatus("edited")
+        setText("SU LOTE HA SIDO AGREGADO CORRECTAMENTE")
         setShowPopUp(true)
       }
     }else{
       const response = await createLot(newLot)
       if(response.status===200) {
-        setCrudStatus("created")
+        setText("SU LOTE HA SIDO CREADO CORRECTAMENTE")
         setShowPopUp(true)
       }
       reset(initialValues,{keepValues:false})
@@ -112,7 +112,7 @@ export default function LotForm({editionForm,setEditionForm}) {
 
   return (
     <section className="bg-admin-primary position-relative overflow-hidden m-0 text-admin-primary container-fluid row p-2 px-4 px-lg-0 justify-content-between">
-        <CRUDNotification showPopUp={showPopUp} setShowPopUp={setShowPopUp} crudStatus={crudStatus}  />
+        <CRUDNotification showPopUp={showPopUp} setShowPopUp={setShowPopUp} crudStatus={text}  />
         <form className="rounded-4 bg-admin-secondary-dark rounded col-12 col-lg-5 container-fluid d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-lg-between align-items-center align-items-lg-start p-0 m-0" onSubmit={onsubmit}>
           <div className="col-11 col-lg-12 d-flex flex-wrap flex-lg-row px-4 justify-content-between align-items-center container-fluid justify-content-lg-between align-items-lg-stretch p-0 mb-xxl-4">
             <h3 className="col-12 fs-3 m-0 p-0 pt-4 px-lg-0">Datos principales</h3>

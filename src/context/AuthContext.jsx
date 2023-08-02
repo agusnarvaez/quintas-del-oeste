@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react"
-import { loginRequest, registerRequest,logoutRequest,verifyToken } from '../api/auth'
+import { loginRequest, registerRequest,logoutRequest,verifyToken,updateUser } from '../api/auth'
 import Cookie from 'js-cookie'
 //* Creo el contexto de autenticación para poder usarlo en cualquier parte de la aplicación
 export const AuthContext = createContext()
@@ -50,6 +50,17 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    const updateRegisteredUser = async (user) => {
+        try{
+            const response = await updateUser(user)
+            console.log(response)
+            setUser(response.data.user)
+            return response.data
+        }catch(error){
+            console.log(error.response)
+        }
+    }
+
     useEffect(() => {
         if(errors.length > 0){
             const timer = setTimeout(() => {
@@ -92,6 +103,7 @@ export const AuthProvider = ({children}) => {
                 signIn,
                 signOut,
                 user,
+                updateRegisteredUser,
                 isAuthenticated,
                 errors
             }}

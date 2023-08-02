@@ -9,6 +9,7 @@ import quintasBlancoFavicon from './assets/logos/logoQuintasBlancoChico.png'
 
 const Home = lazy(()=>import("./pages/Home"))
 const Admin = lazy(()=>import("./pages/Admin"))
+const Profile = lazy(()=>import("./pages/Profile"))
 const Login = lazy(()=>import("./pages/Login"))
 const Register = lazy(()=>import("./pages/Register"))
 const ReservationForm = lazy(()=>import("./pages/ReservationForm"))
@@ -87,6 +88,7 @@ export default function App() {
               <Route path="/pago-realizado" element={<ReservationFeedback metaData={metaData.reservation} />} />
               <Route element={<ProtectedRoute/>}>
                 <Route path="/admin" element={<Admin metaData={metaData.admin} />} />
+                <Route path="/admin/profile" element={<Profile metaData={metaData.admin} />} />
               </Route>
               <Route path="/admin/login" element={<Login metaData={metaData.login} />} />
               <Route path="/admin/register" element={<Register metaData={metaData.register} />} />

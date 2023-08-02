@@ -1,9 +1,10 @@
 import { useAuth } from '../../context/AuthContext'
+import { NavLink } from 'react-router-dom'
 import quintasLogo from '../../assets/logos/logoQuintasFooter.png'
 import {useState} from "react"
-export default function Header({user}) {
+export default function Header() {
 
-  const {signOut,isAuthenticated} = useAuth()
+  const {signOut,isAuthenticated,user} = useAuth()
   const [show,setShow] = useState(false)
 
   const handleLogout = () => {
@@ -21,7 +22,7 @@ export default function Header({user}) {
 
             <div className={show?'admin-nav d-flex bg-admin-primary flex-column':'admin-nav bg-admin-primary admin-nav-hidden d-flex flex-column'}>
               {user?<div className='admin-profile bg-admin-secondary-grey w-100 m-0 p-0 py-3 mb-3 row justify-content-center'>
-                <h2 className="col-11 d-flex align-items-center py-2 m-0 px-xxl-5 text-admin-primary fs-3 border-bottom "><i className='bi bi-person-circle me-2'/> {user.name} {user.lastName}</h2>
+                <NavLink className='text-decoration-none' to='/admin/profile' ><h2 className="col-11 d-flex align-items-center py-2 m-0 px-xxl-5 text-admin-primary fs-3 border-bottom "><i className='bi bi-person-circle me-2'/> {user.name} {user.lastName}</h2></NavLink>
                 <h2 className="col-11 d-flex align-items-center py-2 m-0 px-xxl-5 text-admin-primary fs-3"><i className='bi bi-envelope me-2'/> {user.email}</h2>
               </div>:null}
               <ul className='admin-nav-links m-0 list-unstyled text-admin-primary bg-admin-secondary-grey d-flex flex-nowrap align-items-center'>
