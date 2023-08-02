@@ -9,7 +9,7 @@ import {v4} from 'uuid'
 import credentials from '../credentials.js'
 
 //* Inicializar Firebase
-const app = initializeApp(credentials.firebaseConfig)
+const app = initializeApp(credentials.firebaseConfig.production)
 export const storage = getStorage(app)
 
 /**
@@ -22,7 +22,7 @@ export const storage = getStorage(app)
 
 export async function uploadReservationFile(file,name,id){
     //* Genero un nombre único para el archivo y lo guardo en storage
-    const storageRef = ref(storage,`documentos-reservas/${name}-${id}-${v4()}`)
+    const storageRef = ref(storage,`reservation-documents/${name}-${id}-${v4()}`)
 
     //* Subo el archivo a storage
     await  uploadBytes(storageRef,file)
