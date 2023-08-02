@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import { useAuth } from '../context/AuthContext'
 import { useEffect,useState } from 'react'
@@ -24,7 +23,7 @@ export default function Profile({metaData}) {
   //* Obtengo los métodos necesarios para la autenticación de la API
   //* isAuthenticated: para saber si el usuario está autenticado
   //* errors: para manejar los errores de la autenticación
-  const {user,isAuthenticated,updateRegisteredUser, errors:registerErrors} = useAuth()
+  const {user,isAuthenticated,updateRegisteredUser, errors:updateErrors} = useAuth()
   const navigate = useNavigate()
 
   const [showPopUp,setShowPopUp] = useState(false)
@@ -59,6 +58,7 @@ export default function Profile({metaData}) {
     }
 
     const response = await updateRegisteredUser(userToUpdate)
+    console.log(response)
     if(response.status==='User updated') {
       setText("Usuario editado correctamente")
       setShowPopUp(true)
@@ -81,7 +81,7 @@ export default function Profile({metaData}) {
 
     if(!isAuthenticated) navigate("/admin/login")
 
-  }, [isAuthenticated,registerErrors,navigate])
+  }, [isAuthenticated,updateErrors,navigate])
 
   return (
     <>
@@ -97,7 +97,7 @@ export default function Profile({metaData}) {
           <CRUDNotification showPopUp={showPopUp} setShowPopUp={setShowPopUp} text={text}  />
           {
             //* Si hay errores en la autenticación los muestro
-            registerErrors? registerErrors.map((error,i)=><span className="text-danger text-center" key={i}>{error.msg}</span>):null
+            updateErrors? updateErrors.map((error,i)=><span className="text-danger text-center" key={i}>{error.msg}</span>):null
           }
           { //* Muestro los campos del formulario y sus errores
           campos.map((campo,i)=>

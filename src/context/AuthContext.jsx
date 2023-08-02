@@ -58,6 +58,8 @@ export const AuthProvider = ({children}) => {
             return response.data
         }catch(error){
             console.log(error.response)
+            setErrors(error.response.data.errors)
+            return error.response
         }
     }
 
