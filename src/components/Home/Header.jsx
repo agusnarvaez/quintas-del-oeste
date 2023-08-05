@@ -15,8 +15,8 @@ export default function Header() {
     console.log('En scrollToSection')
     setTimeout(() => {
       scroller.scrollTo(sectionId, {
-        offset: -50, // Ajusta esto según el diseño de tu encabezado fijo
-      });
+        offset: -100, // Ajusta esto según el diseño de tu encabezado fijo
+      })
     }, 100)
   }
   var liClass = 'nav-item py-2'
@@ -25,16 +25,16 @@ export default function Header() {
   var burgerMenuIconClass = 'bi bi-list text-center d-sm-block d-md-none z-index-150 col-1 p-0'
   var crossIconClass = 'bi bi-x-lg text-center d-sm-block d-md-none z-index-150 col-1 p-0'
   return (
-    <header className="container-fluid row justify-content-between sticky-top bg-white p-3 m-0" id="header">
+    <header className="container-fluid row justify-content-between fixed-top bg-white p-3 m-0" id="header">
         <img className="img-fluid col-6 col-md-4 col-xl-2 p-md-4" src={logoQuintas} alt='logoQuintas' />
         <i  className={burgerMenu?crossIconClass:burgerMenuIconClass} onClick={() => setBurgerMenu(!burgerMenu)}></i>
       <nav className={navClass} id="navBar">
         <ul className='bg-white nav nav-underline container-fluid justify-content-between flex-column flex-md-row md-col-12 ps-md-4 ps-lg-6' id="navUl">
-          <li className={liClass}><Link className={linkClass} to={'/#home'} onClick={() => scrollToSection('home')}>INICIO</Link></li>
-          <li className={liClass}><Link className={linkClass} to={'/#neighborhood'} onClick={() => scrollToSection('neighborhood')}>EL BARRIO</Link></li>
+          <li className={liClass}><Link className={linkClass} to={'/'} onClick={() => scrollToSection('home')}>INICIO</Link></li>
+          <li className={liClass}><Link className={linkClass} to={'/'} onClick={() => scrollToSection('neighborhood')}>EL BARRIO</Link></li>
           <li className={liClass}><Link className={linkClass} to={"/"} onClick={() => scrollToSection('masterPlan')}>MASTER PLAN</Link></li>
           <li className={liClass}><Link className={linkClass} to={"/"} onClick={() => scrollToSection('location')}>UBICACION</Link></li>
-          <li className={liClass}><Link className={linkClass} to={"/#contact"}>CONTACTO</Link></li>
+          <li className={liClass}><Link className={linkClass} to={"/"}>CONTACTO</Link></li>
         </ul>
       </nav>
     </header>
