@@ -19,6 +19,9 @@ import {uploadReservationFile} from '../services/firebase.config'
 //* Importo useForm para manejar el formulario
 import {useForm} from 'react-hook-form'
 
+//* Importo el hook para redireccionar
+import { useNavigate } from 'react-router-dom'
+
 //* Importo el estado de los botones
 import {buttonState} from '../utils/formUtils'
 
@@ -27,7 +30,7 @@ export default function ReservationForm({metaData}) {
   const [documentFileName, setDocumentFileName] = useState('Ningún archivo seleccionado')
   const [idConfirmationFileName, setIdConfirmationFileName] = useState('Ningún archivo seleccionado')
   const [buttonClass,setButtonClass] = useState(buttonState.default)
-
+  const navigate = useNavigate()
   //* Context de lotes
   const { lot,setReservation,createPaymentOrder } = useLots()
   //* Hook de formulario de reserva de lote
@@ -207,6 +210,7 @@ export default function ReservationForm({metaData}) {
     }catch(error){
       console.log(error)
       alert('Ocurrió un error al generar el pago, inténtelo mas tarde nuevamente y comuníquese con el propietario de la página.')
+      navigate('/')
     }
   })
 
