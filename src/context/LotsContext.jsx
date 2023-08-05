@@ -112,7 +112,8 @@ export const LotsProvider = ({children}) => {
     }
 
     useEffect(() => {
-        if(formErrors.length > 0){
+
+        if(formErrors&&formErrors.length > 0){
             const timer = setTimeout(() => {
                 setFormErrrors([])
             }, 5000)
