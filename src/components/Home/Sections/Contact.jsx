@@ -1,9 +1,13 @@
 import bgContact from "../../../assets/background/bg-contact.jpg"
 import ContactForm from "./Contact/ContactForm"
 import LinksInfo from "./Contact/LinksInfo"
+import Scroll from'react-scroll'
+
 export default function Contact() {
+  var Element  = Scroll.Element
+
   return (
-    <section className="container-fluid p-0  flex-nowrap mb-3" id="contact">
+    <Element className="container-fluid p-0  flex-nowrap mb-3" id="contact" name='contact'>
 
       <div className="container-fluid banner-container p-0 d-flex align-items-center justify-content-center position-relative py-lg-4 flex-wrap w-100">
 
@@ -33,6 +37,6 @@ export default function Contact() {
       <div className="d-lg-none">
         <ContactForm/>
       </div>
-    </section>
+    </Element>
   )
 }

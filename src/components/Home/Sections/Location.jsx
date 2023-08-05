@@ -2,10 +2,13 @@ import Cercanias from './Location/CloseStreets'
 import Direccion from './Location/Address'
 
 import GoogleMap from './Location/GoogleMap'
+import Scroll from'react-scroll'
+
 
 export default function Location() {
+  var Element  = Scroll.Element
   return (
-    <section className="container-fluid p-0 mt-5" id="location">
+    <Element className="container-fluid p-0 mt-5" id='location' name="location">
 
       <Direccion />
 
@@ -17,6 +20,6 @@ export default function Location() {
 
       </div>
 
-    </section>
+    </Element>
   )
 }

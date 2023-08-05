@@ -1,7 +1,9 @@
 import InteractiveMap from '../../Map/Map'
+import Scroll from'react-scroll'
 export default function MasterPlan() {
+  var Element  = Scroll.Element
   return (
-    <section className="container-fluid p-0 d-flex justify-content-center flex-wrap" id="masterPlan">
+    <Element className="container-fluid p-0 d-flex justify-content-center flex-wrap" id="masterPlan" name='masterPlan'>
       <h2 className='text-quintas-green text-center'>RESERVÁ TU LOTE AHORA EN 3 PASOS</h2>
       <div className='my-3 col-11 row flex-wrap justify-content-center  align-items-center'>
         <div className='bg-quintas-green punta-final conector-md h-50px my-2 row col-12 col-md-6 col-lg-3 p-0 px-5 px-lg-5 align-items-center justify-content-between '>
@@ -26,6 +28,6 @@ export default function MasterPlan() {
 
       </div>
       <InteractiveMap adminMode={false} />
-    </section>
+    </Element>
   )
 }

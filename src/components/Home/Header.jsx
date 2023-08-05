@@ -1,9 +1,24 @@
 import { useState } from 'react'
 import logoQuintas from '../../assets/logos/logoQuintas.png'
+import { Link } from 'react-router-dom'
+
+//* Para hacer scroll suave
+import Scroll from 'react-scroll'
 
 export default function Header() {
   const [burgerMenu, setBurgerMenu] = useState(false)
+  const isHomePage = window.location.pathname === '/'
+  var scroller = Scroll.scroller
 
+  const scrollToSection = sectionId => {
+    setBurgerMenu(false) // Cierra el menú al hacer clic en un enlace
+    console.log('En scrollToSection')
+    setTimeout(() => {
+      scroller.scrollTo(sectionId, {
+        offset: -50, // Ajusta esto según el diseño de tu encabezado fijo
+      });
+    }, 100)
+  }
   var liClass = 'nav-item py-2'
   var linkClass = 'nav-link text-dark fs-4 l-p-3'
   var navClass = 'navbar col-12 col-md-8 d-flex justify-content-between ps-md-4 ps-lg-6'+(burgerMenu?' show':'')
@@ -15,11 +30,11 @@ export default function Header() {
         <i  className={burgerMenu?crossIconClass:burgerMenuIconClass} onClick={() => setBurgerMenu(!burgerMenu)}></i>
       <nav className={navClass} id="navBar">
         <ul className='bg-white nav nav-underline container-fluid justify-content-between flex-column flex-md-row md-col-12 ps-md-4 ps-lg-6' id="navUl">
-          <li className={liClass}><a className={linkClass} href="#home">INICIO</a></li>
-          <li className={liClass}><a className={linkClass} href="#neighborhood">EL BARRIO</a></li>
-          <li className={liClass}><a className={linkClass} href="#masterPlan">MASTER PLAN</a></li>
-          <li className={liClass}><a className={linkClass} href="#location">UBICACION</a></li>
-          <li className={liClass}><a className={linkClass} href="#contact">CONTACTO</a></li>
+          <li className={liClass}><Link className={linkClass} to={'/#home'} onClick={() => scrollToSection('home')}>INICIO</Link></li>
+          <li className={liClass}><Link className={linkClass} to={'/#neighborhood'} onClick={() => scrollToSection('neighborhood')}>EL BARRIO</Link></li>
+          <li className={liClass}><Link className={linkClass} to={"/"} onClick={() => scrollToSection('masterPlan')}>MASTER PLAN</Link></li>
+          <li className={liClass}><Link className={linkClass} to={"/"} onClick={() => scrollToSection('location')}>UBICACION</Link></li>
+          <li className={liClass}><Link className={linkClass} to={"/#contact"}>CONTACTO</Link></li>
         </ul>
       </nav>
     </header>

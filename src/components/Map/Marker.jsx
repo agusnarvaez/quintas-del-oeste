@@ -12,10 +12,13 @@ import 'leaflet/dist/leaflet.css' //* Importo los estilos de Leaflet
 import IconLocationAvailable from './IconLocationAvailable'
 import IconLocationReserved from './IconLocationReserved'
 
+//* Para hacer scroll suave
+import Scroll from 'react-scroll'
+
 export default function Markers({mapLot}) {
     //* Hook para guardar el lote seleccionado
     const {setLot} = useLots()
-
+    var scroller = Scroll.animateScroll
     //* Guardo las coordenadas del lote
     const coordinates = {lat:mapLot.coordinates.lat,lng:mapLot.coordinates.lng}
 
@@ -23,6 +26,7 @@ export default function Markers({mapLot}) {
     const navigate = useNavigate() //* Hook para redireccionar
     const reserveLot = (lotToReserve)=>{
         setLot(lotToReserve)
+        scroller.scrollToTop()
         navigate("/reservar-lote")
     }
 
