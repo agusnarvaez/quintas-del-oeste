@@ -216,31 +216,31 @@ header i{
 
   .punta-final::before,
   .punta-final::after{
-    width: 60px;
+    width: 40px;
     height: 15px;
-    bottom: 15px;
-    right: -30px;
+    bottom: 0px;
+    right: -20px;
     transform: rotate(-75deg);
     z-index: 10;
   }
 
   .punta-final::before{
-    top: 15px;
+    top: 0px;
     transform: rotate(75deg);
   }
 
   .conector-md::before,
   .conector-md::after{
-    width: 60px;
+    width: 40px;
     height: 15px;
-    bottom: 15px;
-    right: -7px;
+    bottom: 0px;
+    right: -0px;
     transform: rotate(-75deg);
     z-index: 10;
   }
 
   .conector-md::before{
-    top: 15px;
+    top: 0px;
     transform: rotate(75deg);
   }
   .mt-lg-125px{
