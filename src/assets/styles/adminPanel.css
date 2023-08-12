@@ -23,6 +23,9 @@
 .bg-admin-primary{
     background-color: #0b1727;
 }
+.bg-admin-nav-primary{
+    background-color: #0b1727;
+}
 
 .bg-admin-secondary{
     background-color: #121e2d;
@@ -61,9 +64,31 @@
     justify-content: flex-start;
     transition: all 0.3s ease-in-out;
 }
-.admin-nav-hidden{
+.admin-nav--hidden{
     transform: translateX(150%);
 }
+.rounded-top-15px{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.rounded-bottom-15px{
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.padding-2{
+    padding: 2%;
+}
+.padding-3{
+    padding: 3%;
+}
+.admin-nav_button{
+    padding: 3%;
+
+    /* transition: all 0.3s ease-out; */
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+
+}
+
 .admin-header-icon{
     display: flex;
     justify-content: center;
@@ -144,7 +169,7 @@
     transition: all 0.3s ease-in-out;
 }
 .admin-profile {
-    padding: 5% 0;
+    /* padding: 5% 0; */
     width: 100%;
     height: fit-content;
     border-radius: 15px;
@@ -155,7 +180,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 5% 5%;
+
     border-radius: 15px;
 }
 .icon-admin-secondary-dark{
@@ -175,6 +200,14 @@
 }
 .admin-main{
     margin-top: 60px;
+}
+.hover-dark:hover{
+    background-color: #176488;
+    color: #0b1727;
+    opacity: 0.8;
+    /* transform: scale(1.1); */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
 }
 .lotsList{
     width: 100%;
@@ -256,6 +289,24 @@
         width: 35%;
         top: 80px;
         padding: 1%;
+    }
+    .admin-nav_button:hover{
+
+        background-color: #1b273b;
+        transform: scale(1.01);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .admin-nav_button:hover h2{
+        color:rgb(217, 216, 222);
+        text-shadow: #0b1727;
+    }
+
+    .admin-nav_button--danger:hover{
+        background-color: #e74c3c;
+        color: white;
+    }
+    .admin-nav_button--danger:hover h2 {
+        color: white !important;
     }
 
     .accordion-admin-content{
