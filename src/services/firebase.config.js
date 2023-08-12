@@ -9,7 +9,7 @@ import {v4} from 'uuid'
 import credentials from '../credentials.js'
 
 //* Inicializar Firebase
-const app = initializeApp(credentials.firebaseConfig.production)
+const app = initializeApp(credentials.firebaseConfig.development)
 export const storage = getStorage(app)
 
 /**
