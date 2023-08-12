@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-import {useLots} from "../../context/LotsContext"
+import {useLots} from "../../../context/LotsContext"
 export default function ReservationData({id}) {
   const [show,setShow]=useState(false)
   const [reservation,setReservation]=useState({})

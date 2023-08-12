@@ -1,6 +1,6 @@
 import { useEffect,useState } from 'react'
-import {useLots}from '../../context/LotsContext'
-import DeleteConfirmation from './DeleteConfirmation'
+import {useLots}from '../../../context/LotsContext'
+import DeleteConfirmation from '../DeleteConfirmation'
 import ReservationData from './ReservationData'
 export default function LotsList({setEditionForm,setShowForm}) {
 
