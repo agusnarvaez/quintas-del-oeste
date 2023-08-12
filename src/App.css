@@ -6,11 +6,13 @@
 }
 #root{
   overflow-x: hidden;
+  /* height: 100%; */
 }
 body{
   font-family: 'Lexend', sans-serif;
   overflow-x: hidden;
   width: 100%;
+  /* height: 100vh; */
 }
 /* header{
   overflow-x: hidden;

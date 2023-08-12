@@ -13,7 +13,7 @@ export default function LotForm({editionForm,setEditionForm}) {
   const fields = [
     {
       name: "number",
-      placeholder: "Número de lote",
+      placeholder: "N° de lote",
       type: "number",
       containerClass: "col-6 col-lg-6 py-2 col-xxl-2 m-xxl-0 p-xxl-0 row flex-column align-items-center",
       inputClass: "form-control",

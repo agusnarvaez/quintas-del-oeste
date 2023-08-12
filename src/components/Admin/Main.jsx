@@ -14,7 +14,7 @@ export default function Main() {
     }
   }
   return (
-    <main className="admin-main bg-admin-primary col-12 m-0 row justify-content-center">
+    <main className="admin-main bg-admin-primary col-12 mx-0 row justify-content-center">
       <div className="col-12 py-2 d-flex flex-column align-items-center p-0">
         <h2 onClick={handleAccordion} className="col-11 fs-1 p-3 rounded-4 text-admin-primary p-0 bg-admin-secondary d-flex justify-content-between ">{editionForm?'Editar':'Agregar'} Lote<i className={showForm?"bi bi-plus fw-bolder accordion-admin-button rotate-45":"bi bi-plus fw-bolder accordion-admin-button"} /></h2>
 

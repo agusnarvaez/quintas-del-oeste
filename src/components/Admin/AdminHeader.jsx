@@ -12,7 +12,7 @@ export default function Header() {
   }
 
   return (
-    <header className="admin-header w-100 m-0  d-flex flex-nowrap sticky-top align-items-center justify-content-between bg-admin-primary">
+    <header className="admin-header w-100 m-0 p-3  d-flex flex-nowrap sticky-top align-items-center justify-content-between bg-admin-primary">
         <img src={quintasLogo} alt="Logo Quintas" className="logo-admin text-admin-primary m-0 p-0" />
         {isAuthenticated?
           <>
