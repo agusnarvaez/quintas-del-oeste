@@ -8,7 +8,8 @@ import quintasFavicon from './assets/logos/logoQuintasChico.png'
 import quintasBlancoFavicon from './assets/logos/logoQuintasBlancoChico.png'
 
 const Home = lazy(()=>import("./pages/Home"))
-const Admin = lazy(()=>import("./pages/Admin"))
+const AdminLots = lazy(()=>import("./pages/AdminLots"))
+const AdminUsers = lazy(()=>import("./pages/AdminUsers"))
 const Profile = lazy(()=>import("./pages/Profile"))
 const Login = lazy(()=>import("./pages/Login"))
 const Register = lazy(()=>import("./pages/Register"))
@@ -87,7 +88,8 @@ export default function App() {
               <Route path="/reservar-lote" element={<ReservationForm metaData={metaData.reservation} />} />
               <Route path="/pago-realizado" element={<ReservationFeedback metaData={metaData.reservation} />} />
               <Route element={<ProtectedRoute/>}>
-                <Route path="/admin" element={<Admin metaData={metaData.admin} />} />
+                <Route path="/admin" element={<AdminLots metaData={metaData.admin} />} />
+                <Route path="/admin/users" element={<AdminUsers metaData={metaData.admin} />} />
                 <Route path="/admin/profile" element={<Profile metaData={metaData.admin} />} />
               </Route>
               <Route path="/admin/login" element={<Login metaData={metaData.login} />} />
