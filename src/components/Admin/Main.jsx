@@ -1,5 +1,5 @@
-import LotForm from "./LotForm"
-import LotsList from "./LotsList"
+import LotForm from "./Lots/LotForm"
+import LotsList from "./Lots/LotsList"
 import {useState} from "react"
 import { useLots } from "../../context/LotsContext"
 export default function Main() {

@@ -1,9 +1,9 @@
 
-import Map from "../Map/Map"
+import Map from "../../Map/Map"
 import { useEffect,useState } from 'react'
 import {useForm} from 'react-hook-form'
-import {useLots}from '../../context/LotsContext'
-import CRUDNotification from "./CRUDNotification"
+import {useLots}from '../../../context/LotsContext'
+import CRUDNotification from "../CRUDNotification"
 
 export default function LotForm({editionForm,setEditionForm}) {
   const {register,handleSubmit,formState:{errors},getValues,setValue,reset} = useForm()
