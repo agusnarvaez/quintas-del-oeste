@@ -20,13 +20,22 @@ export default function Table({title,titles,elementsList,fetchElements,setElemen
     setShowPopUp(false)
     setLotToDelete({})
   }
-  const propertyValues =(element) => Object.keys(element).map(property => {
+  /* const propertyValues =(element) => Object.keys(element).map(property => {
     return (
       <div key={property} className={`lotList-content-item col-${element.size} w-bold`}>
         {element[property]}
       </div>
-  );})
-
+  );}) */
+  const propertyValues = (element) => {
+    return Object.keys(element).map((property, index) => {
+      const titleSize = titles[index].size
+      return (
+        <div key={property} className={`lotList-content-item col-${titleSize} w-bold`}>
+          {element[property]}
+        </div>
+      );
+    });
+  };
 
   useEffect(()=>{
     if(elementsList.length === 0) fetchElements()
@@ -38,7 +47,7 @@ export default function Table({title,titles,elementsList,fetchElements,setElemen
       <div className="lotList-table d-flex flex-column text-admin-primary bg-admin-primary">
         <ul className='lotList-header d-flex justify-content-between fw-bold text-admin-primary bg-admin-primary'>
           {
-            titles.map((element,i)=>{
+            titles.map((title,i)=>{
               return(
                 <li className={`lotList-header-item col-${title.size}`} key={i}>{title.name}</li>
               )
