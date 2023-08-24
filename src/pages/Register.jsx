@@ -65,7 +65,7 @@ export default function Register({metaData}) {
 
         <h1 className="text-white text-center">Registrarse</h1>
 
-        <form className="container-fluid row flex-column col-4 p-4 pb-0 rounded justify-content-center align-items-center bg-dark-subtle"
+        <form className="container-fluid row flex-column col-10 col-lg-4 p-4 pb-0 rounded justify-content-center align-items-center bg-dark-subtle"
           onSubmit={onsubmit}
         >
           {
@@ -74,9 +74,9 @@ export default function Register({metaData}) {
           }
           { //* Muestro los campos del formulario y sus errores
           campos.map((campo,i)=>
-              <div className="col-12 row justify-content-center "key={i}>
+              <div className="col-9 row justify-content-center "key={i}>
                 <input
-                  className="col-6 my-2 form-control w-75"
+                  className="my-2 form-control"
                   type={campo.type}
                   placeholder={campo.placeholder}
                   {...campo.register}
