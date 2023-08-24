@@ -7,14 +7,14 @@ import ProtectedRoute from "./components/Admin/ProtectedRoute"
 import quintasFavicon from './assets/logos/logoQuintasChico.png'
 import quintasBlancoFavicon from './assets/logos/logoQuintasBlancoChico.png'
 
-const Home = lazy(()=>import("./pages/Home"))
-const Admin = lazy(()=>import("./pages/Admin"))
-const Profile = lazy(()=>import("./pages/Profile"))
-const Login = lazy(()=>import("./pages/Login"))
-const Register = lazy(()=>import("./pages/Register"))
-const ReservationForm = lazy(()=>import("./pages/ReservationForm"))
-const ReservationFeedback = lazy(()=>import("./pages/ReservationFeedback"))
-const Error404 = lazy(()=>import("./pages/ErrorNotFound"))
+const Home = lazy(()=>import("./Pages/Home"))
+const Admin = lazy(()=>import("./Pages/Admin"))
+const Profile = lazy(()=>import("./Pages/Profile"))
+const Login = lazy(()=>import("./Pages/Login"))
+const Register = lazy(()=>import("./Pages/Register"))
+const ReservationForm = lazy(()=>import("./Pages/ReservationForm"))
+const ReservationFeedback = lazy(()=>import("./Pages/ReservationFeedback"))
+const Error404 = lazy(()=>import("./Pages/ErrorNotFound"))
 
 export default function App() {
 
@@ -79,9 +79,9 @@ export default function App() {
 
   return (
     <Suspense fallback={<div className="loading">Cargando...</div>}>
+          <BrowserRouter>
       <AuthProvider>
         <LotsProvider>
-          <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home metaData={metaData.home} />} />
               <Route path="/reservar-lote" element={<ReservationForm metaData={metaData.reservation} />} />
@@ -92,13 +92,11 @@ export default function App() {
               </Route>
               <Route path="/admin/login" element={<Login metaData={metaData.login} />} />
               <Route path="/admin/register" element={<Register metaData={metaData.register} />} />
-              <Route path="*" element={<Error404 metaData={metaData.error404} />} />
+              <Route path="/*" element={<Error404 metaData={metaData.error404} />} />
             </Routes>
-          </BrowserRouter>
         </LotsProvider>
       </AuthProvider>
+          </BrowserRouter>
     </Suspense>
   )
 }
-
-
