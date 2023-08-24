@@ -41,7 +41,7 @@
 }
 .logo-admin{
     filter: grayscale(100%) brightness(0.6) contrast(1.5);
-    height: 100%;
+    height: 60%;
 }
 .text-quintas-green-dark{
     color:#78ba5299;
@@ -193,7 +193,7 @@
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 0 0%;
+    padding: 0 2%;
     height: 60px !important;
     background-color: #0b1727 !important;
     /* z-index: 1000 !important; */
@@ -333,7 +333,9 @@
         padding: 1%;
     }
 
-
+    .logo-admin{
+        height: 80%;
+    }
 }
 
 /*! ########################################*/
@@ -344,7 +346,7 @@
         margin-top: 100px;
     }
     .admin-header{
-        padding: 1% 3%;
+        padding: 1% 2%;
         height: 100px !important;
     }
 
