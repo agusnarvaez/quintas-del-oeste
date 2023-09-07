@@ -20,10 +20,10 @@ export default function Contact() {
         <div className="d-none d-lg-block contactForm py-lg-3 col-lg-5 " >
           <ContactForm/>
         </div>
+      </div>
         <div className="d-none d-lg-flex justify-content-center m-lg-0 py-lg-3 col-lg-12 z-index-150" >
           <LinksInfo />
         </div>
-      </div>
       <div className="d-lg-none z-index-150">
         <LinksInfo/>
       </div>
