@@ -6,7 +6,9 @@
 *{
     box-sizing: border-box;
 }
-
+.border-radius-none{
+    border-radius: 0 !important;
+}
 
 .whatsappButton{
     background-color: #00bb2d;

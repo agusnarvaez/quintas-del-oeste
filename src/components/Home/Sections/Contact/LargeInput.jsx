@@ -1,6 +1,6 @@
 import { useState } from "react"
 export default function LargeInput({field,contact,setContact}) {
-    var inputClassContainerClass = "border my-2 col-12"
+    var inputClassContainerClass = "border my-2 col-12 border-radius-0"
     var inputSuccess = "my-2 col-12 border-quintas-green"
     var inputError = "border my-2 col-12 border-2 border-danger"
 

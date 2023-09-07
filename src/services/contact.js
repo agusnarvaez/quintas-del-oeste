@@ -3,7 +3,7 @@ const fieldsList = [
     {
         name:"from_name",
         type:"text",
-        class: "form-control col-12 border-0 p-2",
+        class: "form-control col-12 border-0 p-2 border-radius-none",
         value:"",
         placeholder:"Nombre y apellido",
         isValid:false,
@@ -13,7 +13,7 @@ const fieldsList = [
     {
         name:"from_email",
         type:"text",
-        class: "form-control col-12 border-0 p-2",
+        class: "form-control col-12 border-0 p-2 border-radius-none",
         value:"",
         placeholder:"Email",
         isValid:false,
@@ -23,7 +23,7 @@ const fieldsList = [
     {
         name:"phone",
         type:"tel",
-        class: "form-control col-12 border-0 p-2",
+        class: "form-control col-12 border-0 p-2 border-radius-none",
         value:"",
         placeholder:"Ingrese un teléfono",
         isValid:false,
@@ -33,7 +33,7 @@ const fieldsList = [
     {
         name:"message",
         type:"text",
-        class: "form-control col-12 border-0 p-2",
+        class: "form-control col-12 border-0 p-2 border-radius-none",
         value:"",
         placeholder:"¿Por qué deseas contactarte?",
         isValid:false,

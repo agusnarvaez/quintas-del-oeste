@@ -7,14 +7,14 @@ import ProtectedRoute from "./components/Admin/ProtectedRoute"
 import quintasFavicon from './assets/logos/logoQuintasChico.png'
 import quintasBlancoFavicon from './assets/logos/logoQuintasBlancoChico.png'
 
-const Home = lazy(()=>import("./Pages/Home"))
-const Admin = lazy(()=>import("./Pages/Admin"))
-const Profile = lazy(()=>import("./Pages/Profile"))
-const Login = lazy(()=>import("./Pages/Login"))
-const Register = lazy(()=>import("./Pages/Register"))
-const ReservationForm = lazy(()=>import("./Pages/ReservationForm"))
-const ReservationFeedback = lazy(()=>import("./Pages/ReservationFeedback"))
-const Error404 = lazy(()=>import("./Pages/ErrorNotFound"))
+const Home = lazy(()=>import("./Pages/Home.jsx"))
+const Admin = lazy(()=>import("./Pages/Admin.jsx"))
+const Profile = lazy(()=>import("./Pages/Profile.jsx"))
+const Login = lazy(()=>import("./Pages/Login.jsx"))
+const Register = lazy(()=>import("./Pages/Register.jsx"))
+const ReservationForm = lazy(()=>import("./Pages/ReservationForm.jsx"))
+const ReservationFeedback = lazy(()=>import("./Pages/ReservationFeedback.jsx"))
+const Error404 = lazy(()=>import("./Pages/ErrorNotFound.jsx"))
 
 export default function App() {
 
