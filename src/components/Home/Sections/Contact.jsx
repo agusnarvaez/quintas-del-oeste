@@ -21,14 +21,14 @@ export default function Contact() {
           <ContactForm/>
         </div>
       </div>
-        <div className="d-none d-lg-flex justify-content-center m-lg-0 py-lg-3 col-lg-12 z-index-150" >
-          <LinksInfo />
-        </div>
       <div className="d-lg-none z-index-150">
         <LinksInfo/>
       </div>
 
-      <div className="container-fluid px-5 col-lg-8 my-lg-3">
+      <div className="container-fluid px-0 col-lg-8 my-lg-3">
+        <div className="d-none d-lg-flex justify-content-center m-lg-0 py-lg-3 col-lg-12 z-index-150" >
+          <LinksInfo />
+        </div>
         <h2 className="fs-3 text-quintas-green mb-lg-3">NATURALEZA, UBICACIÓN Y COMODIDAD</h2>
         <p className="fs-5 m-0">Se parte de un proyecto nuevo, un barrio cerrado de 55 hectáreas con 1000 lotes de 300 m<sup>2</sup> a 500 m<sup>2</sup>.</p>
         <p className="fs-5 fw-bold m-0">Bajas expensas, con esctrituración inmediata y seguridad.</p>
