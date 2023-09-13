@@ -1,10 +1,18 @@
 /*! #######################################*/
 /*! ############### MOBILE ###############*/
 /*! #######################################*/
-
+@font-face {
+    font-family: 'Avenir'; /* Un nombre que elijas para la fuente */
+    src: url('../fonts/AvenirLTStd-Medium.otf') format('opentype');
+    /* La ruta a tu archivo .otf y el formato de fuente */
+  }
 /** #### Estilos generales #### */
+body{
+    font-family: 'Avenir', sans-serif;
+}
 *{
     box-sizing: border-box;
+    font-family: 'Avenir', sans-serif;
 }
 .border-radius-none{
     border-radius: 0 !important;
