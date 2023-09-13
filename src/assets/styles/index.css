@@ -9,6 +9,15 @@
 .border-radius-none{
     border-radius: 0 !important;
 }
+.bg-white-transparent{
+    background-color: rgb(255 255 255 / 88%);
+}
+.bg-transparent{
+    background-color: #f0f0f000 !important;
+}
+.border-gray{
+    border: 1px solid #ccc;
+}
 
 .whatsappButton{
     background-color: #00bb2d;
