@@ -15,7 +15,7 @@ export default function Contact() {
         <img className="img-fluid background-image"src={bgContact} alt="Contact Background"/>
         {/* </div> */}
 
-        <h2 className="text-white fs-3 text-center px-5 col-lg-6">TU LOTE ESTÁ <br/>EN GENERAL RODRIGUEZ <br/>DESCUBRÍ QUINTAS</h2>
+        <h2 className="text-white fs-3 px-5 col-lg-6">TU LOTE ESTÁ <br/>EN GENERAL RODRIGUEZ <br/>DESCUBRÍ QUINTAS</h2>
 
         <div className="d-none d-lg-block contactForm py-lg-3 col-lg-4 bg-white-transparent" >
           <ContactForm/>
