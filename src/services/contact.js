@@ -25,7 +25,7 @@ const fieldsList = [
         type:"tel",
         class: "form-control col-12 p-2 border-radius-none bg-transparent border-gray",
         value:"",
-        placeholder:"Ingrese un teléfono",
+        placeholder:"Ingresá tu teléfono",
         isValid:false,
         showErrors:false,
         error:"Ingrese un teléfono válido"

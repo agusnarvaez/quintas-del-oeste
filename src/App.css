@@ -11,9 +11,7 @@ body{
   overflow-x: hidden;
   width: 100%;
 }
-/* header{
-  overflow-x: hidden;
-} */
+
 main{
   overflow-x: hidden;
 }
@@ -165,6 +163,33 @@ header i{
 .mt-70px{
   margin-top: 70px;
 }
+.label-input{
+  border: none;
+}
+
+.home-services i{
+  font-size: 2rem;
+}
+.btn-quintas{
+  min-width: 250px;
+  min-height: 40px;
+  font-size: 3rem;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+}
+.btn-quintas *{
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.btn-quintas:hover{
+  background-color: #69a148;
+  transition: all 0.3s ease-in-out;
+}
+.btn-quintas:active{
+  background-color: #53803a;
+}
+
 /*! ########################################*/
 /*! ################ TABLETS ###############*/
 /*! ########################################*/

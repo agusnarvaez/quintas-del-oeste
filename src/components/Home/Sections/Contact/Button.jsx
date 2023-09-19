@@ -16,10 +16,10 @@ export default function ContactInputs({buttonClass,setButtonClass,text}) {
                 <button className="container-fluid btn btn-danger px-3 my-3" type="button">¡Ups! Ha habido un error</button>)
         default: return (
             <button
-                className="container-fluid border-0 bg-quintas-green d-flex justify-content-center align-items-center py-2 my-3 w-75"
+                className="btn-quintas container-fluid border-0 bg-quintas-green d-flex justify-content-center align-items-center py-2 my-3 w-75"
                 type="submit"
                 >
-                    <p className="text-white m-0 fs-4">{text}</p>
+                    <p className="text-white m-0">{text}</p>
             </button>)
         }
     }

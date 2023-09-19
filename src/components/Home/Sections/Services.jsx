@@ -50,7 +50,7 @@ export default function Services() {
     }
   ]
   return (
-    <section className="container-fluid row p-0 my-5 mx-0 " id="location">
+    <section className="home-services container-fluid row p-0 my-5 mx-0 " id="location">
       {/* <div>
         <h2>Características</h2>
         <p>Quintas es un barrio ubicado en zona oeste</p>
