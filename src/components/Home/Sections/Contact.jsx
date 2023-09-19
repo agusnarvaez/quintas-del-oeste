@@ -25,7 +25,7 @@ export default function Contact() {
         <LinksInfo/>
       </div>
 
-      <div className="container-fluid px-0 col-lg-8 my-lg-3">
+      <div className="container-fluid px-5 col-lg-8 my-lg-3">
         <div className="d-none d-lg-flex justify-content-center m-lg-0 py-lg-3 col-lg-12 z-index-150" >
           <LinksInfo />
         </div>

@@ -33,7 +33,7 @@ export default function Header() {
           <li className={liClass}><Link className={linkClass} to={'/'} onClick={() => scrollToSection('home')}>INICIO</Link></li>
           <li className={liClass}><Link className={linkClass} to={'/'} onClick={() => scrollToSection('neighborhood')}>EL BARRIO</Link></li>
           <li className={liClass}><Link className={linkClass} to={"/"} onClick={() => scrollToSection('masterPlan')}>MASTER PLAN</Link></li>
-          <li className={liClass}><Link className={linkClass} to={"/"} onClick={() => scrollToSection('location')}>UBICACION</Link></li>
+          <li className={liClass}><Link className={linkClass} to={"/"} onClick={() => scrollToSection('location')}>UBICACIÓN</Link></li>
           <li className={liClass}><Link className={linkClass} to={"/"}>CONTACTO</Link></li>
         </ul>
       </nav>

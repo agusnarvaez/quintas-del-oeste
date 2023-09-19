@@ -37,13 +37,14 @@ export default function SmallInput({field,contact,setContact}) {
         <>
             <div className={inputClass} id={field.type}>
                 <input
+                    id={field.name}
                     className={field.class}
-                    id="input"
                     name={field.name}
                     placeholder={field.placeholder}
                     type={field.type}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    autoComplete='on'
                     required
                 />
             </div>

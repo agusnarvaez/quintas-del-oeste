@@ -33,7 +33,7 @@ export default function LargeInput({field,contact,setContact}) {
             <div className={inputClass}>
                 <textarea
                     className={field.class}
-                    id="input"
+                    id={field.name}
                     name={field.name}
                     placeholder={field.placeholder}
                     onChange={handleChange}
