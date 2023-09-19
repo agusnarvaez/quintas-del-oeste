@@ -1,0 +1,114 @@
+/*! #######################################*/
+/*! ############### MOBILE ###############*/
+/*! #######################################*/
+#neighborhood{
+  padding: 0 5%;
+}
+.gallery-main-image{
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+}
+.gallery-list-image{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100px;
+  max-height: 200px;
+  gap:10px;
+  list-style: none;
+  overflow-x: scroll;
+  padding: 0 !important;
+  scrollbar-width: thin; /* Añadido para Firefox */
+  scrollbar-color: transparent transparent; /* Añadido para Firefox */
+  margin: 2% 0;
+}
+.gallery-list-image::-webkit-scrollbar {
+  width: 0.5em; /* Ancho de la barra de desplazamiento */
+}
+
+.gallery-list-image::-webkit-scrollbar-track {
+  background-color: #ffffff0e; /* Color de fondo de la barra de desplazamiento */
+}
+
+.gallery-list-image::-webkit-scrollbar-thumb {
+  background-color: #8888880a; /* Color del 'thumb' de la barra de desplazamiento */
+  border-radius: 2px; /* Borde redondeado del 'thumb' */
+}
+.gallery-list-image li{
+  height: 100%;
+  min-width: 150px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  transition: all 0.5s ease-in-out;
+}
+
+.selected-image {
+  /* border: 2px solid #ff5722; /* Borde rojo para indicar la selección */
+  transform: scale(0.9);
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+}
+
+/*! ########################################*/
+/*! ##### TABLETS & LARGER SMARTPHONES #####*/
+/*! ########################################*/
+@media (min-width: 481px) {
+
+
+  .gallery-list-image{
+    gap: 20px;
+    min-height: 100px;
+  }
+  .gallery-list-image li{
+    min-width: 200px;
+  }
+
+}
+
+
+/*! ########################################*/
+/*! ################ LAPTOPS ###############*/
+/*! ########################################*/
+@media (min-width: 769px) {
+
+  .gallery-list-image{
+    min-height: 200px;
+    max-height: 250px;
+    gap: 30px;
+  }
+
+  .gallery-list-image::-webkit-scrollbar {
+    width: 100%; /* Ancho de la barra de desplazamiento */
+  }
+
+  .gallery-list-image::-webkit-scrollbar-track {
+    background-color: #ffffff33; /* Color de fondo de la barra de desplazamiento */
+  }
+
+  .gallery-list-image::-webkit-scrollbar-thumb {
+    background-color: #88888831; /* Color del 'thumb' de la barra de desplazamiento */
+    border-radius: 2px; /* Borde redondeado del 'thumb' */
+  }
+
+  .gallery-list-image li{
+    cursor: pointer;
+  }
+  .gallery-list-image li:hover{
+    transform: scale(1.1);
+    transition: transform 0.5s;
+  }
+
+}
+
+/*! ########################################*/
+/*! ############ LARGER DESKTOPS ###########*/
+/*! ########################################*/
+@media (min-width: 1280px) {
+
+  .gallery-list-image{
+    min-height: 300px;
+    max-height: 400px;
+  }
+  .gallery-list-image li{
+    min-width: 350px;
+  }
+}

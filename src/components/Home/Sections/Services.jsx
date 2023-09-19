@@ -50,14 +50,14 @@ export default function Services() {
     }
   ]
   return (
-    <section className="home-services container-fluid row p-0 my-5 mx-0 " id="location">
+    <section className="home-services container-fluid row p-0 my-5 mx-0 " id="services">
       {/* <div>
         <h2>Características</h2>
         <p>Quintas es un barrio ubicado en zona oeste</p>
       </div> */}
 
       <div className="bg-quintas-dark-gray col-12 row p-2 py-5 m-0 justify-content-center justify-content-around">
-        <ul className="list-unstyled m-0 p-0 col-10 col-md-5 col-lg-4 col-xl-4 col-xxl-2">
+        <ul className="list-unstyled m-0 p-0 col-10 col-md-5 col-lg-4 col-xl-4 col-xxl-3">
           <li className='text-white fs-5 pb-2'><h3>INFRAESTRUCTURA</h3></li>
           {
             infrastructure.map((item, index) => (
@@ -68,7 +68,7 @@ export default function Services() {
             ))
           }
         </ul>
-        <ul className="list-unstyled m-0 px-0 py-0 pt-5 p-md-0 col-10 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
+        <ul className="list-unstyled m-0 px-0 py-0 pt-5 p-md-0 col-10 col-md-4 col-lg-3 col-xl-3 col-xxl-3">
           <li className='text-white fs-5 pb-2'><h3>SERVICIOS</h3></li>
           {
             services.map((item, index) => (
