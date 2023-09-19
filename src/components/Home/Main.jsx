@@ -8,7 +8,7 @@ export default function Main() {
   return (
     <main className='mt-70px mt-md-100px mt-lg-125px' data-bs-spy="scroll" data-bs-target="#navBar" tabIndex="0" data-bs-smooth-scroll="true">
       <Contact/>
-      {/* <Neighborhood/> */}
+      <Neighborhood/>
       <Services />
       <MasterPlan/>
       <Payments/>
