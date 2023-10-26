@@ -1,7 +1,7 @@
 
 export default function Cercanias() {
   return (
-    <div className="container-fluid col-3 d-none d-lg-block">
+    <div className="container-fluid col-12 col-lg-3 d-none d-lg-block">
       <h2 className="text-quintas-green fs-3">CERCANÍAS</h2>
       <p className="p-0">AU ACCESO OESTE - 6,1KM</p>
       <p className="p-0">RUTA PROVINCIAL 7 - 1,4KM</p>
