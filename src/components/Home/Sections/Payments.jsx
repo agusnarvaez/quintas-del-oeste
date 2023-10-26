@@ -24,7 +24,7 @@ export default function Payments() {
         </li>
       </ul>
       <div className='col-12 mt-4 row align-items-center justify-content-center'>
-        <a href={credentials.whatsappApi} target='_blank' rel='noreferrer' className='greenHover text-decoration-none m-0 p-0 bg-quintas-green col-3 col-lg-2 text-white p-3 fs-4 text-center'>QUIERO MAS INFO</a>
+        <a href={credentials.whatsappApi} target='_blank' rel='noreferrer' className='greenHover text-decoration-none m-0 p-0 bg-quintas-green col-6 col-md-4 col-lg-2 text-white p-3 fs-4 text-center'>QUIERO MAS INFO</a>
       </div>
     </section>
   )

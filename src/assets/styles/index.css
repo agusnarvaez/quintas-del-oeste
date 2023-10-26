@@ -9,10 +9,25 @@
 /** #### Estilos generales #### */
 body{
     font-family: 'Avenir', sans-serif;
+    height: fit-content;
 }
 *{
     box-sizing: border-box;
     font-family: 'Avenir', sans-serif;
+}
+main{
+    min-height: 80vh;
+    overflow: hidden;
+    height: fit-content;
+}
+.h-fit-content{
+    height: fit-content;
+}
+.min-height-100{
+    min-height: 90vh;
+}
+.min-height-50{
+    min-height: 60vh;
 }
 .border-radius-none{
     border-radius: 0 !important;
