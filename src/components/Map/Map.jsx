@@ -16,7 +16,7 @@ import ExistingMarker from './ExistingMarker'
 import quintasMap from '../../assets/map/mapaQuintas.png'
 
 //* Capa de google Maps
-import ReactLeafletGoogleLayer from 'react-leaflet-google-layer'
+/* import ReactLeafletGoogleLayer from 'react-leaflet-google-layer' */
 
 //* Contexto de lotes
 import { useLots } from '../../context/LotsContext'
@@ -47,7 +47,7 @@ export default function Map({setValue,getValues,adminMode}) {
           [-34.60685310029432, -58.97588954690971]]}
       />
 
-      <ReactLeafletGoogleLayer apiKey={credentials.mapsKey} type={'roadmap'} />
+      {/* <ReactLeafletGoogleLayer apiKey={credentials.mapsKey} type={'roadmap'} /> */}
 
       {adminMode && <ExistingMarker getValues={getValues}/>}
 
