@@ -15,12 +15,8 @@ import ExistingMarker from './ExistingMarker'
 //* Mapa propio
 import quintasMap from '../../assets/map/mapaQuintas.png'
 
-//* Capa de google Maps
-import ReactLeafletGoogleLayer from 'react-leaflet-google-layer'
-
 //* Contexto de lotes
 import { useLots } from '../../context/LotsContext'
-import credentials from '../../credentials'
 
 export default function Map({setValue,getValues,adminMode}) {
     const {lot,lots,fetchLots} = useLots()
@@ -46,8 +42,6 @@ export default function Map({setValue,getValues,adminMode}) {
           [-34.61796764772112,-58.9950967727591],
           [-34.60685310029432, -58.97588954690971]]}
       />
-
-      <ReactLeafletGoogleLayer apiKey={credentials.mapsKey} type={'roadmap'} />
 
       {adminMode && <ExistingMarker getValues={getValues}/>}
 
