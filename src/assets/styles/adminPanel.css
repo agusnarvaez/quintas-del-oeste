@@ -200,6 +200,7 @@
 }
 .admin-main{
     margin-top: 60px;
+    min-height: 80vh;
 }
 .hover-dark:hover{
     background-color: #176488;
