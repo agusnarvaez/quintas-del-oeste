@@ -88,6 +88,9 @@
     transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
 
 }
+.admin-nav_button a{
+    text-decoration: none;
+}
 
 .admin-header-icon{
     display: flex;
