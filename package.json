@@ -2,6 +2,19 @@
   "name": "quintas-del-oeste",
   "version": "0.1.0",
   "private": true,
+  "author": "Agustín Narvaez",
+  "description": "Proyecto de Quintas del Oeste, en el mismo se podrá ver información sobre el barrio privado, como así también reservar lotes del mismo.",
+  "keywords": [
+    "quintas",
+    "del",
+    "oeste",
+    "barrio",
+    "privado",
+    "reserva",
+    "lotes",
+    "general",
+    "rodriguez"
+  ],
 
   "scripts": {
     "start": "react-scripts start",
