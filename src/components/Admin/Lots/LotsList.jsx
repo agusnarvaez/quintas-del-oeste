@@ -41,9 +41,9 @@ export default function LotsList({setEditionForm,setShowForm}) {
             <li className='lotList-header-item col-3'>Acciones</li>
         </ul>
         <div className='lotList-content text-admin-primary bg-admin-primary'>
-            {
-              lots
-                ?.sort((a, b) => a.number - b.number)
+            { lots &&
+              lots.length > 0 &&
+              lots.sort((a, b) => a.number - b.number)
                 .map((lot,i)=>{
                 return(
                   <article className='lotList-content-row d-flex justify-content-between my-3' key={i}>
