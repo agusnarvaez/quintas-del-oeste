@@ -58,8 +58,8 @@ export default function LotsList({setEditionForm,setShowForm}) {
                     {showPopUp&&lotToDelete===lot?
                       <DeleteConfirmation lot={lot} hidePopUp={hidePopUp}/>:
                       <>
-                        <button onClick={()=>edit(lot)} className="bi bi-pencil-square btn btn-primary me-2" > Editar</button>
-                        <button onClick={()=>showPopUpDelete(lot)} className="bi bi-trash btn btn-danger ms-2" > Eliminar</button>
+                        {!lot.reservation&&<button onClick={()=>edit(lot)} className="bi bi-pencil-square btn btn-primary me-2" > Editar</button>}
+                        {!lot.reservation&&<button onClick={()=>showPopUpDelete(lot)} className="bi bi-trash btn btn-danger ms-2" > Eliminar</button>}
                       </>
                     }
                     </div>
