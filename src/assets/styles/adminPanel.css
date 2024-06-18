@@ -205,6 +205,14 @@
     margin-top: 60px;
     min-height: 80vh;
 }
+.admin-main .add-lot-button{
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.admin-main .add-lot-button:hover{
+    background-color: #344050;
+    color: white;
+}
 .hover-dark:hover{
     background-color: #176488;
     color: #0b1727;
