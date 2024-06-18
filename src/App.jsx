@@ -79,24 +79,24 @@ export default function App() {
 
   return (
     <Suspense fallback={<div className="loading">Cargando...</div>}>
-          <BrowserRouter>
-      <AuthProvider>
-        <LotsProvider>
-            <Routes>
-              <Route path="/" element={<Home metaData={metaData.home} />} />
-              <Route path="/reservar-lote" element={<ReservationForm metaData={metaData.reservation} />} />
-              <Route path="/pago-realizado" element={<ReservationFeedback metaData={metaData.reservation} />} />
-              <Route element={<ProtectedRoute/>}>
-                <Route path="/admin" element={<Admin metaData={metaData.admin} />} />
-                <Route path="/admin/profile" element={<Profile metaData={metaData.admin} />} />
-              </Route>
-              <Route path="/admin/login" element={<Login metaData={metaData.login} />} />
-              <Route path="/admin/register" element={<Register metaData={metaData.register} />} />
-              <Route path="/*" element={<Error404 metaData={metaData.error404} />} />
-            </Routes>
-        </LotsProvider>
-      </AuthProvider>
-          </BrowserRouter>
+        <BrowserRouter>
+            <AuthProvider>
+                <LotsProvider>
+                    <Routes>
+                    <Route path="/" element={<Home metaData={metaData.home} />} />
+                    <Route path="/reservar-lote" element={<ReservationForm metaData={metaData.reservation} />} />
+                    <Route path="/pago-realizado" element={<ReservationFeedback metaData={metaData.reservation} />} />
+                    <Route element={<ProtectedRoute/>}>
+                        <Route path="/admin" element={<Admin metaData={metaData.admin} />} />
+                        <Route path="/admin/profile" element={<Profile metaData={metaData.admin} />} />
+                    </Route>
+                    <Route path="/admin/login" element={<Login metaData={metaData.login} />} />
+                    <Route path="/admin/register" element={<Register metaData={metaData.register} />} />
+                    <Route path="/*" element={<Error404 metaData={metaData.error404} />} />
+                    </Routes>
+                </LotsProvider>
+            </AuthProvider>
+        </BrowserRouter>
     </Suspense>
   )
 }
