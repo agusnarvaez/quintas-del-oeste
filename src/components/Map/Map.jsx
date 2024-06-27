@@ -59,7 +59,7 @@ export default function Map({setValue,getValues,adminMode}) {
 
       {adminMode && <ExistingMarker getValues={getValues} zoom={zoomLevel}/>}
 
-      { lots.map((lotToShow,index)=>
+      {adminMode && lots.map((lotToShow,index)=>
         ((!lotToShow.reservation&&!adminMode) ||
         (adminMode&&!isSelected(getValues(),lotToShow)))
          &&
