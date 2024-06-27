@@ -64,6 +64,16 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    /* const getUsers = async () => {
+        try{
+            const response = await getUsersRequest()
+            return response.data
+        }catch(error){
+            console.log(error.response)
+            return error.response
+        }
+    } */
+
     useEffect(() => {
         if(errors.length > 0){
             const timer = setTimeout(() => {
