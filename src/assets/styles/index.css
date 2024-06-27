@@ -90,6 +90,9 @@ main{
     .whatsappButton a{
         font-size: 25px;
     }
+    .general-banner > div{
+        margin-bottom: 20px;
+    }
 
 }
 
