@@ -17,9 +17,9 @@ export default function Contact() {
 
         <h2 className="text-white fs-3 px-5 col-lg-6">TU LOTE ESTÁ <br/>EN GENERAL RODRIGUEZ <br/>DESCUBRÍ QUINTAS</h2>
 
-        <div className="d-none d-lg-block contactForm py-lg-3 col-lg-4 bg-white-transparent" >
+       {/*  <div className="d-none d-lg-block contactForm py-lg-3 col-lg-4 bg-white-transparent" >
           <ContactForm/>
-        </div>
+        </div> */}
       </div>
       <div className="d-lg-none z-index-150">
         <LinksInfo/>
@@ -34,9 +34,9 @@ export default function Contact() {
         <p className="fs-5 fw-bold m-0">Bajas expensas, con esctrituración inmediata y seguridad.</p>
       </div>
 
-      <div className="d-lg-none">
+      {/* <div className="d-lg-none">
         <ContactForm/>
-      </div>
+      </div> */}
     </Element>
   )
 }
