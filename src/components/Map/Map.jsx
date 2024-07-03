@@ -6,10 +6,15 @@ import 'leaflet-draw/dist/leaflet.draw.css';
 import Marker from './Marker';
 import MapEditor from './MapEditor';
 import ExistingMarker from './ExistingMarker';
-import quintasMap from '../../assets/map/mapaQuintas.png';
+import quintasMap from '../../assets/map/mapaQuintas.jpg';
 import { useLots } from '../../context/LotsContext';
 import { isSelected } from '../../utils/mapUtils';
 
+
+/* bounds={[
+            [-34.61796764772112, -58.9950967727591],
+            [-34.60685310029432, -58.97588954690971]
+          ]} */
 export default function Map({ setValue, getValues, adminMode }) {
   const { lot, lots, fetchLots } = useLots();
   const [zoomLevel, setZoomLevel] = useState(13);
@@ -46,8 +51,8 @@ export default function Map({ setValue, getValues, adminMode }) {
         <ImageOverlay
           url={quintasMap}
           bounds={[
-            [-34.61796764772112, -58.9950967727591],
-            [-34.60685310029432, -58.97588954690971]
+            [-34.61796764772112, -58.9980967727591], // Mueve la longitud más al oeste
+            [-34.60685310029432, -58.97288954690971] // Mueve la longitud más al este
           ]}
         />
         {adminMode && <ExistingMarker getValues={getValues} zoom={zoomLevel} />}
