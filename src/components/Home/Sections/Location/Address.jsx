@@ -1,9 +1,10 @@
-
+import Cercanias from "./CloseStreets"
 export default function Direccion() {
   return (
-    <div className="container-fluid p-0 col-12 col-lg-6">
+    <div className="container-fluid p-0 col-12 col-lg-6 d-lg-flex flex-column gap-3">
         <h2 className="text-center text-quintas-green fs-1">UBICACIÓN</h2>
         <h3 className="text-center fs-5 fw-normal">CALLE DR. HECTOR CÁMPORA Y ENTRE RÍOS - GENERAL RODRIGUEZ</h3>
-      </div>
+        <Cercanias />
+    </div>
   )
 }
