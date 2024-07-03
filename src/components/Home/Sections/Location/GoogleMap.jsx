@@ -1,8 +1,13 @@
 import GoogleMapReact from 'google-map-react'
-
+import logoQuintasChico from '../../../../assets/logos/logoQuintasChico.png'
 import credentials from '../../../../credentials'
-const Marker = () => <div className='position-relative' > <div className='bi bi-geo-alt-fill fs-1 position-absolute bottom-0'></div></div>
-
+/* <div className='bi bi-geo-alt-fill fs-1 position-absolute bottom-0'></div> */
+/* const Marker = () => <div className='position-relative' > MARCADOR<img src={logoQuintasChico} alt='logo quintas chico' className='img-fluid' style={{width:'50px'}}/></div> */
+const Marker = ({ src }) => (
+  <div className='position-relative'>
+    <img src={src} alt='logo quintas chico' className='img-fluid' style={{ width: '25px' }} />
+  </div>
+)
 
 export default function GoogleMap(){
   const defaultProps = {
@@ -14,8 +19,8 @@ export default function GoogleMap(){
   }
 
   const marker = {
-    lat: -34.61153207171338,
-    lng: -58.97866556622995
+    lat: -34.61114207171338,
+    lng: -58.98466556622995
   }
 
   return (
@@ -27,6 +32,7 @@ export default function GoogleMap(){
         defaultZoom={defaultProps.zoom}
       >
         <Marker
+          src={logoQuintasChico}
           lat={marker.lat}
           lng={marker.lng}
         />
