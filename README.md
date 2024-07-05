@@ -1,7 +1,7 @@
 # quintas-del-oeste-web
 
 #### Resumen
-Página web de emprendimiento de barrio cerrado Quintas del Oeste.
+Página web de emprendimiento de barrio cerrado Barrio Quintas.
 Además, cuenta con panel administrador para la edición de los lotes. Esta aplicación consume la API [quintas-del-oeste-api](https://github.com/agusnarvaez/quintas-del-oeste-api)
 
 #### Tecnologías
