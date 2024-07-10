@@ -2,16 +2,16 @@ import axios from './axios'
 
 //* Peticiones a la API de lotes
 const apiLot = {
-    getAll: () => axios.get(`/lots`),
-    get: id => axios.get(`/lots${id}`),
-    create: lot => axios.post(`/lots/create`, lot),
-    update: lot => axios.put(`/lots/update/${lot._id}`,lot),
-    reserve: reservation => axios.post(`/lots/reserve`,reservation),
-    delete: id => axios.delete(`/lots/delete/${id}`),
+    getAll: () => axios.get(`/lot`),
+    get: id => axios.get(`/lot/${id}`),
+    create: lot => axios.post(`/lot/create`, lot),
+    update: lot => axios.put(`/lot/update/${lot._id}`,lot),
+    reserve: reservation => axios.post(`/lot/reserve`,reservation),
+    delete: id => axios.delete(`/lot/delete/${id}`),
     createPaymentOrder: reservationData => axios.post(`/mercadoPago/create-order`, reservationData),
     getPaymentFeedback: paymentData => axios.post(`/mercadoPago/feedback`, paymentData),
-    reservations: () => axios.get(`/lots/reservations`),
-    reservation: id => axios.get(`/lots/reservations/${id}`),
+    reservations: () => axios.get(`/lot/reservations`),
+    reservation: id => axios.get(`/lot/reservations/${id}`),
 }
 
 export { apiLot }
