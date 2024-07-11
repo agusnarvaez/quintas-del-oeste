@@ -87,11 +87,11 @@ export default function Profile({metaData}) {
     <>
       <HelmetData metaData={metaData} />
       <AdminHeader />
-      <main className="overflow-hidden vh-100 bg-dark justify-content-start flex-column align-items-center row py-5">
+      <main className="overflow-hidden vh-100 bg-dark justify-content-center flex-column align-items-center row py-5">
 
         <h1 className="text-white text-center">Editar usuario</h1>
 
-        <form className="container-fluid position-relative row flex-column col-11 col-md-7 col-lg-4 p-4 pb-0 rounded justify-content-center align-items-center bg-dark-subtle"
+        <form className="container-fluid position-relative row flex-column col-10 col-md-7 col-lg-4 p-4 pb-0 rounded justify-content-center align-items-center bg-dark-subtle"
           onSubmit={onsubmit}
         >
           <CRUDNotification showPopUp={showPopUp} setShowPopUp={setShowPopUp} text={text}  />
@@ -103,7 +103,7 @@ export default function Profile({metaData}) {
           campos.map((campo,i)=>
               <div className="col-12 row justify-content-center "key={i}>
                 <input
-                  className="col-6 my-2 form-control w-75"
+                  className="col-6 my-2 form-control"
                   type={campo.type}
                   placeholder={campo.placeholder}
                   defaultValue={userData[campo.name]}

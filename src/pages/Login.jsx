@@ -48,11 +48,11 @@ export default function Login({metaData}) {
     <>
     <HelmetData metaData={metaData} />
     <AdminHeader/>
-    <main className="overflow-hidden vh-100 bg-dark justify-content-start flex-column align-items-center row py-5">
+    <main className="overflow-hidden vh-100 bg-dark justify-content-center flex-column align-items-center row py-5">
 
       <h1 className="text-white text-center">Iniciar sesión</h1>
 
-      <form className="container-fluid row flex-column col-4 p-4 pb-0 rounded justify-content-center align-items-center bg-dark-subtle"
+      <form className="container-fluid row flex-column col-10 col-lg-4 p-4 pb-0 rounded justify-content-center align-items-center bg-dark-subtle"
         onSubmit={onsubmit}
       >
         {
