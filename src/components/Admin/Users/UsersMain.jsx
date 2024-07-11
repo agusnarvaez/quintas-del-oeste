@@ -17,7 +17,7 @@ export default function Main() {
     {name:'Nombre',size:2},
     {name:'Apellido',size:2},
     {name:'Email',size:3},
-    {name:'Rol',size:3},
+    {name:'Rol',size:2},
     {name:'Acciones',size:3}
   ]
   const elementsList =[
@@ -39,7 +39,7 @@ export default function Main() {
 
   return (
     <main className="admin-main bg-admin-primary col-12 mx-0 row justify-content-center">
-      
+
         <Table
           title='Usuarios'
           titles={titles}
