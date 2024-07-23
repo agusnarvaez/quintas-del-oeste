@@ -14,6 +14,7 @@ const Login = lazy(()=>import("./Pages/Login.jsx"))
 const Register = lazy(()=>import("./Pages/Register.jsx"))
 const ReservationForm = lazy(()=>import("./Pages/ReservationForm.jsx"))
 const ReservationFeedback = lazy(()=>import("./Pages/ReservationFeedback.jsx"))
+const UsersList = lazy(()=>import("./Pages/UsersList.jsx"))
 const Error404 = lazy(()=>import("./Pages/ErrorNotFound.jsx"))
 
 export default function App() {
@@ -89,6 +90,7 @@ export default function App() {
                     <Route element={<ProtectedRoute/>}>
                         <Route path="/admin" element={<Admin metaData={metaData.admin} />} />
                         <Route path="/admin/profile" element={<Profile metaData={metaData.admin} />} />
+                        <Route path="/admin/usuarios" element={<UsersList metaData={metaData.admin} />} />
                     </Route>
                     <Route path="/admin/login" element={<Login metaData={metaData.login} />} />
                     <Route path="/admin/register" element={<Register metaData={metaData.register} />} />

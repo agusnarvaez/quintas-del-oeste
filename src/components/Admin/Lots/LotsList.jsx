@@ -41,9 +41,9 @@ export default function LotsList({setEditionForm,setShowForm}) {
             <li className='lotList-header-item col-3'>Acciones</li>
         </ul>
         <div className='lotList-content text-admin-primary bg-admin-primary'>
-            {
-              lots
-                ?.sort((a, b) => a.number - b.number)
+            { lots &&
+              lots.length > 0 &&
+              lots.sort((a, b) => a.number - b.number)
                 .map((lot,i)=>{
                 return(
                   <article className='lotList-content-row d-flex justify-content-between my-3' key={i}>
@@ -56,10 +56,10 @@ export default function LotsList({setEditionForm,setShowForm}) {
                     <div className='lotList-content-item col-1 position-relative '>{lot.reservation?<ReservationData id={lot.reservation} />:"Sin reservar"}</div>
                     <div className='lotList-content-item d-flex col-3'>
                     {showPopUp&&lotToDelete===lot?
-                      <DeleteConfirmation lot={lot} hidePopUp={hidePopUp}/>:
+                      <DeleteConfirmation item={lot} hidePopUp={hidePopUp} type='lot' refreshList={fetchLots} />:
                       <>
-                        <button onClick={()=>edit(lot)} className="bi bi-pencil-square btn btn-primary me-2" > Editar</button>
-                        <button onClick={()=>showPopUpDelete(lot)} className="bi bi-trash btn btn-danger ms-2" > Eliminar</button>
+                        {!lot.reservation&&<button onClick={()=>edit(lot)} className="bi bi-pencil-square btn btn-primary me-2" > Editar</button>}
+                        {!lot.reservation&&<button onClick={()=>showPopUpDelete(lot)} className="bi bi-trash btn btn-danger ms-2" > Eliminar</button>}
                       </>
                     }
                     </div>
