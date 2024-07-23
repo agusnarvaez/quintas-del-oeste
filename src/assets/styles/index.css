@@ -90,7 +90,19 @@ main{
     .whatsappButton a{
         font-size: 25px;
     }
+    .general-banner > div{
+        margin-bottom: 20px;
+    }
 
+}
+/*! ########################################*/
+/*! ################ LAPTOPS ###############*/
+/*! ########################################*/
+@media (min-width: 1000px) {
+
+    .contact-section{
+        padding: 10%;
+    }
 }
 
 /*! ########################################*/
@@ -107,4 +119,10 @@ main{
     .whatsappButton a{
         font-size: 30px;
     }
+
+    .contact-section{
+        padding: 5% 25%;
+    }
+
+
 }

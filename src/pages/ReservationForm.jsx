@@ -142,6 +142,23 @@ export default function ReservationForm({metaData}) {
       }
     },
     {
+      name: "documentFile",
+      placeholder: "Foto de reverso DNI",
+      type: "file",
+      fileName: documentFileName,
+      options:{
+        required: "La foto de reverso DNI es obligatoria",
+        validate: {
+          isImage: (value) => {
+            return value[0].type.includes('image') || "El archivo debe ser una imagen"
+          },
+          isLessThan2MB: (value) => {
+            return value[0].size < 2000000 || "El archivo debe pesar menos de 2MB"
+          }
+        }
+      }
+    },
+    {
       name: "idConfirmationFile",
       placeholder: "Selfie CON DNI en mano",
       type: "file",

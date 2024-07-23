@@ -88,6 +88,9 @@
     transition: transform 0.2s ease-out, background-color 0.2s ease-out, box-shadow 0.2s ease-out;
 
 }
+.admin-nav_button a{
+    text-decoration: none;
+}
 
 .admin-header-icon{
     display: flex;
@@ -101,6 +104,20 @@
     position: relative;
     transition: all 0.3s ease-in-out;
 }
+
+.userList-main{
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    padding: 5% 5%;
+    border-radius: 15px;
+    background-color: #0b1727;
+    border-radius: 0;
+}
+.userList-main .lotList-content,
+.userList-main .lotList-header{
+    width: 200%;
+}
+
 .rotate-90{
     transform: rotate(-90deg);
 }
@@ -201,6 +218,14 @@
 .admin-main{
     margin-top: 60px;
     min-height: 80vh;
+}
+.admin-main .add-lot-button{
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.admin-main .add-lot-button:hover{
+    background-color: #344050;
+    color: white;
 }
 .hover-dark:hover{
     background-color: #176488;

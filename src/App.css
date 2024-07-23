@@ -276,9 +276,9 @@ header i{
     height: auto;
     width: 100%;
   }
-  .banner-container{
+  /* .banner-container{
     height: auto;
-  }
+  } */
   .navbar{
     position:relative;
     z-index: 10000;

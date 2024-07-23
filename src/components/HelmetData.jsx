@@ -7,13 +7,13 @@ export default function HelmetData({metaData}) {
     return (
         <HelmetProvider>
             <Helmet defer={false}>
-                <title>Quintas del Oeste | {metaData.title}</title>
+                <title>Barrio Quintas | {metaData.title}</title>
 
                 <meta name="description" content={metaData.description} />
 
                 <meta name="keywords" content={metaData.keywords} />
 
-                <meta property="og:title" content={`Quintas del Oeste | ${metaData.title}`}/>
+                <meta property="og:title" content={`Barrio Quintas | ${metaData.title}`}/>
 
                 <meta property="og:description" content={metaData.description}/>
 

@@ -14,13 +14,12 @@ export default function Location() {
 
       <Direccion />
 
-        <Cercanias />
       <div className="mapContainer min-height-50 container-fluid p-0 col-12 d-flex justify-content-center flex-wrap">
 
 
-        {/* <GoogleMap /> */}
-        <img src={mapImage2} alt="mapa de ubicación" className="img-fluid col-12 col-lg-8 object-fit-cover" />
-        <img src={mapImage} alt="mapa de ubicación" className="img-fluid col-12 col-lg-4 object-fit-cover" />
+        <GoogleMap />
+        {/* <img src={mapImage2} alt="mapa de ubicación" className="img-fluid col-12 col-lg-8 object-fit-cover" />
+        <img src={mapImage} alt="mapa de ubicación" className="img-fluid col-12 col-lg-4 object-fit-cover" /> */}
 
       </div>
 

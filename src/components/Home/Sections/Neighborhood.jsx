@@ -74,6 +74,31 @@ export default function Neighborhood() {
     })
   }
 
+  const nextImage = () => {
+    var index = images.findIndex(image => image.hash === mainImage.hash)
+    if(index === images.length-1){
+      index = 0
+    }else{
+      index++
+    }
+    setMainImage({
+      hash:images[index].hash,
+      image:images[index].image
+    })
+  }
+  const previousImage = () => {
+    var index = images.findIndex(image => image.hash === mainImage.hash)
+    if(index === 0){
+      index = images.length-1
+    }else{
+      index--
+    }
+    setMainImage({
+      hash:images[index].hash,
+      image:images[index].image
+    })
+  }
+
 
   useEffect(() => {
     /* const changeMainImage = (newIndex) => {
@@ -97,6 +122,7 @@ export default function Neighborhood() {
   return (
     <Element className="container-fluid" id="neighborhood" name='neighborhood'>
       <section className='gallery-main-image'>
+        <i onClick={previousImage} className='fa fa-arrow-left' aria-label='Anterior'></i>
         <ImageComponent
           src={mainImage.image}
           alt={'imagen'}
@@ -106,6 +132,7 @@ export default function Neighborhood() {
           width='100%'
           height='100%'
         />
+        <i onClick={nextImage} className='fa fa-arrow-right' aria-label='Siguiente'></i>
       </section>
 
       <ul className='gallery-list-image'>
