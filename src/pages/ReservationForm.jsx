@@ -28,6 +28,7 @@ import {buttonState} from '../utils/formUtils'
 export default function ReservationForm({metaData}) {
   //* Hook para guardar el lote seleccionado
   const [documentFileName, setDocumentFileName] = useState('Ningún archivo seleccionado')
+  const [backDocumentFileName,setBackDocumentFileName] = useState('Ningún archivo seleccionado')
   const [idConfirmationFileName, setIdConfirmationFileName] = useState('Ningún archivo seleccionado')
   const [buttonClass,setButtonClass] = useState(buttonState.default)
   const navigate = useNavigate()
@@ -142,10 +143,10 @@ export default function ReservationForm({metaData}) {
       }
     },
     {
-      name: "documentFile",
+      name: "backDocumentFile",
       placeholder: "Foto de reverso DNI",
       type: "file",
-      fileName: documentFileName,
+      fileName: backDocumentFileName,
       options:{
         required: "La foto de reverso DNI es obligatoria",
         validate: {
@@ -179,25 +180,40 @@ export default function ReservationForm({metaData}) {
 
   const handleDocumentFileChange = (event) => {
     const selectedFile = event.target.files[0]
-    if(event.target.name==="documentFile"){
-      if (selectedFile) {
-        setDocumentFileName(selectedFile.name)
-      } else {
-        setDocumentFileName('Ningún archivo seleccionado')
-      }
-    }else{
-      if (selectedFile) {
-        setIdConfirmationFileName(selectedFile.name)
-      }else{
-        setIdConfirmationFileName('Ningún archivo seleccionado')
-      }
+    //Change the code above for a switch
+    switch(event.target.name){
+      case 'documentFile':
+        if (selectedFile) {
+          setDocumentFileName(selectedFile.name)
+        } else {
+          setDocumentFileName('Ningún archivo seleccionado')
+        }
+        break
+      case 'idConfirmationFile':
+        if (selectedFile) {
+          setIdConfirmationFileName(selectedFile.name)
+        }else{
+          setIdConfirmationFileName('Ningún archivo seleccionado')
+        }
+        break
+      case 'backDocumentFile':
+        if (selectedFile) {
+          setBackDocumentFileName(selectedFile.name)
+        } else {
+          setBackDocumentFileName('Ningún archivo seleccion')
+        }
+        break
+      default:
+        break
     }
+
   }
 
   const onsubmit = handleSubmit(async (data) => {
     setButtonClass(buttonState.loading)
     try{
       const documentFileUrl = await uploadReservationFile(data.documentFile[0],'documentFile',data.dni)
+      const backDocumentFileUrl = await uploadReservationFile(data.backDocumentFile[0],'backDocumentFile',data.dni)
       const idConfirmationFileUrl = await uploadReservationFile(data.idConfirmationFile[0],'idConfirmationFile',data.dni)
       const newReservation = {
         lot:{
@@ -214,6 +230,7 @@ export default function ReservationForm({metaData}) {
         dni: data.dni,
         phone: data.phone,
         documentFile: documentFileUrl,
+        backDocumentFile: backDocumentFileUrl,
         idConfirmationFile: idConfirmationFileUrl
       }
       setReservation(newReservation)
