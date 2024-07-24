@@ -18,7 +18,10 @@ import { isSelected } from '../../utils/mapUtils';
 export default function Map({ setValue, getValues, adminMode }) {
   const { lot, lots, fetchLots } = useLots();
   const [zoomLevel, setZoomLevel] = useState(13);
-
+  const bounds = [
+    [-34.61796764772112, -58.9980967727591], // Mueve la longitud más al oeste
+    [-34.60685310029432, -58.97288954690971] // Mueve la longitud más al este
+  ]
   useEffect(() => {
     if (lots.length === 0) fetchLots();
   }, [lot]);
@@ -45,18 +48,17 @@ export default function Map({ setValue, getValues, adminMode }) {
         maxZoom={18} // Zoom máximo (opcional)
         style={{ width: '100%', height: '100%' }}
         className='leaflet-container'
+        maxBounds={bounds} // Limites del mapa
+        maxBoundsViscosity={1.0} // Resistancia al movimiento fuera de los limites
       >
         <ZoomListener setZoomLevel={setZoomLevel} />
         {adminMode && <MapEditor setValue={setValue} />}
         <ImageOverlay
           url={quintasMap}
-          bounds={[
-            [-34.61796764772112, -58.9980967727591], // Mueve la longitud más al oeste
-            [-34.60685310029432, -58.97288954690971] // Mueve la longitud más al este
-          ]}
+          bounds={bounds}
         />
         {adminMode && <ExistingMarker getValues={getValues} zoom={zoomLevel} />}
-        {adminMode && lots.map((lotToShow, index) =>
+        {lots.map((lotToShow, index) =>
           ((!lotToShow.reservation && !adminMode) ||
           (adminMode && !isSelected(getValues(), lotToShow))) &&
           <Marker
