@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 export default function ReservationSuccess({reservation}) {
   const paymentStatus = ()=>{
@@ -20,18 +21,19 @@ export default function ReservationSuccess({reservation}) {
               <div className='col-12'>
                 <h2>Datos de tu reserva</h2>
                   <ul className='list-group list-group-flush list-unstyled'>
-                    <li className='list-group-item'><b>ID de reserva:</b>{reservation?reservation.reservation_id:null} </li>
-                    <li className='list-group-item'><b>Email:</b>{reservation?reservation.userEmail:null} </li>
-                    <li className='list-group-item'><b>N° de lote:</b>{reservation.lot.number} </li>
-                    <li className='list-group-item'><b>N° de Manzana:</b>{reservation.lot.block} </li>
-                    <li className='list-group-item'><b>Precio:</b> USD {reservation.lot.price} </li>
-                    <li className='list-group-item'><b>Área:</b> {reservation.lot.area}m2 </li>
-                    <li className='list-group-item'><b>Precio de reserva:</b> $50.000</li>
-                    <li className='list-group-item'><b>Estado de pago:</b> {paymentStatus()}</li>
+                    <li className='list-group-item'><b>ID de reserva: </b>{reservation?reservation.reservation_id:null} </li>
+                    <li className='list-group-item'><b>Email: </b>{reservation?reservation.userEmail:null} </li>
+                    <li className='list-group-item'><b>N° de lote: </b>{reservation.lot.number} </li>
+                    <li className='list-group-item'><b>N° de Manzana: </b>{reservation.lot.block} </li>
+                    <li className='list-group-item'><b>Precio: </b> USD {reservation.lot.price} </li>
+                    <li className='list-group-item'><b>Área: </b> {reservation.lot.area}m2 </li>
+                    <li className='list-group-item'><b>Precio de reserva: </b> $50.000</li>
+                    <li className='list-group-item'><b>Estado de pago: </b> {paymentStatus()}</li>
                   </ul>
               </div>
               <p>Recibirás un mail a la brevedad</p>
               <h3>Recordá guardar el número de reserva</h3>
+              <Link to='/' className="btn-quintas container cursor-pointer col-6 col-lg-3 d-flex justify-content-center align-items-center bg-quintas-green p-2 px-lg-1 my-2 text-white text-decoration-none" replace>Volver al inicio</Link>
       </div>
   )
 }
