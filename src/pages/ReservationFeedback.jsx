@@ -46,7 +46,7 @@ export default function ReservationForm({metaData}) {
       //* Obtengo los datos del pago
       const paymentData={
         payment_id: queries.get('payment_id'),
-        status: queries.get('status'),
+        status: queries.get('collection_status'),
         merchant_order_id: queries.get('merchant_order_id'),
         preference_id: queries.get('preference_id'),
       }
@@ -78,7 +78,7 @@ export default function ReservationForm({metaData}) {
         setStatus('success')
         setFeedbackResponse(<ReservationSuccess reservation={response}/>)
       }catch(error){
-        console.log(error)
+        console.error('Error en pago: ',error)
         setFeedbackResponse(feedbackView.failure)
       }
     }
@@ -90,21 +90,22 @@ export default function ReservationForm({metaData}) {
       getFeedback()
     }else{
       //* 2.1- Si el pago fue aprobado, reservo el lote
-      if(feedbackData.payment.status === 'approved'||feedbackData.payment.status === 'pending'||feedbackData.payment.status === 'in_process'){
+      if(feedbackData.reservation.status === 'approved'||feedbackData.reservation.status === 'pending'||feedbackData.reservation.status === 'in_process'){
         //* Si el estado es distinto de success, significa que aún no se reservó el lote, y recién ahí se ejecuta la reserva
         if(status!=='success'){
           reserve()
         }
       }else{
         //* 2.2- Si el pago no fue aprobado, muestro el error
+        console.error('Error en pago: ',feedbackData)
         setFeedbackResponse(feedbackView.failure)
       }
     }
-  }, [feedbackView,reservation,setReservation,feedbackResponse])
+  }, [feedbackData, status, navigate, getPaymentFeedback, reserveLot])
   return (
     <>
       <Header />
-      <main className="container-fluid p-0 px-3 my-3">
+      <main className="container-fluid p-0 px-3 my-3 feedback-page">
         <HelmetData metaData={metaData} />
         {feedbackResponse}
       </main>

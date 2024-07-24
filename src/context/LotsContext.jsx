@@ -101,11 +101,10 @@ export const LotsProvider = ({children}) => {
         },
         getPaymentFeedback: async(paymentData)=>{
             try {
-
                 const paymentFeedback = await apiLot.getPaymentFeedback(paymentData)
                 return paymentFeedback.data.response
             }catch(e){
-                console.log(e)
+                console.error('Error:',e)
                 return e.response.data
             }
         }
