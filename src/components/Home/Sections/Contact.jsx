@@ -1,5 +1,4 @@
 import bgContact from "../../../assets/background/bg-contact.jpg"
-import ContactForm from "./Contact/ContactForm"
 import LinksInfo from "./Contact/LinksInfo"
 import Scroll from'react-scroll'
 

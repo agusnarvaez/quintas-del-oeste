@@ -23,8 +23,8 @@ export default function Map({ setValue, getValues, adminMode }) {
     [-34.60685310029432, -58.97288954690971] // Mueve la longitud más al este
   ]
   useEffect(() => {
-    if (lots.length === 0) fetchLots();
-  }, [lot]);
+    if (lots.length === 0) fetchLots()
+  }, [lot])
 
   function ZoomListener({ setZoomLevel }) {
     const map = useMap();
