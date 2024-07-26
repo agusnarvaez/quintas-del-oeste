@@ -73,7 +73,7 @@ export default function LotForm({editionForm,setEditionForm}) {
     event.preventDefault()
 
     const newLot = {
-      _id:lot?._id,
+      _id:lot && lot._id,
       number: values.number,
       block: values.block,
       area: values.area,
@@ -153,7 +153,7 @@ export default function LotForm({editionForm,setEditionForm}) {
             </div>
           </div>
           {
-            formErrors?.map((error, index) => {
+            formErrors && formErrors.map((error, index) => {
               return (
                 <p key={index} className="text-danger col-12 text-center p-0">
                   {error.msg}

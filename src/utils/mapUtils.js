@@ -42,4 +42,8 @@ export const getIconSize = (zoom) => {
     return [zoom-1, zoom-1]
 }
 
-export const isSelected=(originalValues,lotToCompare)=>originalValues.coordinates?.lat===lotToCompare.coordinates?.lat&&originalValues.coordinates?.lng===lotToCompare.coordinates?.lng
+export const isSelected=(originalValues, lotToCompare) =>
+  originalValues.coordinates &&
+  lotToCompare.coordinates &&
+  originalValues.coordinates.lat === lotToCompare.coordinates.lat &&
+  originalValues.coordinates.lng === lotToCompare.coordinates.lng
