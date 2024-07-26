@@ -1,8 +1,3 @@
-import Cercanias from './Location/CloseStreets'
-import Direccion from './Location/Address'
-
-import GoogleMap from './Location/GoogleMap'
-
 import credentials from '../../../credentials'
 
 export default function Payments() {

@@ -1,11 +1,7 @@
-import Cercanias from './Location/CloseStreets'
 import Direccion from './Location/Address'
 
 import GoogleMap from './Location/GoogleMap'
 import Scroll from'react-scroll'
-
-import mapImage from '../../../assets/map/ubicacionQuintas-1.jpg'
-import mapImage2 from '../../../assets/map/ubicacionQuintas-2.jpg'
 
 export default function Location() {
   var Element  = Scroll.Element

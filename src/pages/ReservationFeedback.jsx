@@ -20,7 +20,7 @@ export default function ReservationForm({metaData}) {
 
   //* Context de lotes
   const { getPaymentFeedback,reserveLot } = useLots()
-  const [reservation,setReservation]=useState({})
+  /* const [reservation,setReservation]=useState({}) */
 
   const feedbackView = {
       loading:

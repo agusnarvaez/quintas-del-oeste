@@ -43,6 +43,7 @@ export const AuthProvider = ({children}) => {
     const signOut = async () => {
         try{
             const response = await logoutRequest()
+            console.info('AuthContext SignOut Response',response)
             Cookie.remove('token')
             setUser(null)
             setIsAuthenticated(false)

@@ -7,7 +7,7 @@ import CRUDNotification from "../CRUDNotification"
 
 export default function LotForm({editionForm,setEditionForm}) {
   const {register,handleSubmit,formState:{errors},getValues,setValue,reset} = useForm()
-  const {lot,setLot,createLot,updateLot,deleteLot,formErrors} = useLots()
+  const {lot,createLot,updateLot,deleteLot,formErrors} = useLots()
   const [showPopUp,setShowPopUp] = useState(false)
   const [text,setText] = useState("")
   const fields = [

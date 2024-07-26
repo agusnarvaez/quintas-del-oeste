@@ -7,7 +7,7 @@ import Scroll from 'react-scroll'
 
 export default function Header() {
   const [burgerMenu, setBurgerMenu] = useState(false)
-  const isHomePage = window.location.pathname === '/'
+  /* const isHomePage = window.location.pathname === '/' */
   var scroller = Scroll.scroller
 
   const scrollToSection = sectionId => {
