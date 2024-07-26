@@ -36,9 +36,9 @@ export const getIconSize = (zoom) => {
     if (zoom > 20) return [100, 100]
     if (zoom > 19) return [70, 70]
     if (zoom > 18) return [40, 40]
-    if (zoom > 17) return [25, 25]
-    if (zoom > 16) return [17, 17]
-    if (zoom > 15) return [10, 10]
+    if (zoom > 17) return [40, 40]
+    if (zoom > 16) return [25, 25]
+    if (zoom > 15) return [15, 15]
     return [zoom-1, zoom-1]
 }
 
