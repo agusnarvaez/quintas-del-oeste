@@ -28,8 +28,6 @@ export default function Profile({metaData}) {
 
   const [showPopUp,setShowPopUp] = useState(false)
   const [text,setText] = useState("")
-  const [deleteConfirmation,setDeleteConfirmation] = useState(false)
-
 
   const userData = {
     _id: user._id,
