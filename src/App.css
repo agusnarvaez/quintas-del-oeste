@@ -242,6 +242,11 @@ header i {
   box-sizing: border-box;
   animation: animloader 6s linear infinite;
 }
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 @keyframes animloader {
   0% {

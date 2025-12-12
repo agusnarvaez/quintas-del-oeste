@@ -1,24 +1,35 @@
 /*! #######################################*/
 /*! ############### MOBILE ###############*/
 /*! #######################################*/
-#neighborhood{
+#neighborhood {
   padding: 0 5%;
 }
-.gallery-main-image{
+.gallery-main-image {
   position: relative;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gallery-main-image img,
+.gallery-main-image canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .gallery-main-image i {
   display: none;
 }
-.gallery-list-image{
+.gallery-list-image {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 100px;
   max-height: 200px;
-  gap:10px;
+  gap: 10px;
   list-style: none;
   overflow-x: scroll;
   padding: 0 !important;
@@ -38,11 +49,18 @@
   background-color: #8888880a; /* Color del 'thumb' de la barra de desplazamiento */
   border-radius: 2px; /* Borde redondeado del 'thumb' */
 }
-.gallery-list-image li{
+.gallery-list-image li {
   height: 100%;
   min-width: 150px;
+  overflow: hidden;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
   transition: all 0.5s ease-in-out;
+}
+.gallery-list-image li img,
+.gallery-list-image li canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .selected-image {
@@ -56,25 +74,24 @@
 /*! ##### TABLETS & LARGER SMARTPHONES #####*/
 /*! ########################################*/
 @media (min-width: 481px) {
-
-
-  .gallery-list-image{
+  .gallery-list-image {
     gap: 20px;
     min-height: 100px;
   }
-  .gallery-list-image li{
+  .gallery-list-image li {
     min-width: 200px;
   }
-
 }
-
 
 /*! ########################################*/
 /*! ################ LAPTOPS ###############*/
 /*! ########################################*/
 @media (min-width: 769px) {
+  .gallery-main-image {
+    height: 600px;
+  }
 
-  .gallery-list-image{
+  .gallery-list-image {
     min-height: 200px;
     max-height: 250px;
     gap: 30px;
@@ -93,10 +110,10 @@
     border-radius: 2px; /* Borde redondeado del 'thumb' */
   }
 
-  .gallery-list-image li{
+  .gallery-list-image li {
     cursor: pointer;
   }
-  .gallery-list-image li:hover{
+  .gallery-list-image li:hover {
     transform: scale(1.1);
     transition: transform 0.5s;
   }
@@ -116,7 +133,6 @@
     left: 2%;
     z-index: 100;
     transition: all 0.3s ease-in-out;
-    
   }
 
   .gallery-main-image i:hover {
@@ -126,23 +142,21 @@
     transform: scale(0.9);
   }
 
-  .gallery-main-image .fa-arrow-right{
+  .gallery-main-image .fa-arrow-right {
     left: auto;
     right: 2%;
   }
-
 }
 
 /*! ########################################*/
 /*! ############ LARGER DESKTOPS ###########*/
 /*! ########################################*/
 @media (min-width: 1280px) {
-
-  .gallery-list-image{
+  .gallery-list-image {
     min-height: 300px;
     max-height: 400px;
   }
-  .gallery-list-image li{
+  .gallery-list-image li {
     min-width: 350px;
   }
 }
