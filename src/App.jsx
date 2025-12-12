@@ -79,7 +79,7 @@ export default function App() {
 }
 
   return (
-    <Suspense fallback={<div className="loading">Cargando...</div>}>
+    <Suspense fallback={<div className="loading"><img src={quintasFavicon} alt="Loading" /><span class="loader">Cargando...</span></div>}>
         <BrowserRouter>
             <AuthProvider>
                 <LotsProvider>

@@ -1,34 +1,34 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-size: 14px;
 }
-#root{
+#root {
   overflow-x: hidden;
 }
-body{
+body {
   overflow-x: hidden;
   width: 100%;
 }
 
-main{
+main {
   overflow-x: hidden;
 }
-h2{
-  z-index:10;
+h2 {
+  z-index: 10;
 }
-textarea{
+textarea {
   resize: none;
 }
-.banner-container{
+.banner-container {
   height: 75vh;
 }
-.map-container{
+.map-container {
   width: 100%;
   height: 500px;
 }
-.map{
+.map {
   width: 100%;
 }
 /* .mapContainer{
@@ -39,101 +39,101 @@ textarea{
   width: 100%;
   position: relative !important;
 }
-.border-quintas-green{
-  border: 2px solid #78BA52;
+.border-quintas-green {
+  border: 2px solid #78ba52;
 }
 .input-focus-border-color,
-.border-quintas-dark-gray{
-  border: 2px solid #3A3B3B;
+.border-quintas-dark-gray {
+  border: 2px solid #3a3b3b;
 }
-.background-image{
-  position:absolute;
+.background-image {
+  position: absolute;
   object-fit: cover;
   height: 75vh;
-  top:0;
+  top: 0;
   z-index: 0;
 }
-.image-container{
+.image-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.image-container .img-fluid{
+.image-container .img-fluid {
   object-fit: cover;
 }
-.vh-75{
+.vh-75 {
   height: 75vh;
 }
-.leaflet-container{
+.leaflet-container {
   width: 50vw;
   height: 50vh;
 }
-.text-quintas-green{
-  color: #78BA52;
+.text-quintas-green {
+  color: #78ba52;
 }
 
-.bg-quintas-green{
-  background-color: #78BA52;
+.bg-quintas-green {
+  background-color: #78ba52;
 }
-.bg-quintas-gray{
-  background-color: #6B6E6F;
+.bg-quintas-gray {
+  background-color: #6b6e6f;
 }
-.bg-quintas-dark-gray{
-  background-color: #3A3B3B;
+.bg-quintas-dark-gray {
+  background-color: #3a3b3b;
 }
-header i{
+header i {
   font-size: 2rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-.navbar{
-  position:absolute;
-  top:-1200%;
+.navbar {
+  position: absolute;
+  top: -1200%;
   left: 0;
   transition: top 0.3s ease-in-out;
 }
-.z-index-150{
+.z-index-150 {
   z-index: 200;
 }
-.show{
-  top:0;
+.show {
+  top: 0;
   transition: top 0.3s ease-in-out;
   z-index: 100;
 }
-.contactForm{
+.contactForm {
   z-index: 10;
 }
-.fs-9px{
+.fs-9px {
   font-size: 9px;
 }
-.fs-10px{
+.fs-10px {
   font-size: 10px;
 }
-.fs-12px{
+.fs-12px {
   font-size: 12px;
 }
-.fs-16px{
+.fs-16px {
   font-size: 16px;
 }
-.h-100px{
+.h-100px {
   height: 100px;
 }
-.h-50px{
+.h-50px {
   height: 50px;
 }
-.w-50px{
+.w-50px {
   width: 50px;
 }
-.w-25{
+.w-25 {
   width: 25%;
 }
 
-.punta-final{
+.punta-final {
   position: relative;
 }
 
 .punta-final::before,
-.punta-final::after{
+.punta-final::after {
   width: 60px;
   height: 15px;
   position: absolute;
@@ -145,48 +145,48 @@ header i{
   z-index: 10;
 }
 
-.punta-final::before{
+.punta-final::before {
   top: 17px;
   transform: rotate(75deg);
 }
 
-.height-50px{
+.height-50px {
   height: 70px;
 }
-.min-height-100vh{
+.min-height-100vh {
   min-height: 100vh;
 }
 
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
-.mt-70px{
+.mt-70px {
   margin-top: 70px;
 }
-.label-input{
+.label-input {
   border: none;
 }
 
-.home-services i{
+.home-services i {
   font-size: 2rem;
 }
-.btn-quintas{
+.btn-quintas {
   min-width: 250px;
   min-height: 40px;
   font-size: 3rem;
   transition: all 0.3s ease-in-out;
   font-weight: 600;
 }
-.btn-quintas *{
+.btn-quintas * {
   font-size: 1.3rem;
   font-weight: 600;
 }
 
-.btn-quintas:hover{
+.btn-quintas:hover {
   background-color: #69a148;
   transition: all 0.3s ease-in-out;
 }
-.btn-quintas:active{
+.btn-quintas:active {
   background-color: #53803a;
 }
 
@@ -194,52 +194,103 @@ header i{
 /*! ################ TABLETS ###############*/
 /*! ########################################*/
 @media (min-width: 50px) {
-
-  .mt-md-100px{
+  .mt-md-100px {
     margin-top: 100px !important;
   }
 }
 
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+.loading img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.loader {
+  font-size: 48px;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #69a148;
+  letter-spacing: 2px;
+  position: relative;
+  box-sizing: border-box;
+}
+.loader::after {
+  content: "Cargando...";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #263238;
+  text-shadow: 0 0 2px #fff, 0 0 1px #fff, 0 0 1px #fff;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: animloader 6s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    height: 100%;
+  }
+  100% {
+    height: 0%;
+  }
+}
 
 /*! ########################################*/
 /*! ################ LAPTOPS ###############*/
 /*! ########################################*/
 @media (min-width: 760px) {
-  .vh-lg-100{
+  .vh-lg-100 {
     height: 90vh;
   }
 
-/*   .mapContainer{
+  /*   .mapContainer{
     height: 500px;
   } */
 
-  .map-container{
+  .map-container {
     height: 600px;
   }
-  .fs-md-10px{
+  .fs-md-10px {
     font-size: 10px;
   }
-  .fs-md-12px{
+  .fs-md-12px {
     font-size: 12px;
   }
-  .fs-md-14px{
+  .fs-md-14px {
     font-size: 14px;
   }
-  .fs-md-16px{
+  .fs-md-16px {
     font-size: 16px;
   }
 
-  .greenHover:hover{
+  .greenHover:hover {
     background-color: #619642;
     cursor: pointer;
   }
   .sin-punta-md::before,
-  .sin-punta-md::after{
+  .sin-punta-md::after {
     display: none;
   }
 
   .punta-final::before,
-  .punta-final::after{
+  .punta-final::after {
     width: 40px;
     height: 15px;
     bottom: 0px;
@@ -248,13 +299,13 @@ header i{
     z-index: 10;
   }
 
-  .punta-final::before{
+  .punta-final::before {
     top: 0px;
     transform: rotate(75deg);
   }
 
   .conector-md::before,
-  .conector-md::after{
+  .conector-md::after {
     width: 40px;
     height: 15px;
     bottom: 0px;
@@ -263,27 +314,27 @@ header i{
     z-index: 10;
   }
 
-  .conector-md::before{
+  .conector-md::before {
     top: 0px;
     transform: rotate(75deg);
   }
-  .mt-lg-125px{
+  .mt-lg-125px {
     margin-top: 125px !important;
   }
 }
 @media (min-width: 1000px) {
-  .background-image{
+  .background-image {
     height: auto;
     width: 100%;
   }
   /* .banner-container{
     height: auto;
   } */
-  .navbar{
-    position:relative;
+  .navbar {
+    position: relative;
     z-index: 10000;
   }
-  .vh-lg-100{
+  .vh-lg-100 {
     height: 100vh;
   }
 }
@@ -292,11 +343,10 @@ header i{
 /*! ############ LARGER DESKTOPS ###########*/
 /*! ########################################*/
 @media (min-width: 1280px) {
-
-  .vh-lg-100{
+  .vh-lg-100 {
     height: 110vh;
   }
-  .background-image{
+  .background-image {
     height: 100%;
     width: 100%;
   }
