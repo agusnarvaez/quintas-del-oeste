@@ -1,160 +1,207 @@
 import Scroll from'react-scroll'
-import { useEffect, useState,useMemo } from 'react'
+import { useEffect, useState, useMemo, useRef } from 'react'
 
 import '../../../assets/styles/neighborhood.css'
-
-import image1 from '../../../assets/gallery/1- ACCESO - QUINTAS -FINAL-s.webp'
-import image2 from '../../../assets/gallery/2 - BOULEVARD - QUINTAS -FINAL-s.webp'
-import image3 from '../../../assets/gallery/3 - BOULEVARD - QUINTAS - FINAL-s.webp'
-import image4 from '../../../assets/gallery/4 - SUM - QUINTAS - FINAL-s.webp'
-import image5 from '../../../assets/gallery/5 - PEATONAL PARQUE - QUINTAS - FINAL-s.webp'
-import image6 from '../../../assets/gallery/6 - VIVIENDAS - QUINTAS - FINAL-s.webp'
-import image7 from '../../../assets/gallery/7 - CIRCUITO - QUINTAS - FINAL-s.webp'
-import image8 from '../../../assets/gallery/8 - CIRCUITO 2 - QUINTAS - FINAL-s.webp'
-import image9 from '../../../assets/gallery/11 - PARQUE AEREA - QUINTAS -FINAL-s.webp'
-import image10 from '../../../assets/gallery/12 - ACCESO AEREA - QUINTAS - FINAL-s.webp'
 
 import ImageComponent from '../../ImageComponent'
 
 export default function Neighborhood() {
   var Element  = Scroll.Element
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+  const [imageModules, setImageModules] = useState([])
+  const sectionRef = useRef(null)
 
-  const images = useMemo(()=>[
+  // Definir solo los hashes y rutas, NO importar las imágenes aún
+  const imageData = useMemo(()=>[
     {
       hash:'LYEfveXAMwf+yZxuV?ofIpa#tQj]',
-      image:image1
+      path: '/src/assets/gallery/1- ACCESO - QUINTAS -FINAL-s.webp'
     },
     {
       hash:'LRGS4Bs:IVxa?wofxaWC.AR%Rjof',
-      image:image2
+      path: '/src/assets/gallery/2 - BOULEVARD - QUINTAS -FINAL-s.webp'
     },
     {
       hash:'LbFG2yI9WUtSyZITxubJWaxukCV@',
-      image:image3
+      path: '/src/assets/gallery/3 - BOULEVARD - QUINTAS - FINAL-s.webp'
     },
     {
       hash:'LcHx={IA4mt8?wM{MxR+IpaxxuV@',
-      image:image4
+      path: '/src/assets/gallery/4 - SUM - QUINTAS - FINAL-s.webp'
     },
     {
       hash:'LQD0o%tSDgt8t:t8V=ay9GM{x[Rj',
-      image:image5
+      path: '/src/assets/gallery/5 - PEATONAL PARQUE - QUINTAS - FINAL-s.webp'
     },
     {
       hash:'LCCjFXIVDNx^F*n$RNj^V|jYtRM{',
-      image:image6
+      path: '/src/assets/gallery/6 - VIVIENDAS - QUINTAS - FINAL-s.webp'
     },
     {
       hash:'LJCZ;NIqDgt8JIxtV;WCt3V[x]WB',
-      image:image7
+      path: '/src/assets/gallery/7 - CIRCUITO - QUINTAS - FINAL-s.webp'
     },
     {
       hash:'LBCQGGRl00NE0uoy-is.?ZoMIoNH',
-      image:image8
+      path: '/src/assets/gallery/8 - CIRCUITO 2 - QUINTAS - FINAL-s.webp'
     },
     {
       hash:'L9F~BHV$9F?b~ojcM|Rk0N?E-;9G',
-      image:image9
+      path: '/src/assets/gallery/11 - PARQUE AEREA - QUINTAS -FINAL-s.webp'
     },
     {
       hash:'L7F~EZ0300^+%$?ZxHIn_Nxu-ooN',
-      image:image10
+      path: '/src/assets/gallery/12 - ACCESO AEREA - QUINTAS - FINAL-s.webp'
     }
-  ],[ ])
+  ], [])
 
-  const [mainImage,setMainImage]=useState({
-    hash: images[0].hash,
-    image: images[0].image
-  })
+  // Cargar imágenes dinámicamente cuando el componente es visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !imagesLoaded) {
+            // Cargar todas las imágenes dinámicamente
+            Promise.all([
+              import('../../../assets/gallery/1- ACCESO - QUINTAS -FINAL-s.webp'),
+              import('../../../assets/gallery/2 - BOULEVARD - QUINTAS -FINAL-s.webp'),
+              import('../../../assets/gallery/3 - BOULEVARD - QUINTAS - FINAL-s.webp'),
+              import('../../../assets/gallery/4 - SUM - QUINTAS - FINAL-s.webp'),
+              import('../../../assets/gallery/5 - PEATONAL PARQUE - QUINTAS - FINAL-s.webp'),
+              import('../../../assets/gallery/6 - VIVIENDAS - QUINTAS - FINAL-s.webp'),
+              import('../../../assets/gallery/7 - CIRCUITO - QUINTAS - FINAL-s.webp'),
+              import('../../../assets/gallery/8 - CIRCUITO 2 - QUINTAS - FINAL-s.webp'),
+              import('../../../assets/gallery/11 - PARQUE AEREA - QUINTAS -FINAL-s.webp'),
+              import('../../../assets/gallery/12 - ACCESO AEREA - QUINTAS - FINAL-s.webp')
+            ]).then((modules) => {
+              const loadedImages = modules.map((module, index) => ({
+                hash: imageData[index].hash,
+                image: module.default
+              }))
+              setImageModules(loadedImages)
+              setImagesLoaded(true)
+            })
+          }
+        })
+      },
+      {
+        rootMargin: '200px', // Cargar 200px antes de que sea visible
+        threshold: 0.01
+      }
+    )
+
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef)
+      }
+    }
+  }, [imagesLoaded, imageData])
+
+  const [mainImage, setMainImage] = useState(null)
+
+  // Establecer imagen principal cuando las imágenes se carguen
+  useEffect(() => {
+    if (imageModules.length > 0 && !mainImage) {
+      setMainImage({
+        hash: imageModules[0].hash,
+        image: imageModules[0].image
+      })
+    }
+  }, [imageModules, mainImage])
 
   const handleImageClick = (selectedImage) => {
     setMainImage({
-      hash:selectedImage.hash,
-      image:selectedImage.image
+      hash: selectedImage.hash,
+      image: selectedImage.image
     })
   }
 
   const nextImage = () => {
-    var index = images.findIndex(image => image.hash === mainImage.hash)
-    if(index === images.length-1){
+    if (!imageModules.length) return
+    var index = imageModules.findIndex(image => image.hash === mainImage.hash)
+    if (index === imageModules.length - 1) {
       index = 0
-    }else{
+    } else {
       index++
     }
     setMainImage({
-      hash:images[index].hash,
-      image:images[index].image
+      hash: imageModules[index].hash,
+      image: imageModules[index].image
     })
   }
+
   const previousImage = () => {
-    var index = images.findIndex(image => image.hash === mainImage.hash)
-    if(index === 0){
-      index = images.length-1
-    }else{
+    if (!imageModules.length) return
+    var index = imageModules.findIndex(image => image.hash === mainImage.hash)
+    if (index === 0) {
+      index = imageModules.length - 1
+    } else {
       index--
     }
     setMainImage({
-      hash:images[index].hash,
-      image:images[index].image
+      hash: imageModules[index].hash,
+      image: imageModules[index].image
     })
   }
 
-
-  useEffect(() => {
-    /* const changeMainImage = (newIndex) => {
-      var index = 0
-      var interval = setInterval(() => {
-        if(index===images.length-1){
-          index=0
-        }else{
-          index++
-        }
-        setMainImage({
-          hash:images[index].hash,
-          image:images[index].image
-        })
-      }, 5000)
-      return () => clearInterval(interval)
-    }
-    changeMainImage() */
-  },[mainImage])
-
   return (
-    <Element className="container-fluid" id="neighborhood" name='neighborhood'>
-      <section className='gallery-main-image'>
-        <i onClick={previousImage} className='fa fa-arrow-left' aria-label='Anterior'></i>
-        <ImageComponent
-          src={mainImage.image}
-          alt={'imagen'}
-          className='img-fluid gallery-main-image'
-          blurClass='img-fluid'
-          hash={mainImage.hash}
-          width='100%'
-          height='100%'
-        />
-        <i onClick={nextImage} className='fa fa-arrow-right' aria-label='Siguiente'></i>
-      </section>
+    <div ref={sectionRef}>
+      <Element className="container-fluid" id="neighborhood" name='neighborhood'>
+        {/* Mostrar placeholder mientras las imágenes se cargan */}
+        {!imagesLoaded ? (
+          <section className='gallery-main-image d-flex justify-content-center align-items-center' style={{minHeight: '400px'}}>
+            <div className="text-center">
+              <div className="spinner-border text-success" role="status">
+                <span className="visually-hidden">Cargando galería...</span>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <>
+            <section className='gallery-main-image'>
+              <i onClick={previousImage} className='fa fa-arrow-left' aria-label='Anterior'></i>
+              {mainImage && (
+                <ImageComponent
+                  src={mainImage.image}
+                  alt={'imagen'}
+                  className='img-fluid gallery-main-image'
+                  blurClass='img-fluid'
+                  hash={mainImage.hash}
+                  width='100%'
+                  height='100%'
+                />
+              )}
+              <i onClick={nextImage} className='fa fa-arrow-right' aria-label='Siguiente'></i>
+            </section>
 
-      <ul className='gallery-list-image'>
-        {images.map((image,index) => {
-          return (
-            <li key={index}
-            className={`${mainImage.hash === image.hash ? 'selected-image' : ''}`} // Aplicar estilo si es la imagen seleccionada
-            onClick={() => handleImageClick(image)} // Manejador de evento click
-            >
-              <ImageComponent
-                src={image.image}
-                alt={'imagen'}
-                className='img-fluid'
-                blurClass='img-fluid'
-                hash={image.hash}
-                height='100%'
-
-              />
-            </li>
-          )
-        })}
-      </ul>
-    </Element>
+            <ul className='gallery-list-image'>
+              {imageModules.map((image, index) => {
+                return (
+                  <li
+                    key={index}
+                    className={`${mainImage && mainImage.hash === image.hash ? 'selected-image' : ''}`}
+                    onClick={() => handleImageClick(image)}
+                  >
+                    <ImageComponent
+                      src={image.image}
+                      alt={'imagen'}
+                      className='img-fluid'
+                      blurClass='img-fluid'
+                      hash={image.hash}
+                      height='100%'
+                    />
+                  </li>
+                )
+              })}
+            </ul>
+          </>
+        )}
+      </Element>
+    </div>
   )
 }
