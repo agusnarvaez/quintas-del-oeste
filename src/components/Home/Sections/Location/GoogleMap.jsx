@@ -33,8 +33,8 @@ export default function GoogleMap(){
       >
         <Marker
           src={logoQuintasChico}
-          lat={marker.lat}
-          lng={marker.lng}
+          lat={marker?.lat}
+          lng={marker?.lng}
         />
       </GoogleMapReact>
     </div>

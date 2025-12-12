@@ -12,8 +12,8 @@ import IconLocation from './IconLocation'
 export default function MapEditor({setValue}) {
 
     const _onCreate = (e) => {
-        setValue('coordinates.lat',e.layer._latlng.lat)
-        setValue('coordinates.lng',e.layer._latlng.lng)
+        setValue('coordinates.lat',e.layer._latlng?.lat)
+        setValue('coordinates.lng',e.layer._latlng?.lng)
     }
 
     const _onEdited = (e) => {

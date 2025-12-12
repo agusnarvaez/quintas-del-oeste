@@ -21,7 +21,7 @@ export default function Markers({lot,size,zoom}) {
     var scroller = Scroll.animateScroll
 
     //* Guardo las coordenadas del lote
-    const coordinates = {lat:lot.coordinates.lat,lng:lot.coordinates.lng}
+    const coordinates = {lat:lot.coordinates?.lat,lng:lot.coordinates?.lng}
 
     const reserveLot = (lotToReserve)=>{
         setLot(lotToReserve)
