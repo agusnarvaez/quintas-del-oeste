@@ -1,4 +1,4 @@
-import SportsTennisIcon from '@mui/icons-material/SportsTennis'
+import { MdSportsTennis } from 'react-icons/md'
 export default function Services() {
   const infrastructure = [
     {
@@ -33,7 +33,7 @@ export default function Services() {
       title: 'SUM',
     },
     {
-      icon: <SportsTennisIcon />,
+      icon: <MdSportsTennis size="2rem" />,
       title: 'TENNIS / PADEL',
     },
     {
@@ -74,7 +74,7 @@ export default function Services() {
             services.map((item, index) => (
               <li className='text-white py-2' key={index}>
                 {typeof item.icon === 'string' ? (<i className={item.icon}/>): item.icon}
-                <span className={typeof item.icon === 'string' ?'ps-3 fs-5':'ps-1 fs-5'}>{item.title}</span>
+                <span className='ps-3 fs-5'>{item.title}</span>
               </li>
             ))
           }
