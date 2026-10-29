@@ -9,6 +9,7 @@ import 'leaflet-draw/dist/leaflet.draw.css'
 
 //* Ubicacion de lotes
 import LotLocation from './LotLocation'
+import Marker from './Marker'
 import MapEditor from './MapEditor'
 import ExistingMarker from './ExistingMarker'
 
@@ -45,7 +46,7 @@ export default function Map({setValue,getValues,adminMode}) {
 
       {adminMode && <ExistingMarker getValues={getValues}/>}
 
-      { lots.map((lotToShow,index)=> <LotLocation lot={lotToShow} key={index}/> ) }
+      { lots.map((lotToShow,index)=> /* !lotToShow.reservation && */ <Marker lot={lotToShow} key={index}/> ) }
     </MapContainer>
     </div>
   )
